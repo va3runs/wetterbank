@@ -1,8 +1,8 @@
-# Wetterbank
+# Wetterbank®
 
-**Wetterbank is a bench that starts conversations between strangers, by helping them file complaints about the weather.**
+**Wetterbank® is a bench that starts conversations between strangers, by helping them file complaints about the weather.**
 
-A design fiction by Varun Sangani, Düsseldorf, asking how autonomous systems will shape our encounters in public space. The bench doesn't exist. Yet.
+A design fiction from Düsseldorf asking how autonomous systems will shape our encounters in public space. The bench doesn't exist. Yet.
 
 **Live:** https://va3runs.github.io/wetterbank/
 
