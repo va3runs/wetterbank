@@ -1,50 +1,50 @@
-# Wetterbank®
+# Wetterbank
 
-*Die Bank, die immer etwas zu sagen hat.* The bench that always has something to say.
+**Can a bench start a conversation?** A self-initiated design research project by Varun Sangani on how interactive, autonomous objects in public space shape encounters: between strangers, and between people and the more-than-human city.
 
-Wetterbank is a design fiction by Varun Sangani: a fictional smart bench from Düsseldorf that starts conversations between strangers. It opens with the weather, takes complaints about it, and then asks for your name. Wetterbank GmbH, "founded 2031 after a 40-minute tram delay in which nobody said a word", does not exist.
-
-**Live:** https://va3runs.github.io/wetterbank/ · **App:** https://va3runs.github.io/wetterbank/app/
+**Live:** https://va3runs.github.io/wetterbank/ · **Probe 1 (Take a seat):** https://va3runs.github.io/wetterbank/app/
 
 ## What is here
 
 | Path | What it is |
 |---|---|
-| `index.html` | Product site of the fictional Wetterbank GmbH, with a live line from the bench based on Düsseldorf's current weather |
-| `app/` | The installable web app: **Heute** (today's weather as a first sentence) and **Sag's dem Wetter** (file a complaint, get a case number) |
-| `js/wetterbank.js` | All bench lines (German + English) and the weather logic. Edit lines here. |
-| `css/wb.css` | Shared colours, buttons, speech bubble |
-| `impressum.html` | Impressum and Datenschutz |
-| `manifest.webmanifest`, `sw.js` | Makes the app installable and lets it work offline |
-| `assets/` | Icons (SVG, PNG, maskable) |
+| `index.html` | Research page: questions, background (with sources), method, live results, field notes, origin, FAQ |
+| `app/` | **Take a seat**, probe 1: an online encounter at a delayed tram stop with one of five bench behaviours, a short questionnaire and live results. Installable as a web app. |
+| `js/encounter.js` | The encounter script and engine: five benches, three strangers, five moments, all lines in English and German |
+| `js/sit.js` | The app controller: consent, playback, questionnaire, results |
+| `js/collect.js` | Sends anonymous responses to Supabase, only with consent and only when configured |
+| `js/config.js` | Supabase URL and public key, study version, threshold for live results |
+| `js/wetterbank.js` | Weather (Open-Meteo), weather lines, language switching |
+| `css/wb.css` | Design tokens and shared components |
+| `supabase/schema.sql` | Database: insert-only tables, aggregate stats function, analysis view |
+| `docs/DATA-SETUP.md` | How to switch on data collection (about 10 minutes) |
+| `privacy.html` | Participant information, privacy, legal notice |
+
+## Design
+
+- **System:** [kami](https://github.com/nexu-io/open-design/tree/main/design-systems/kami) (after [tw93/kami](https://github.com/tw93/kami), MIT): warm parchment `#f5f4ed`, one ink-blue accent `#1b365d`, serif at a single weight, no bold, no italic, warm greys only, ring and whisper elevation.
+- **Feel:** one idea per section, short copy, few links, one main action repeated at the top and bottom.
+- **Graphics:** paper-collage illustrations in SVG (grain, a rough coral sun, clouds, concrete, construction lines, an ochre dot), inspired by open-design.ai. Coral and ochre appear only inside artwork, never in the interface.
+- No web fonts are loaded (Charter / Georgia / system serif), so no third-party font requests.
 
 ## Principles
 
 - No accounts, no cookies, no tracking, no build step. Plain HTML, CSS and JavaScript.
-- Nothing typed is sent or stored. The only outside request is the weather from [Open-Meteo](https://open-meteo.com/) (free, no key, CC BY 4.0).
-- System fonts only, so no Google Fonts request.
-- "Vorlesen" (read aloud) appears only when the device has an on-device German voice.
-- English by default, with an EN / DE switch on every page. The choice is remembered on the device (`wb-lang`). Page text uses `lang="en"` / `lang="de"` pairs; the bench lines in `js/wetterbank.js` are `[German, English]` pairs.
+- Nothing is sent unless a participant consents (18+). "Just sit" works fully and sends nothing.
+- English by default with an EN / DE switch; the choice is remembered on the device.
 
-## Editing the bench's lines
+## Working on it
 
-Open `js/wetterbank.js`:
-- `REPLIES`: the 21 complaint replies
-- `WEATHER_REPLIES`: complaint replies that use today's weather
-- `OPENERS`: first sentences per weather condition (`clear`, `night`, `partly`, `overcast`, `fog`, `drizzle`, `rain`, `snow`, `thunder`, `unknown`)
-- `EXTRAS`: optional second sentences (wind, feels-colder, cold bench, heat)
-
-Placeholders: `{t}` temperature, `{f}` feels-like, `{w}` wind km/h, `{c}` / `{c_en}` condition, `{city}`.
-
-After changing files, bump `VERSION` in `sw.js` (e.g. `wb-v2`) so installed apps pick up the update.
-
-## Run locally
+- **Edit the encounter:** `js/encounter.js`. Then change `studyVersion` in `js/config.js` so old and new responses stay separable.
+- **After any change:** bump `VERSION` in `sw.js` so installed apps update.
+- **Test your own runs:** add `?test=1` to the app URL; those sessions are excluded from live results.
+- **Force a bench or stranger** (for demos and workshops): `app/?bench=names&stranger=dog`. Benches: `silent`, `weather`, `complaints`, `names`, `morethanhuman`. Strangers: `shopper`, `student`, `dog`.
+- **Track where people come from:** add `?src=linkedin` (or any label) to shared links.
 
 ```sh
-python3 -m http.server 8000
-# open http://localhost:8000
+python3 -m http.server 8000   # then open http://localhost:8000
 ```
 
 ## Hosting
 
-GitHub Pages: Settings → Pages → Source: *Deploy from a branch*, Branch: `main`, folder `/ (root)`.
+GitHub Pages from `main`, folder `/ (root)`. Data: Supabase (Frankfurt), see `docs/DATA-SETUP.md`.

@@ -1,24 +1,20 @@
 {
-  "name": "Wetterbank",
+  "name": "Wetterbank · Take a seat",
   "short_name": "Wetterbank",
-  "description": "Die Bank, die immer etwas zu sagen hat. The bench that always has something to say.",
-  "lang": "de",
+  "description": "Can a bench start a conversation? A research project on interactive public objects and encounters between strangers.",
+  "lang": "en",
   "id": "./app/",
-  "start_url": "./app/#heute",
+  "start_url": "./app/?src=homescreen",
   "scope": "./",
   "display": "standalone",
   "orientation": "portrait",
-  "background_color": "#fbfbfd",
-  "theme_color": "#0a6cdc",
-  "categories": ["lifestyle", "weather", "entertainment"],
+  "background_color": "#f5f4ed",
+  "theme_color": "#1b365d",
+  "categories": ["education", "lifestyle"],
   "icons": [
     { "src": "assets/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" },
     { "src": "assets/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
     { "src": "assets/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
     { "src": "assets/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
-  ],
-  "shortcuts": [
-    { "name": "Heute", "short_name": "Heute", "url": "./app/#heute" },
-    { "name": "Sag's dem Wetter", "short_name": "Meckern", "url": "./app/#meckern" }
   ]
 }
