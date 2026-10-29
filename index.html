@@ -33,6 +33,12 @@
 
 /* Complaint form */
 .desk{background:var(--soft);border:1px solid var(--line);border-radius:14px;padding:20px}
+.live{display:inline-flex;align-items:center;gap:8px;margin-left:10px;padding:3px 10px 3px 9px;border-radius:999px;background:var(--panel);color:var(--fg);font-size:13px;font-weight:500;vertical-align:2px;text-decoration:none}
+.live i{position:relative;width:8px;height:8px;border-radius:50%;background:#30d158;flex:none}
+.live i::after{content:"";position:absolute;inset:0;border-radius:50%;background:#30d158}
+@media (prefers-reduced-motion:no-preference){.live i::after{animation:pulse 1.6s ease-out infinite}}
+@keyframes pulse{0%{transform:scale(1);opacity:.7}100%{transform:scale(3);opacity:0}}
+.live:hover{background:var(--line)}
 .desk-head{display:flex;justify-content:space-between;gap:12px;font-size:13px;color:var(--mute);letter-spacing:.3px;text-transform:uppercase;margin:0 0 16px}
 .field{margin:0 0 14px}
 .field label{display:block;font-size:15px;color:var(--mute);margin:0 0 6px}
@@ -99,7 +105,7 @@
   </section>
 
   <section id="file" aria-labelledby="file-h">
-    <h2 id="file-h">File a weather complaint.</h2>
+    <h2 id="file-h">File a weather complaint. <a class="live" href="#what" aria-label="Live and interactive: try the form below"><i aria-hidden="true"></i>Live · try it</a></h2>
     <p class="sub">Complaints are processed in the order they are received. Trams are not.</p>
     <form class="desk" id="desk" autocomplete="off">
       <div class="desk-head"><span>Weather complaint form 38b</span><span>Wetterbank®</span></div>
