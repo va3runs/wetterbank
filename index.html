@@ -42,7 +42,7 @@ img,svg{display:block}
 /* Header */
 header{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px 24px;padding:28px 0 0;font-size:15px}
 .by{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--fg)}
-.by img{width:28px;height:28px;border-radius:7px}
+.by img,.by .logo{width:28px;height:28px;border-radius:7px}
 .by span{color:var(--mute)}
 nav{display:flex;gap:20px}
 nav a{text-decoration:none;color:var(--mute)}
@@ -50,7 +50,11 @@ nav a:hover{color:var(--fg)}
 
 /* Hero */
 .hero{padding:96px 0 24px}
-.hero .icon{width:72px;height:72px;border-radius:17px;margin:0 0 32px}
+.hero .icon{width:72px;height:72px;margin:0 0 32px}
+.hero .icon circle{animation:typing 1.4s ease-in-out infinite}
+.hero .icon .d2{animation-delay:.18s}.hero .icon .d3{animation-delay:.36s}
+@keyframes typing{0%,60%,100%{transform:translateY(0);opacity:.45}30%{transform:translateY(-3px);opacity:1}}
+@media (prefers-reduced-motion:reduce){.hero .icon circle{animation:none}}
 h1{font-size:30px;line-height:1.3;font-weight:400;letter-spacing:-.4px;margin:0 0 20px}
 h1 strong{font-weight:600}
 .lede{font-size:19px;line-height:1.5;color:var(--mute);margin:0}
@@ -131,13 +135,13 @@ footer a{color:var(--mute)}
 <div class="page">
 
 <header>
-  <a class="by" href="./"><img src="assets/icon.svg" alt="" width="28" height="28">Wetterbank <span>by Varun Sangani</span></a>
+  <a class="by" href="./"><svg class="logo" viewBox="0 0 64 64" width="28" height="28" aria-hidden="true"><rect width="64" height="64" rx="15" style="fill:var(--fg)"/><g style="fill:var(--bg)"><circle cx="21" cy="27" r="3.6"/><circle cx="32" cy="27" r="3.6"/><circle cx="43" cy="27" r="3.6"/></g><g fill="none" style="stroke:var(--bg)" stroke-width="4" stroke-linecap="round"><path d="M13 38H51"/><path d="M18 38v11M46 38v11"/></g></svg>Wetterbank <span>by Varun Sangani</span></a>
   <nav aria-label="Sections"><a href="#modes">Modes</a><a href="#numbers">Numbers</a><a href="#faq">FAQ</a></nav>
 </header>
 
 <main>
   <div class="hero">
-    <img class="icon" src="assets/icon.svg" alt="Wetterbank icon: a white bench under a sun and a cloud" width="72" height="72">
+    <svg class="icon" viewBox="0 0 64 64" width="72" height="72" role="img" aria-label="Wetterbank logo: a bench whose backrest is three dots, like someone typing"><rect width="64" height="64" rx="15" style="fill:var(--fg)"/><g style="fill:var(--bg)"><circle class="d1" cx="21" cy="27" r="3.6"/><circle class="d2" cx="32" cy="27" r="3.6"/><circle class="d3" cx="43" cy="27" r="3.6"/></g><g fill="none" style="stroke:var(--bg)" stroke-width="4" stroke-linecap="round"><path d="M13 38H51"/><path d="M18 38v11M46 38v11"/></g></svg>
     <h1><strong>Wetterbank</strong> is a bench that says the first sentence.</h1>
     <p class="lede">It opens with <strong>the weather</strong>, takes <strong>complaints</strong>, and ends with <strong>your name</strong>. For tram stops where nobody talks.</p>
     <div class="actions">
