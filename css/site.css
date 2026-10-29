@@ -87,3 +87,16 @@ footer a{color:var(--mute)}
   .typing circle:nth-child(3){animation-delay:.36s}
 }
 @keyframes typing{0%,60%,100%{transform:translateY(0);opacity:.45}30%{transform:translateY(-3px);opacity:1}}
+
+/* The bench's reply: short messages, typed one after another */
+.chat{display:flex;flex-direction:column;align-items:flex-start;gap:6px}
+.receipt .say{margin:0;max-width:92%;padding:8px 12px;border-radius:14px 14px 14px 4px;background:var(--panel);line-height:1.45}
+.receipt .say.dots{display:inline-flex;align-items:center;gap:4px;padding:13px 12px}
+.say.dots i{width:6px;height:6px;border-radius:50%;background:var(--mute)}
+@media (prefers-reduced-motion:no-preference){
+  .say{animation:say .18s ease-out}
+  .say.dots i{animation:typing 1.2s ease-in-out infinite}
+  .say.dots i:nth-child(2){animation-delay:.15s}
+  .say.dots i:nth-child(3){animation-delay:.3s}
+}
+@keyframes say{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
