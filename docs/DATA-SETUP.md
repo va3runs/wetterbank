@@ -1,11 +1,11 @@
-# Switching on data collection (about 10 minutes)
+# Switching on the consultation (about 10 minutes)
 
-Until you do this, the site runs in **preview mode**: everything works, nothing is stored, and the intro says so.
+Until you do this, the site runs in **preview mode**: people can vote and file motions, but nothing is recorded, and the page says so.
 
 ## 1. Create the database
 
 1. Go to [supabase.com](https://supabase.com) and sign up (free plan).
-2. **New project** → name `wetterbank` → choose a strong database password (save it in your password manager) → **Region: Central EU (Frankfurt)** → Create.
+2. **New project** → name `bench-code` → choose a strong database password (save it in your password manager) → **Region: Central EU (Frankfurt)** → Create.
 3. Wait a minute until the project is ready.
 
 ## 2. Create the tables
@@ -16,46 +16,44 @@ Until you do this, the site runs in **preview mode**: everything works, nothing 
 ## 3. Connect the website
 
 1. Left sidebar → **Project Settings** → **API** (or **Data API**).
-2. Copy the **Project URL** and the **anon public** key. (Never use the `service_role` key on the website.)
-3. In this repo, open `js/config.js` and paste them:
+2. Copy the **Project URL** and the **anon public** key. Never use the `service_role` key on the website.
+3. Paste them into `js/config.js` (or send them to Claude to push):
 
 ```js
 supabaseUrl: "https://xxxxxxxx.supabase.co",
 supabaseAnonKey: "eyJ...",
 ```
 
-4. Commit and push (or ask Claude to). GitHub Pages updates in a minute or two.
-
 ## 4. Test it
 
-1. Open `https://va3runs.github.io/wetterbank/app/?test=1`. The `?test=1` marks your own runs, so they are left out of the live results.
-2. Tick the box, sit down, finish an encounter and the questions.
-3. In Supabase → **Table Editor** → `wb_sessions` and `wb_results`: your row should be there.
+1. Open `https://va3runs.github.io/wetterbank/?test=1`. The `?test=1` marks your own votes, so they never count in the draft.
+2. Vote on a few paragraphs and file a test motion.
+3. In Supabase → **Table Editor**, you should see rows in `bc_votes` and `bc_motions`.
 
-## Looking at the data
+## Approving motions (your job as minute-taker)
 
-- **SQL Editor:** `select * from wb_flat where not is_test order by created_at desc;`
-- **Export:** run the query, then **Download CSV**. It opens in Excel, Numbers or Google Sheets.
-- Useful first questions:
-  - `select bench, result, count(*) from wb_flat where finished and not is_test group by 1,2 order by 1,2;`
-  - `select bench, round(avg(easier),2), round(avg(intrusive),2), count(*) from wb_flat where finished and not is_test group by 1;`
-  - `select bench, first_contact_via, count(*) from wb_flat where finished and not is_test group by 1,2;`
-  - `select open_text from wb_flat where open_text is not null;`
+New motions are hidden until you approve them.
 
-## Deleting someone's answers
+1. Supabase → **Table Editor** → `bc_motions`.
+2. For a motion you want to put to the vote: set `approved` to `true`. Optionally fill `body_en` and `body_de` with a cleaned-up translation, so it reads well in both languages (otherwise the original text is shown in both).
+3. Offensive, personal or duplicate motions: delete the row.
 
-People get an 8-character participation code at the end. If someone emails you theirs:
+Approved motions appear in the draft under their section, marked "Motion from the public", and are put to the vote in the hearing.
 
-```sql
-delete from wb_sessions where left(id::text, 8) = 'abcd1234';
-```
+## Looking at the results
 
-(This also deletes their results.)
+- **Live:** the draft on the website shows each paragraph's status.
+- **SQL Editor:**
+  - Totals per paragraph: `select clause, vote, count(*) from bc_flat where not is_test group by 1,2 order by 1,2;`
+  - Where people came from: `select source, referrer, count(distinct session) from bc_flat where not is_test group by 1,2 order by 3 desc;`
+  - All motions: `select created_at, section, body, approved from bc_motions order by created_at desc;`
+- **Export:** run a query, then **Download CSV** (opens in Excel, Numbers or Google Sheets).
 
 ## Good to know
 
-- **Free plan pauses** a project after about a week with no activity. If that happens, open the Supabase dashboard and press *Restore*. While paused, the site still works but stores nothing.
-- **Sharing links per channel:** add `?src=linkedin` (or `?src=instagram`, `?src=poster`) to the link you share. It ends up in the `source` column, so you can see where people came from.
-- **Changing the script:** if you change the encounter text in `js/encounter.js`, also change `studyVersion` in `js/config.js`, so old and new responses can be told apart.
-- **Spam:** the database only accepts well-formed, size-limited rows, but there is no rate limit. If someone floods it, filter by `created_at` or temporarily remove the anon insert policy.
-- **Privacy:** with the Frankfurt region, the data stays in the EU. Supabase offers a data processing agreement (DPA); see [supabase.com/legal/dpa](https://supabase.com/legal/dpa) and sign it for your organisation. The database itself does not store IP addresses, but Supabase keeps short-lived request logs.
+- **Free plan pauses** a project after about a week with no activity. If that happens, open the dashboard and press *Restore*. While paused, the site still works but records nothing.
+- **Tag your links:** add `?src=linkedin` (or `?src=poster`, `?src=fft`) to links you share. It ends up in the `source` column.
+- **Changing paragraphs:** if you reword a paragraph in `js/code.js`, raise `draft` in `js/config.js` (e.g. `"0.4"`), so old and new votes can be told apart. Don't reuse an ID like `s3.3` for a different paragraph; give new ones new IDs.
+- **Thresholds:** `decideMinVotes`, `adoptAt` and `rejectAt` in `js/config.js` decide when a paragraph is adopted or rejected.
+- **Spam:** the database only accepts well-formed, size-limited rows, one vote per paragraph per session, but there is no rate limit. If someone floods it, filter by `created_at`, or temporarily drop the insert policy.
+- **Privacy:** with the Frankfurt region, data stays in the EU. Supabase offers a data processing agreement; see [supabase.com/legal/dpa](https://supabase.com/legal/dpa).

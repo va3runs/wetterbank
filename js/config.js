@@ -1,10 +1,13 @@
-/* Wetterbank research site: configuration.
-   Fill in the two Supabase values to start collecting responses.
-   See docs/DATA-SETUP.md. Both values are safe to publish: the database only
-   accepts inserts and returns aggregate numbers, never individual rows. */
+/* Configuration for the public consultation.
+   Fill in the two Supabase values to start recording votes (see docs/DATA-SETUP.md).
+   Both values are safe to publish: the database only accepts new votes and motions,
+   and only returns totals and approved motions, never individual rows. */
 window.WB_CONFIG = {
   supabaseUrl: "",      // e.g. "https://abcdefghijkl.supabase.co"
   supabaseAnonKey: "",  // the "anon public" key from Project Settings → API
-  studyVersion: "2026-11-a", // change when the encounter script changes, so results stay comparable
-  minResultsToShow: 20  // live results stay hidden until this many people have taken part
+  draft: "0.3",         // raise when the paragraphs change, so old and new votes can be told apart
+  decideMinVotes: 15,   // a paragraph needs this many for/against votes before it is adopted or rejected
+  adoptAt: 60,          // % in favour (abstentions not counted) to adopt
+  rejectAt: 40,         // % in favour at or below which a paragraph is rejected
+  showShareAfter: 5     // show the public's split after a vote once a paragraph has this many votes
 };

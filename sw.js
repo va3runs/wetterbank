@@ -1,11 +1,10 @@
 /* Wetterbank service worker: keeps the app working offline.
    Weather requests always go to the network and are never cached. */
-const VERSION = "wb-v4";
+const VERSION = "bc-v2";
 const FILES = [
-  "./", "./index.html", "./privacy.html", "./app/", "./app/index.html",
-  "./css/wb.css", "./js/config.js", "./js/wetterbank.js", "./js/collect.js", "./js/encounter.js", "./js/sit.js",
-  "./manifest.webmanifest",
-  "./assets/icon.svg", "./assets/icon-180.png", "./assets/icon-192.png",
+  "./", "./index.html", "./privacy.html", "./css/wb.css",
+  "./js/config.js", "./js/lang.js", "./js/code.js", "./js/tally.js", "./js/consult.js",
+  "./manifest.webmanifest", "./assets/icon.svg", "./assets/icon-180.png", "./assets/icon-192.png",
   "./assets/icon-512.png", "./assets/icon-maskable-512.png"
 ];
 self.addEventListener("install", e => {

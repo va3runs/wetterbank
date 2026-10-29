@@ -18,6 +18,7 @@
   --accent:#1b365d; --accent-on:#faf9f5; --accent-active:#142a48; --link:#1b365d;
   /* Tag tints, solid hex */
   --tag-faint:#eef2f7; --tag-soft:#e4ecf5; --tag-base:#d6e1ee;
+  --success:#4a6b3a;
   /* Artwork-only palette (open-design.ai collage) */
   --art-paper:#efe7d2; --art-coral:#e2694f; --art-ochre:#d6a43a; --art-concrete:#b9b4a9; --art-olive:#6f7a4e; --art-cloud:#e9e6de; --art-ink:#141413;
   /* Type */
