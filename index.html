@@ -17,157 +17,119 @@
 <link rel="canonical" href="https://va3runs.github.io/wetterbank/">
 <link rel="icon" type="image/svg+xml" href="assets/icon.svg">
 <link rel="apple-touch-icon" href="assets/icon-180.png">
+<link rel="stylesheet" href="css/site.css">
 <style>
-:root{
-  --bg:#ffffff; --fg:#111111; --mute:#6e6e6e; --line:#e8e8e8; --panel:#f5f5f4; --soft:#fafafa;
-  --btn:#111111; --btn-fg:#ffffff;
-  --font:-apple-system,BlinkMacSystemFont,"SF Pro Text","Inter","Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
-  color-scheme:light dark;
-}
-@media (prefers-color-scheme:dark){
-  :root{--bg:#111111;--fg:#ededed;--mute:#9a9a9a;--line:#262626;--panel:#1a1a1a;--soft:#161616;--btn:#ededed;--btn-fg:#111111}
-}
-*,*::before,*::after{box-sizing:border-box}
-html{-webkit-text-size-adjust:100%;scroll-padding-top:24px}
-body{margin:0;background:var(--bg);color:var(--fg);font:400 17px/1.55 var(--font);-webkit-font-smoothing:antialiased}
-a{color:inherit;text-decoration:underline;text-decoration-color:var(--line);text-underline-offset:3px;text-decoration-thickness:1px}
-a:hover{text-decoration-color:currentColor}
-:focus-visible{outline:2px solid var(--fg);outline-offset:3px;border-radius:4px}
-strong{font-weight:600}
-p{margin:0 0 1em}
-img,svg{display:block}
+.hero{padding:96px 0 0}
+.hero .mark{width:72px;height:72px;margin:0 0 32px}
+.notice{margin:28px 0 0;padding:14px 16px;border-left:2px solid var(--fg);background:var(--soft);font-size:15px;line-height:1.5}
 
-.page{max-width:640px;margin:0 auto;padding:0 24px}
+/* The formula */
+.formula{list-style:none;margin:0;padding:0}
+.formula li{display:grid;grid-template-columns:28px 1fr;gap:8px;padding:12px 0;border-top:1px solid var(--line)}
+.formula li:last-child{border-bottom:1px solid var(--line)}
+.formula .op{color:var(--mute);font-variant-numeric:tabular-nums}
+.formula li.eq strong{font-weight:600}
+.spark{margin:20px 0 0}
 
-/* Header */
-header{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px 24px;padding:28px 0 0;font-size:15px}
-.by{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--fg)}
-.by img,.by .logo{width:28px;height:28px;border-radius:7px}
-.by span{color:var(--mute)}
-nav{display:flex;gap:20px}
-nav a{text-decoration:none;color:var(--mute)}
-nav a:hover{color:var(--fg)}
-
-/* Hero */
-.hero{padding:96px 0 24px}
-.hero .icon{width:72px;height:72px;margin:0 0 32px}
-.hero .icon circle{animation:typing 1.4s ease-in-out infinite}
-.hero .icon .d2{animation-delay:.18s}.hero .icon .d3{animation-delay:.36s}
-@keyframes typing{0%,60%,100%{transform:translateY(0);opacity:.45}30%{transform:translateY(-3px);opacity:1}}
-@media (prefers-reduced-motion:reduce){.hero .icon circle{animation:none}}
-h1{font-size:30px;line-height:1.3;font-weight:400;letter-spacing:-.4px;margin:0 0 20px}
-h1 strong{font-weight:600}
-.lede{font-size:19px;line-height:1.5;color:var(--mute);margin:0}
-.lede strong{color:var(--fg);font-weight:500}
-.actions{display:flex;flex-wrap:wrap;align-items:center;gap:12px 20px;margin:32px 0 0}
-.btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:10px 18px;border:0;border-radius:10px;background:var(--btn);color:var(--btn-fg);font:500 16px/1 var(--font);text-decoration:none;cursor:pointer}
-.btn:hover{opacity:.88}
-.btn.ghost{background:transparent;color:var(--fg);box-shadow:inset 0 0 0 1px var(--line)}
-.small{font-size:14px;color:var(--mute)}
-.version{margin:16px 0 0}
-
-section{padding:72px 0 0}
-h2{font-size:17px;font-weight:600;margin:0 0 8px}
-.sub{color:var(--mute);margin:0 0 24px}
-
-/* Demo */
-.demo{background:var(--soft);border:1px solid var(--line);border-radius:14px;padding:20px}
-.demo label{display:block;font-size:15px;color:var(--mute);margin:0 0 8px}
-.row{display:flex;gap:8px}
-.row input{flex:1;min-width:0;font:inherit;font-size:max(16px,1rem);color:var(--fg);background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:10px 12px}
-.row input:focus{outline:none;border-color:var(--fg)}
-.reply{margin:16px 0 0;min-height:3.2em;padding:14px 16px;border-radius:12px;background:var(--bg);border:1px solid var(--line);color:var(--mute)}
-.reply.has{color:var(--fg)}
-.reply .case{display:block;font-size:13px;color:var(--mute);margin-bottom:4px;font-variant-numeric:tabular-nums}
-.demo .small{margin:12px 0 0}
+/* Complaint form */
+.desk{background:var(--soft);border:1px solid var(--line);border-radius:14px;padding:20px}
+.desk-head{display:flex;justify-content:space-between;gap:12px;font-size:13px;color:var(--mute);letter-spacing:.3px;text-transform:uppercase;margin:0 0 16px}
+.field{margin:0 0 14px}
+.field label{display:block;font-size:15px;color:var(--mute);margin:0 0 6px}
+.pair{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media (max-width:480px){.pair{grid-template-columns:1fr}}
+.desk select,.desk input{width:100%;font:inherit;font-size:max(16px,1rem);color:var(--fg);background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:10px 12px;appearance:none;-webkit-appearance:none}
+.desk select{background-image:linear-gradient(45deg,transparent 50%,var(--mute) 50%),linear-gradient(135deg,var(--mute) 50%,transparent 50%);background-position:calc(100% - 18px) 52%,calc(100% - 13px) 52%;background-size:5px 5px;background-repeat:no-repeat;padding-right:36px}
+.desk select:focus,.desk input:focus{outline:none;border-color:var(--fg)}
+.receipt{margin:16px 0 0;padding:14px 16px;border-radius:12px;background:var(--bg);border:1px solid var(--line)}
+.receipt dl{display:grid;grid-template-columns:auto 1fr;gap:2px 14px;margin:0 0 10px;font-size:14px;color:var(--mute);font-variant-numeric:tabular-nums}
+.receipt dt{margin:0}.receipt dd{margin:0;color:var(--fg)}
+.receipt p{margin:0}
+.desk .small{margin:12px 0 0}
 
 /* Modes */
 .mode{padding:40px 0 0}
-.mode h3{font-size:17px;font-weight:600;margin:0 0 4px}
 .mode h3 span{font-weight:400;color:var(--mute)}
 .mode p{margin:0 0 20px}
-figure{margin:0}
-figure svg{width:100%;height:auto;border-radius:14px}
-figcaption{font-size:14px;color:var(--mute);margin:10px 0 0}
-.p-bg{fill:var(--panel)}
-.p-bub{fill:var(--bg);stroke:var(--line);stroke-width:2}
-.p-txt{fill:var(--fg);font:500 25px var(--font)}
-.p-ln{fill:none;stroke:var(--fg);stroke-width:3.5;stroke-linecap:round;stroke-linejoin:round}
-.p-fill rect{fill:var(--panel)}
-.p-soft{fill:none;stroke:var(--mute);stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
-.p-dot{fill:#e2694f}
 
-/* Numbers */
-.num{padding:18px 0;border-top:1px solid var(--line)}
-.num:last-of-type{border-bottom:1px solid var(--line)}
-.num p{margin:0 0 10px;font-size:16px}
-.bar{display:grid;grid-template-columns:1fr 64px;gap:12px;align-items:center}
-.track{height:8px;border-radius:4px;background:var(--panel);overflow:hidden}
-.fill{height:100%;border-radius:4px;background:var(--fg)}
-.val{text-align:right;font-variant-numeric:tabular-nums;font-weight:500}
-.sources{margin:16px 0 0}
-
-/* List */
-ul.plain{list-style:none;margin:0;padding:0}
-ul.plain li{padding:10px 0;border-top:1px solid var(--line)}
-ul.plain li:last-child{border-bottom:1px solid var(--line)}
-
-/* FAQ */
-.faq h3{font-size:17px;font-weight:600;margin:28px 0 6px}
-.faq p{color:var(--mute);margin:0}
+/* Question */
+.rq{font-size:22px;line-height:1.4;letter-spacing:-.2px;margin:0 0 24px}
+.subq{counter-reset:q}
+.subq li{display:grid;grid-template-columns:28px 1fr;gap:8px}
+.subq li::before{counter-increment:q;content:counter(q);color:var(--mute);font-variant-numeric:tabular-nums}
+.two{margin:32px 0 0}
 
 /* Closing */
 .closing{padding:96px 0 0}
 .closing h2{font-size:30px;font-weight:400;letter-spacing:-.4px;line-height:1.3;margin:0 0 4px}
-
-footer{margin:96px 0 0;padding:28px 0 48px;border-top:1px solid var(--line);font-size:14px;color:var(--mute);display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px 24px}
-footer .links{display:flex;flex-wrap:wrap;gap:8px 20px}
-footer a{color:var(--mute)}
-
-@media (max-width:520px){
-  .hero{padding-top:64px}
-  h1,.closing h2{font-size:26px}
-  nav{display:none}
-}
+.stats{margin:20px 0 0;font-size:14px;color:var(--mute);font-variant-numeric:tabular-nums}
+@media (max-width:520px){.hero{padding-top:64px}.closing h2{font-size:26px}.rq{font-size:20px}}
 </style>
 </head>
 <body>
 <div class="page">
 
-<header>
-  <a class="by" href="./"><svg class="logo" viewBox="0 0 64 64" width="28" height="28" aria-hidden="true"><rect width="64" height="64" rx="15" style="fill:var(--fg)"/><g style="fill:var(--bg)"><circle cx="21" cy="27" r="3.6"/><circle cx="32" cy="27" r="3.6"/><circle cx="43" cy="27" r="3.6"/></g><g fill="none" style="stroke:var(--bg)" stroke-width="4" stroke-linecap="round"><path d="M13 38H51"/><path d="M18 38v11M46 38v11"/></g></svg>Wetterbank <span>by Varun Sangani</span></a>
-  <nav aria-label="Sections"><a href="#modes">Modes</a><a href="#numbers">Numbers</a><a href="#faq">FAQ</a></nav>
+<header class="top">
+  <a class="by" href="./"><svg class="logo" viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="15"/><g class="mk"><circle cx="21" cy="27" r="3.6"/><circle cx="32" cy="27" r="3.6"/><circle cx="43" cy="27" r="3.6"/></g><path class="ln" d="M13 38H51M18 38v11M46 38v11"/></svg>Wetterbank <span>by Varun Sangani</span></a>
+  <nav aria-label="Pages"><a href="./" aria-current="page">Home</a><a href="documentation.html">Documentation</a></nav>
 </header>
 
 <main>
   <div class="hero">
-    <svg class="icon" viewBox="0 0 64 64" width="72" height="72" role="img" aria-label="Wetterbank logo: a bench whose backrest is three dots, like someone typing"><rect width="64" height="64" rx="15" style="fill:var(--fg)"/><g style="fill:var(--bg)"><circle class="d1" cx="21" cy="27" r="3.6"/><circle class="d2" cx="32" cy="27" r="3.6"/><circle class="d3" cx="43" cy="27" r="3.6"/></g><g fill="none" style="stroke:var(--bg)" stroke-width="4" stroke-linecap="round"><path d="M13 38H51"/><path d="M18 38v11M46 38v11"/></g></svg>
+    <svg class="logo mark" viewBox="0 0 64 64" role="img" aria-label="Wetterbank logo: a bench whose backrest is three dots, like someone typing"><rect width="64" height="64" rx="15"/><g class="mk typing"><circle cx="21" cy="27" r="3.6"/><circle cx="32" cy="27" r="3.6"/><circle cx="43" cy="27" r="3.6"/></g><path class="ln" d="M13 38H51M18 38v11M46 38v11"/></svg>
     <h1><strong>Wetterbank</strong> is a bench that starts conversations between strangers, by helping them file complaints about the weather.</h1>
     <p class="lede">A design fiction asking how autonomous systems will shape our encounters in public space, as they move from our homes onto our streets.</p>
     <div class="actions">
-      <a class="btn" href="#demo">Try it</a>
-      <a href="#numbers">The numbers</a>
+      <a class="btn" href="#file">File a complaint</a>
+      <a href="documentation.html">Read the documentation</a>
     </div>
-    <p class="small version">Design fiction · Düsseldorf · Not built yet</p>
+    <p class="notice">Wetterbank is a design fiction and an ongoing research project. The bench does not exist. Yet.</p>
   </div>
 
-  <section id="demo" aria-labelledby="demo-h">
-    <h2 id="demo-h">It works, sort of.</h2>
-    <p class="sub">Complain about the weather and press Enter. The bench will forward it.</p>
-    <form class="demo" id="demo-form" autocomplete="off">
-      <label for="complaint">Your complaint</label>
-      <div class="row">
-        <input id="complaint" type="text" maxlength="200" placeholder="It’s raining again." enterkeyhint="send">
-        <button class="btn" type="submit">Send</button>
+  <section id="idea" aria-labelledby="idea-h">
+    <h2 id="idea-h">How it adds up.</h2>
+    <p class="sub">Three things everyone at a German tram stop already knows.</p>
+    <ol class="formula">
+      <li><span class="op"></span><span>The weather is the safest way to start a conversation.</span></li>
+      <li><span class="op">+</span><span>The tram is late. Again.</span></li>
+      <li><span class="op">+</span><span>Nobody at the stop says a word.</span></li>
+      <li class="eq"><span class="op">=</span><span><strong>A bench that speaks first.</strong></span></li>
+    </ol>
+    <p class="spark small">Wetterbank started as a design fiction on my <a href="https://va3runs.github.io/rnd/#wetterbank">portfolio</a>. This site is where it continues.</p>
+  </section>
+
+  <section id="file" aria-labelledby="file-h">
+    <h2 id="file-h">File a weather complaint.</h2>
+    <p class="sub">Complaints are processed in the order they are received. Trams are not.</p>
+    <form class="desk" id="desk" autocomplete="off">
+      <div class="desk-head"><span>Weather complaint form 38b</span><span>Wetterbank</span></div>
+      <div class="pair">
+        <div class="field">
+          <label for="cat">Category</label>
+          <select id="cat">
+            <option>Rain</option><option>Wind</option><option>Cold</option><option>Feels colder than measured</option><option>Too hot</option><option>Grey, in general</option><option>Other</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="line">Waiting for</label>
+          <select id="line">
+            <option>Not specified</option><option>U79</option><option>701</option><option>704</option><option>706</option><option>707</option><option>708</option><option>709</option><option>A tram that never came</option>
+          </select>
+        </div>
       </div>
-      <div class="reply" id="reply" aria-live="polite">The bench’s reply appears here.</div>
-      <p class="small">Nothing you type is sent or stored. The weather has enough to deal with.</p>
+      <div class="field">
+        <label for="what">Describe the incident</label>
+        <input id="what" type="text" maxlength="200" placeholder="It started raining the moment I left the house." enterkeyhint="send">
+      </div>
+      <button class="btn" type="submit">File complaint</button>
+      <div class="receipt" id="receipt" hidden aria-live="polite"></div>
+      <p class="small">Nothing you enter is sent or stored. The weather has enough to deal with.</p>
     </form>
   </section>
 
   <section id="modes" aria-labelledby="modes-h">
     <h2 id="modes-h">Three modes, one step at a time.</h2>
-    <p class="sub">Each mode moves a little further away from the safe topic.</p>
+    <p class="sub">Each mode moves a little further away from the safe topic, and a little closer to the person next to you.</p>
 
     <div class="mode">
       <h3>Wetter <span>· weather</span></h3>
@@ -178,26 +140,26 @@ footer a{color:var(--mute)}
           <rect class="p-bub" x="60" y="44" width="400" height="72" rx="16"/><path class="p-bub" d="M300 115l22 34 22-34"/><path d="M302 114h40" style="stroke:var(--bg)" stroke-width="4"/>
           <text class="p-txt" x="84" y="89">Bit chilly today, isn’t it?</text>
           <g class="p-soft"><path d="M470 118a22 22 0 0 1 4-43 28 28 0 0 1 52 6 18 18 0 0 1-2 37z"/><path d="M486 132v12M502 132v12M518 132v12"/></g>
-          <g class="p-ln"><path d="M60 300H540"/><rect x="190" y="170" width="220" height="16" rx="3"/><path d="M212 186v28M388 186v28"/><rect x="170" y="214" width="260" height="18" rx="3"/><path d="M190 232v68M410 232v68"/></g>
+          <g class="p-ln p-fill"><path d="M60 300H540"/><rect x="190" y="170" width="220" height="16" rx="3"/><path d="M212 186v28M388 186v28"/><rect x="170" y="214" width="260" height="18" rx="3"/><path d="M190 232v68M410 232v68"/></g>
           <circle class="p-dot" cx="388" cy="178" r="5"/>
         </svg>
-        <figcaption>7:42. Rain. Silence. Until the bench says something.</figcaption>
       </figure>
     </div>
 
     <div class="mode">
       <h3>Meckern <span>· complaining</span></h3>
-      <p>It takes complaints about the weather and forwards them. Grumbling together is a small bond.</p>
+      <p>It takes your complaint and forwards it. Grumbling together is a small bond.</p>
       <figure>
         <svg viewBox="0 0 600 340" role="img" aria-label="A person on the bench hears: Forwarded to the weather.">
           <rect class="p-bg" width="600" height="340"/>
           <rect class="p-bub" x="60" y="44" width="400" height="72" rx="16"/><path class="p-bub" d="M300 115l22 34 22-34"/><path d="M302 114h40" style="stroke:var(--bg)" stroke-width="4"/>
           <text class="p-txt" x="84" y="89">Forwarded to the weather.</text>
           <g class="p-soft"><path d="M470 196l40-26M484 162h26v16"/><rect x="452" y="186" width="26" height="18" rx="2"/><path d="M452 187l13 9 13-9"/></g>
-          <g class="p-ln"><circle cx="262" cy="140" r="14"/><path d="M262 154v60"/></g><g class="p-ln p-fill"><path d="M60 300H540"/><rect x="190" y="170" width="220" height="16" rx="3"/><path d="M212 186v28M388 186v28"/><rect x="170" y="214" width="260" height="18" rx="3"/><path d="M190 232v68M410 232v68"/></g><g class="p-ln"><path d="M253 232v68M271 232v68"/></g>
+          <g class="p-ln"><circle cx="262" cy="140" r="14"/><path d="M262 154v60"/></g>
+          <g class="p-ln p-fill"><path d="M60 300H540"/><rect x="190" y="170" width="220" height="16" rx="3"/><path d="M212 186v28M388 186v28"/><rect x="170" y="214" width="260" height="18" rx="3"/><path d="M190 232v68M410 232v68"/></g>
+          <g class="p-ln"><path d="M253 232v68M271 232v68"/></g>
           <circle class="p-dot" cx="388" cy="178" r="5"/>
         </svg>
-        <figcaption>File a complaint. It will be forwarded. To whom, we won’t say.</figcaption>
       </figure>
     </div>
 
@@ -210,65 +172,55 @@ footer a{color:var(--mute)}
           <rect class="p-bub" x="60" y="44" width="400" height="72" rx="16"/><path class="p-bub" d="M300 115l22 34 22-34"/><path d="M302 114h40" style="stroke:var(--bg)" stroke-width="4"/>
           <text class="p-txt" x="84" y="89">I’m the bench. And you?</text>
           <g class="p-soft"><circle cx="502" cy="190" r="16"/><path d="M502 160v8M502 212v8M472 190h8M524 190h8M481 169l6 6M517 205l6 6M523 169l-6 6M487 205l-6 6"/></g>
-          <g class="p-ln"><circle cx="250" cy="140" r="14"/><path d="M250 154v60"/><circle cx="330" cy="140" r="14"/><path d="M330 154v60"/></g><g class="p-ln p-fill"><path d="M60 300H540"/><rect x="190" y="170" width="220" height="16" rx="3"/><path d="M212 186v28M388 186v28"/><rect x="170" y="214" width="260" height="18" rx="3"/><path d="M190 232v68M410 232v68"/></g><g class="p-ln"><path d="M241 232v68M259 232v68"/><path d="M321 232v68M339 232v68"/></g>
+          <g class="p-ln"><circle cx="250" cy="140" r="14"/><path d="M250 154v60"/><circle cx="330" cy="140" r="14"/><path d="M330 154v60"/></g>
+          <g class="p-ln p-fill"><path d="M60 300H540"/><rect x="190" y="170" width="220" height="16" rx="3"/><path d="M212 186v28M388 186v28"/><rect x="170" y="214" width="260" height="18" rx="3"/><path d="M190 232v68M410 232v68"/></g>
+          <g class="p-ln"><path d="M241 232v68M259 232v68M321 232v68M339 232v68"/></g>
           <circle class="p-dot" cx="388" cy="178" r="5"/>
         </svg>
-        <figcaption>From the weather to first names in three steps. The informal “du” is offered after 20 minutes.</figcaption>
+        <figcaption>The informal “du” is offered after 20 minutes, not before.</figcaption>
       </figure>
     </div>
   </section>
 
-  <section id="numbers" aria-labelledby="numbers-h">
-    <h2 id="numbers-h">The numbers.</h2>
-    <p class="sub">Germans talk about the weather a lot. Talking to strangers is another matter.</p>
-    <div class="num"><p>Talk about the weather several times a week or more</p><div class="bar"><div class="track"><div class="fill" style="width:62%"></div></div><span class="val">62%</span></div></div>
-    <div class="num"><p>See the weather as an acceptable small-talk topic</p><div class="bar"><div class="track"><div class="fill" style="width:70%"></div></div><span class="val">70%</span></div></div>
-    <div class="num"><p>18 to 24-year-olds who find small talk uncomfortable</p><div class="bar"><div class="track"><div class="fill" style="width:48.5%"></div></div><span class="val">48.5%</span></div></div>
-    <div class="num"><p>Benches at tram stops that say anything at all</p><div class="bar"><div class="track"><div class="fill" style="width:0"></div></div><span class="val">0%</span></div></div>
-    <p class="small sources">Sources: <a href="https://yougov.com/de-de/aktuelle-ergebnisse/20260414-e9f72-2" target="_blank" rel="noopener">YouGov, 2026</a> · <a href="https://www.t-online.de/leben/aktuelles/id_100690286/small-talk-mit-diesen-themen-machen-sie-sich-unbeliebt-umfrage.html" target="_blank" rel="noopener">Babbel / YouGov, 2025</a> · the last one, our own count.</p>
-  </section>
-
-  <section aria-labelledby="list-h">
-    <h2 id="list-h">What it does.</h2>
-    <p class="sub">And what it doesn’t.</p>
-    <ul class="plain">
-      <li><strong>Opens with the weather.</strong> Today’s, not yesterday’s.</li>
-      <li><strong>Takes complaints.</strong> Forwards them. To whom, it won’t say.</li>
-      <li><strong>Asks for names.</strong> Only after you’ve complained together.</li>
-      <li><strong>Offers the “du”</strong> after 20 minutes, not before.</li>
-      <li><strong>Stores nothing.</strong> What’s said at the stop stays at the stop.</li>
-      <li><strong>Goes quiet</strong> when the tram arrives.</li>
-      <li><strong>Doesn’t exist.</strong> Yet.</li>
-    </ul>
-  </section>
-
-  <section id="faq" aria-labelledby="faq-h" class="faq">
-    <h2 id="faq-h">Questions.</h2>
-    <h3>What is Wetterbank?</h3>
-    <p>A design fiction: a bench that doesn’t exist, made to ask one question. When a machine says the first sentence between strangers, does it help them get past the weather, or does it do the awkward part for them?</p>
-    <h3>Is it real?</h3>
-    <p>No. There is no bench and no company. There is this page and a question.</p>
-    <h3>Why the weather?</h3>
-    <p>It’s the one topic everybody accepts. The first sentence is easy. The step after it is hard, and that’s the step Wetterbank is for.</p>
-    <h3>Does it record anything?</h3>
-    <p>No. The demo on this page runs in your browser and sends nothing anywhere.</p>
-    <h3>What happens next?</h3>
-    <p>Talk to people about how they start conversations. Stage it with actors at a made-up tram stop. Then try a real bench, and see whether anyone gets past the weather.</p>
-    <h3>Who made it?</h3>
-    <p>Varun Sangani, a designer in Düsseldorf. <a href="mailto:varuns@ik.me?subject=Wetterbank">Write to me</a> about benches, weather, or anything else.</p>
+  <section id="question" aria-labelledby="q-h">
+    <h2 id="q-h">The question.</h2>
+    <p class="rq">How do interactive and autonomous systems shape social encounters in public space?</p>
+    <ol class="plain subq">
+      <li><span><strong>Want.</strong> Do people even want to talk, to each other, or to a bench?</span></li>
+      <li><span><strong>Help.</strong> Can a bench help an encounter, or does it get in the way?</span></li>
+      <li><span><strong>Future.</strong> How will we react when objects like this become normal, and should they?</span></li>
+    </ol>
+    <figure class="two">
+      <svg viewBox="0 0 600 260" role="img" aria-label="Two possible outcomes. A: a person talks to the bench. B: two people talk to each other, because of the bench.">
+        <rect class="p-bg" width="600" height="260"/>
+        <path d="M300 30V230" style="stroke:var(--line)" stroke-width="2"/>
+        <text class="p-lab" x="40" y="52">A · to the bench</text>
+        <g class="p-ln"><circle cx="90" cy="120" r="14"/><path d="M90 134v54M78 210l12-22 12 22"/></g>
+        <path class="p-ln" d="M124 150h62M178 142l8 8-8 8M132 142l-8 8 8 8"/>
+        <g class="p-ln p-fill"><rect x="200" y="150" width="70" height="10" rx="2"/><path d="M208 160v28M262 160v28"/></g>
+        <circle class="p-dot" cx="256" cy="155" r="4"/>
+        <text class="p-lab" x="340" y="52">B · to each other</text>
+        <g class="p-ln"><circle cx="380" cy="110" r="14"/><path d="M380 124v54M368 200l12-22 12 22"/><circle cx="540" cy="110" r="14"/><path d="M540 124v54M528 200l12-22 12 22"/></g>
+        <path class="p-ln" d="M412 130h96M500 122l8 8-8 8M420 122l-8 8 8 8"/>
+        <g class="p-ln p-fill"><rect x="425" y="186" width="70" height="10" rx="2"/><path d="M433 196v24M487 196v24"/></g>
+        <path class="p-dash" d="M460 180V146"/>
+        <circle class="p-dot" cx="481" cy="191" r="4"/>
+      </svg>
+      <figcaption>Two different results. Talking to the bench is not the same as talking to each other because of the bench, so both are measured.</figcaption>
+    </figure>
   </section>
 
   <section class="closing">
-    <h2>Wetterbank doesn’t exist yet.</h2>
-    <p class="lede">But the tram is late, and you’re already sitting here.</p>
-    <div class="actions"><a class="btn" href="#demo">Try it</a></div>
-    <p class="small version">Design fiction · Düsseldorf · 2026</p>
+    <h2>Wetterbank doesn’t exist yet. Should it?</h2>
+    <p class="lede">The documentation follows the question: what came before, how it will be tested, and what happens next.</p>
+    <div class="actions"><a class="btn" href="documentation.html">Read the documentation</a></div>
+    <p class="stats">1 bench (fictional) · 3 modes · 21 replies · 0 trams on time</p>
   </section>
 </main>
 
 <footer>
-  <span>Wetterbank by Varun Sangani</span>
-  <span class="links"><a href="mailto:varuns@ik.me?subject=Wetterbank">Email</a><a href="https://www.linkedin.com/in/varunsangani" target="_blank" rel="noopener">LinkedIn</a><a href="https://github.com/va3runs/wetterbank" target="_blank" rel="noopener">GitHub</a><a href="privacy.html">Privacy &amp; imprint</a></span>
+  <span>Wetterbank by Varun Sangani, Düsseldorf</span>
+  <span class="links"><a href="https://va3runs.github.io/rnd/">Portfolio</a><a href="mailto:varuns@ik.me?subject=Wetterbank">Email</a><a href="https://www.linkedin.com/in/varunsangani" target="_blank" rel="noopener">LinkedIn</a><a href="https://github.com/va3runs/wetterbank" target="_blank" rel="noopener">GitHub</a><a href="privacy.html">Privacy &amp; imprint</a></span>
 </footer>
 
 </div>
@@ -299,16 +251,19 @@ footer a{color:var(--mute)}
     "Your complaint is important to us. So is your name. What is your name?",
     "Complaint received. Tip: people who freeze together can also introduce themselves."
   ];
-  var form = document.getElementById("demo-form"), input = document.getElementById("complaint"), out = document.getElementById("reply");
-  var i = Math.floor(Math.random() * replies.length);
+  var form = document.getElementById("desk"), out = document.getElementById("receipt");
+  var what = document.getElementById("what"), i = Math.floor(Math.random() * replies.length);
+  function row(dl, k, v){ var dt = document.createElement("dt"), dd = document.createElement("dd"); dt.textContent = k; dd.textContent = v; dl.appendChild(dt); dl.appendChild(dd); }
   form.addEventListener("submit", function (e) {
     e.preventDefault();
-    if (!input.value.trim()) { input.focus(); return; }
-    var c = document.createElement("span"); c.className = "case";
-    c.textContent = "Case WB-" + (1000 + Math.floor(Math.random() * 9000));
-    out.textContent = ""; out.appendChild(c); out.appendChild(document.createTextNode(replies[i % replies.length]));
-    out.className = "reply has"; i++;
-    input.value = "";
+    if (!what.value.trim()) { what.focus(); return; }
+    var dl = document.createElement("dl");
+    row(dl, "Case", "WB-" + (1000 + Math.floor(Math.random() * 9000)));
+    row(dl, "Category", document.getElementById("cat").value);
+    row(dl, "Status", "Forwarded to the weather");
+    var p = document.createElement("p"); p.textContent = replies[i % replies.length]; i++;
+    out.textContent = ""; out.appendChild(dl); out.appendChild(p); out.hidden = false;
+    what.value = "";
   });
 })();
 </script>

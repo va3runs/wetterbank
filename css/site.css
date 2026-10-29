@@ -1,0 +1,80 @@
+/* Wetterbank · one quiet stylesheet for every page. */
+:root{
+  --bg:#ffffff; --fg:#111111; --mute:#6e6e6e; --line:#e8e8e8; --panel:#f5f5f4; --soft:#fafafa;
+  --btn:#111111; --btn-fg:#ffffff; --accent:#e2694f;
+  --font:-apple-system,BlinkMacSystemFont,"SF Pro Text","Inter","Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  --mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+  color-scheme:light dark;
+}
+@media (prefers-color-scheme:dark){
+  :root{--bg:#111111;--fg:#ededed;--mute:#9a9a9a;--line:#262626;--panel:#1a1a1a;--soft:#161616;--btn:#ededed;--btn-fg:#111111}
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-padding-top:24px}
+body{margin:0;background:var(--bg);color:var(--fg);font:400 17px/1.55 var(--font);-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:underline;text-decoration-color:var(--line);text-underline-offset:3px;text-decoration-thickness:1px}
+a:hover{text-decoration-color:currentColor}
+:focus-visible{outline:2px solid var(--fg);outline-offset:3px;border-radius:4px}
+strong{font-weight:600}
+p{margin:0 0 1em}
+img,svg{display:block}
+.page{max-width:640px;margin:0 auto;padding:0 24px}
+
+/* Header */
+.top{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px 24px;padding:28px 0 0;font-size:15px}
+.by{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--fg)}
+.by .logo{width:28px;height:28px}
+.by span{color:var(--mute)}
+.top nav{display:flex;gap:20px}
+.top nav a{text-decoration:none;color:var(--mute)}
+.top nav a:hover,.top nav a[aria-current="page"]{color:var(--fg)}
+.logo rect{fill:var(--fg)}
+.logo .mk{fill:var(--bg)}
+.logo .ln{fill:none;stroke:var(--bg);stroke-width:4;stroke-linecap:round}
+
+/* Type */
+h1{font-size:30px;line-height:1.3;font-weight:400;letter-spacing:-.4px;margin:0 0 20px}
+h1 strong{font-weight:600}
+h2{font-size:17px;font-weight:600;margin:0 0 8px}
+h3{font-size:17px;font-weight:600;margin:0 0 4px}
+.lede{font-size:19px;line-height:1.5;color:var(--mute);margin:0}
+.sub{color:var(--mute);margin:0 0 24px}
+.small{font-size:14px;color:var(--mute)}
+.mute{color:var(--mute)}
+section{padding:72px 0 0}
+@media (max-width:520px){h1{font-size:26px}.top nav{gap:16px}}
+
+/* Buttons */
+.actions{display:flex;flex-wrap:wrap;align-items:center;gap:12px 20px;margin:32px 0 0}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:10px 18px;border:0;border-radius:10px;background:var(--btn);color:var(--btn-fg);font:500 16px/1 var(--font);text-decoration:none;cursor:pointer}
+.btn:hover{opacity:.88}
+
+/* Lists with hairlines */
+ul.plain,ol.plain{list-style:none;margin:0;padding:0}
+ul.plain>li,ol.plain>li{padding:12px 0;border-top:1px solid var(--line)}
+ul.plain>li:last-child,ol.plain>li:last-child{border-bottom:1px solid var(--line)}
+
+/* Figures */
+figure{margin:0}
+figure svg{width:100%;height:auto;border-radius:14px}
+figcaption{font-size:14px;color:var(--mute);margin:10px 0 0}
+.p-bg{fill:var(--panel)}
+.p-bub{fill:var(--bg);stroke:var(--line);stroke-width:2}
+.p-txt{fill:var(--fg);font:500 25px var(--font)}
+.p-ln{fill:none;stroke:var(--fg);stroke-width:3.5;stroke-linecap:round;stroke-linejoin:round}
+.p-fill rect{fill:var(--panel)}
+.p-soft{fill:none;stroke:var(--mute);stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+.p-dash{fill:none;stroke:var(--mute);stroke-width:2.5;stroke-dasharray:2 8;stroke-linecap:round}
+.p-dot{fill:var(--accent)}
+.p-lab{fill:var(--mute);font:500 20px var(--font)}
+
+footer{margin:96px 0 0;padding:28px 0 48px;border-top:1px solid var(--line);font-size:14px;color:var(--mute);display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px 24px}
+footer .links{display:flex;flex-wrap:wrap;gap:8px 20px}
+footer a{color:var(--mute)}
+
+@media (prefers-reduced-motion:no-preference){
+  .typing circle{animation:typing 1.4s ease-in-out infinite}
+  .typing circle:nth-child(2){animation-delay:.18s}
+  .typing circle:nth-child(3){animation-delay:.36s}
+}
+@keyframes typing{0%,60%,100%{transform:translateY(0);opacity:.45}30%{transform:translateY(-3px);opacity:1}}

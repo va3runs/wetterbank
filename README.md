@@ -1,8 +1,8 @@
 # Wetterbank
 
-**Wetterbank is a bench that says the first sentence.** It opens with the weather, takes complaints, and ends with your name. For tram stops where nobody talks.
+**Wetterbank is a bench that starts conversations between strangers, by helping them file complaints about the weather.**
 
-A design fiction by Varun Sangani, Düsseldorf. The bench doesn't exist.
+A design fiction by Varun Sangani, Düsseldorf, asking how autonomous systems will shape our encounters in public space. The bench doesn't exist. Yet.
 
 **Live:** https://va3runs.github.io/wetterbank/
 
@@ -10,7 +10,9 @@ A design fiction by Varun Sangani, Düsseldorf. The bench doesn't exist.
 
 | Path | What it is |
 |---|---|
-| `index.html` | The whole site: one page, styles and the complaint demo inline |
+| `index.html` | Home: the fiction, the complaint form, three modes, the question |
+| `documentation.html` | The research: context, the question, planned field studies, precedents, log, references |
+| `css/site.css` | Shared styles |
 | `privacy.html` | Privacy and imprint |
 | `404.html` | Not-found page |
 | `assets/` | Icon and sharing image |

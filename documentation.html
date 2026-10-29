@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Documentation — Wetterbank</title>
+<meta name="description" content="Wetterbank as research: the question, the context, the precedents, the planned field studies and a running log.">
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#111111" media="(prefers-color-scheme: dark)">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Wetterbank">
+<meta property="og:title" content="Wetterbank — Documentation">
+<meta property="og:description" content="The question, the context, the precedents, the planned field studies and a running log.">
+<meta property="og:image" content="https://va3runs.github.io/wetterbank/assets/og.png">
+<link rel="canonical" href="https://va3runs.github.io/wetterbank/documentation.html">
+<link rel="icon" type="image/svg+xml" href="assets/icon.svg">
+<link rel="apple-touch-icon" href="assets/icon-180.png">
+<link rel="stylesheet" href="css/site.css">
+<style>
+.intro{padding:80px 0 0}
+.updated{margin:16px 0 0}
+.toc{display:flex;flex-wrap:wrap;gap:6px 18px;margin:32px 0 0;padding:16px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);font-size:15px}
+.toc a{text-decoration:none;color:var(--mute)}
+.toc a:hover{color:var(--fg)}
+.toc span{color:var(--mute);font-variant-numeric:tabular-nums;margin-right:4px}
+section h2 .n{color:var(--mute);font-weight:400;margin-right:8px;font-variant-numeric:tabular-nums}
+section p{max-width:62ch}
+.ex li{display:grid;grid-template-columns:96px 1fr;gap:4px 16px}
+.ex .y{color:var(--mute);font-variant-numeric:tabular-nums}
+.ex p{margin:0}
+.ex .src{font-size:14px;color:var(--mute);margin-top:4px}
+@media (max-width:520px){.ex li{grid-template-columns:1fr;gap:2px}}
+.big{font-size:22px;line-height:1.4;letter-spacing:-.2px;margin:0 0 24px}
+.subq{counter-reset:q}
+.subq li{display:grid;grid-template-columns:28px 1fr;gap:8px}
+.subq li::before{counter-increment:q;content:counter(q);color:var(--mute);font-variant-numeric:tabular-nums}
+.subq p{margin:4px 0 0;color:var(--mute);font-size:16px}
+.callout{margin:24px 0 0;padding:14px 16px;border-left:2px solid var(--fg);background:var(--soft);font-size:16px}
+.callout p{margin:0}
+.study{padding:20px 0;border-top:1px solid var(--line)}
+.study:last-child{border-bottom:1px solid var(--line)}
+.study .head{display:flex;flex-wrap:wrap;justify-content:space-between;gap:4px 16px;align-items:baseline;margin:0 0 6px}
+.study .id{font-family:var(--mono);font-size:13px;color:var(--mute)}
+.study h3{margin:0}
+.study p{margin:0 0 8px;font-size:16px}
+.study dl{display:grid;grid-template-columns:120px 1fr;gap:4px 12px;margin:10px 0 0;font-size:14px}
+.study dt{color:var(--mute)}
+.study dd{margin:0}
+.status{font-size:13px;color:var(--mute);border:1px solid var(--line);border-radius:6px;padding:2px 8px}
+@media (max-width:520px){.study dl{grid-template-columns:1fr}.study dt{margin-top:6px}}
+.group{margin:36px 0 0}
+.group h3{font-size:13px;letter-spacing:.6px;text-transform:uppercase;color:var(--mute);font-weight:500;margin:0 0 4px}
+.group>p{font-size:15px;color:var(--mute);margin:0 0 8px}
+.prec li p{margin:0;font-size:16px}
+.prec .who{color:var(--mute);font-size:14px}
+.prec .takes{margin-top:6px;font-size:15px}
+.prec .takes strong{font-weight:500}
+.refs li{font-size:15px;line-height:1.5}
+.log li{display:grid;grid-template-columns:110px 1fr;gap:16px}
+.log time{color:var(--mute);font-variant-numeric:tabular-nums}
+.log p{margin:0}
+@media (max-width:520px){.log li{grid-template-columns:1fr;gap:2px}}
+</style>
+</head>
+<body>
+<div class="page">
+
+<header class="top">
+  <a class="by" href="./"><svg class="logo" viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="15"/><g class="mk"><circle cx="21" cy="27" r="3.6"/><circle cx="32" cy="27" r="3.6"/><circle cx="43" cy="27" r="3.6"/></g><path class="ln" d="M13 38H51M18 38v11M46 38v11"/></svg>Wetterbank <span>by Varun Sangani</span></a>
+  <nav aria-label="Pages"><a href="./">Home</a><a href="documentation.html" aria-current="page">Documentation</a></nav>
+</header>
+
+<main>
+  <div class="intro">
+    <h1>Documentation.</h1>
+    <p class="lede">Wetterbank as research: what it asks, what came before it, how it will be tested, and what has happened so far.</p>
+    <p class="small updated">Last updated 29 October 2026</p>
+    <nav class="toc" aria-label="Contents">
+      <a href="#context"><span>01</span>Context</a>
+      <a href="#fiction"><span>02</span>The fiction</a>
+      <a href="#question"><span>03</span>The question</a>
+      <a href="#studies"><span>04</span>Field studies</a>
+      <a href="#precedents"><span>05</span>Precedents</a>
+      <a href="#log"><span>06</span>Log</a>
+      <a href="#references"><span>07</span>References</a>
+    </nav>
+  </div>
+
+  <section id="context" aria-labelledby="context-h">
+    <h2 id="context-h"><span class="n">01</span>Context</h2>
+    <p>A few decades ago, a car without a driver sounded absurd. Today, autonomous and talking systems are leaving our homes and moving onto our streets. Most of them are designed to inform, deliver or watch. Few are designed for what happens between the people around them.</p>
+    <p class="sub" style="margin-top:28px">Things we would never have imagined, already here:</p>
+    <ul class="plain ex">
+      <li><span class="y">2011, 2014</span><div><p><strong>Talking to machines at home.</strong> Siri and Alexa made talking to an object normal indoors. Wetterbank asks what happens when that moves outdoors, among strangers.</p></div></li>
+      <li><span class="y">2014</span><div><p><strong>Benches already got smart.</strong> Boston put solar-powered Soofa benches in parks to charge phones. Benches learned to charge your phone, but not to say hello.</p><p class="src"><a href="https://www.boston.gov/departments/new-urban-mechanics/soofa" target="_blank" rel="noopener">City of Boston</a></p></div></li>
+      <li><span class="y">2019</span><div><p><strong>A talking object at a station.</strong> Deutsche Bahn tested SEMMI, a service robot at Berlin Hauptbahnhof that answered questions, made small talk and told jokes, in several languages.</p><p class="src"><a href="https://www.leinetal24.de/wirtschaft/deutsche-bahn-setzt-roboter-semmi-am-kunden-ein-erzaehlt-sogar-witze-zr-12389016.html" target="_blank" rel="noopener">leinetal24, June 2019</a></p></div></li>
+      <li><span class="y">2020–2025</span><div><p><strong>A self-driving bus next to Düsseldorf.</strong> Monheim am Rhein ran five autonomous minibuses on a regular route (A01). They were suspended in September 2025 when the manufacturer stopped supporting them. Such technology can arrive, and disappear again.</p><p class="src"><a href="https://www.urban-transport-magazine.com/en/the-consequences-of-easymiles-withdrawal-suspension-of-autonomous-minibus-operations-in-monheim/" target="_blank" rel="noopener">Urban Transport Magazine</a></p></div></li>
+      <li><span class="y">2025</span><div><p><strong>A talking bus stop.</strong> Hamburg’s transport association presented a prototype AI stop that answers travellers’ questions in many languages, with a camera that can alert the police. The industry version of a talking stop is about information and safety, not about the people waiting.</p><p class="src"><a href="https://www.notebookcheck.com/Kuenstliche-Intelligenz-Wie-eine-sprechende-Haltestelle-Reisezentren-ersetzen-soll.1037469.0.html" target="_blank" rel="noopener">Notebookcheck</a></p></div></li>
+      <li><span class="y">2025</span><div><p><strong>Robots on the pavement.</strong> Starship robots deliver REWE groceries in Hamburg-Barmbek.</p><p class="src"><a href="https://retailtechinnovationhub.com/category/robots/starship-technologies-delivery-robots-roll-into-germany-as-rewe-goes-live-in-streets-of-hamburg" target="_blank" rel="noopener">Retail Technology Innovation Hub</a></p></div></li>
+      <li><span class="y">2026</span><div><p><strong>Cars without drivers.</strong> Waymo runs paid, fully driverless rides in 14 US cities.</p><p class="src"><a href="https://driveteslacanada.ca/news/waymo-driverless-rides-denver-san-diego-tampa/" target="_blank" rel="noopener">Drive Tesla Canada, September 2026</a></p></div></li>
+    </ul>
+    <p class="sub" style="margin-top:36px">And the weather, the one thing everyone at a German tram stop has in common:</p>
+    <ul class="plain">
+      <li><strong>62%</strong> of Germans talk about the weather several times a week or more (<a href="https://yougov.com/de-de/aktuelle-ergebnisse/20260414-e9f72-2" target="_blank" rel="noopener">YouGov, 2026</a>).</li>
+      <li><strong>70%</strong> see the weather as an acceptable small-talk topic, more than any other (<a href="https://www.t-online.de/leben/aktuelles/id_100690286/small-talk-mit-diesen-themen-machen-sie-sich-unbeliebt-umfrage.html" target="_blank" rel="noopener">Babbel / YouGov, 2025</a>).</li>
+      <li><strong>48.5%</strong> of 18 to 24-year-olds find small talk uncomfortable (same survey).</li>
+      <li><strong>18 to 29-year-olds</strong> carry the highest loneliness burden in Germany (<a href="https://www.bmbfsfj.bund.de/bmbfsfj/aktuelles/alle-meldungen/erstes-einsamkeitsbarometer-fuer-deutschland-veroeffentlicht-240202" target="_blank" rel="noopener">Einsamkeitsbarometer 2024</a>).</li>
+    </ul>
+    <p style="margin-top:24px">The opener is easy. The step after it is hard. Wetterbank is built for that step.</p>
+  </section>
+
+  <section id="fiction" aria-labelledby="fiction-h">
+    <h2 id="fiction-h"><span class="n">02</span>The fiction</h2>
+    <p>Wetterbank is a bench at a tram stop that starts conversations between strangers, by helping them file complaints about the weather. It has three modes, each one step further from the safe topic: <strong>Wetter</strong> opens with a remark about the weather, <strong>Meckern</strong> takes complaints and forwards them, <strong>Namen</strong> drops the weather and asks for a name.</p>
+    <p>It is a design fiction: an object built to provoke a question rather than to be sold. As Near Future Laboratory put it about their own work, a design fiction “makes implications without making predictions”. Wetterbank does not claim benches will talk. It asks what it would mean if they did.</p>
+    <p>The bureaucratic humour is deliberate. A machine that patiently files your complaint about drizzle plays to what machines are good at, endless patience for small, boring conversations, instead of pretending to be a person. The joke is the way in; the question is the point.</p>
+    <p>Wetterbank began as a design fiction on my <a href="https://va3runs.github.io/rnd/#wetterbank">portfolio</a>, with a fictional company, Wetterbank GmbH, “founded 2031 after a 40-minute tram delay in which nobody said a word”. This site is where it continues as research.</p>
+  </section>
+
+  <section id="question" aria-labelledby="question-h">
+    <h2 id="question-h"><span class="n">03</span>The question</h2>
+    <p class="big">How do interactive and autonomous systems shape social encounters in public space?</p>
+    <ol class="plain subq">
+      <li><div><strong>Want.</strong> Do people even want to talk, to each other, or to a bench?<p>Not everyone at a tram stop wants company. Silence in public is often a choice, not a problem.</p></div></li>
+      <li><div><strong>Help.</strong> Can a bench help an encounter, or does it get in the way?<p>A bench that speaks first might lower the barrier, or do the awkward part for us, so that we never learn to.</p></div></li>
+      <li><div><strong>Future.</strong> How will we react when objects like this become normal, and should they?<p>Driverless cars and talking stops show how quickly the unimaginable becomes infrastructure. The Monheim buses show it can also disappear again.</p></div></li>
+    </ol>
+    <div class="callout"><p><strong>Two results, not one.</strong> Talking <em style="font-style:normal;text-decoration:underline;text-decoration-color:var(--line)">to the bench</em> is not the same as talking <em style="font-style:normal;text-decoration:underline;text-decoration-color:var(--line)">to each other because of the bench</em>. Every study below records both, and compares them with an ordinary bench.</p></div>
+  </section>
+
+  <section id="studies" aria-labelledby="studies-h">
+    <h2 id="studies-h"><span class="n">04</span>Field studies</h2>
+    <p class="sub">From cheap to real. Each one is logged here when it happens, with what was real and what was staged.</p>
+
+    <article class="study">
+      <div class="head"><span class="id">Field study #001</span><span class="status">Planned</span></div>
+      <h3>Talking to people at tram stops</h3>
+      <p>Short conversations at Düsseldorf tram stops: how do you start talking to a stranger? Do you complain about the weather? Would you want a bench to start?</p>
+      <dl><dt>Real</dt><dd>Real people, real stops. No bench.</dd><dt>Answers</dt><dd>Question 1, and whether “Meckern” is a habit or a stereotype.</dd></dl>
+    </article>
+
+    <article class="study">
+      <div class="head"><span class="id">Field study #002</span><span class="status">Planned</span></div>
+      <h3>Interviewing the bench</h3>
+      <p>A speculative conversation with Wetterbank itself, written and published as a transcript, after Reddy et al.’s “Making Everyday Things Talk” (2021).</p>
+      <dl><dt>Staged</dt><dd>Entirely. The bench is played by me.</dd><dt>Answers</dt><dd>What the bench would say, and what it should never say.</dd></dl>
+    </article>
+
+    <article class="study">
+      <div class="head"><span class="id">Field study #003</span><span class="status">Planned</span></div>
+      <h3>Becoming the bench</h3>
+      <p>A performer plays the bench with deliberately limited senses and a fixed script, after the techno-mimesis method of Dörrenbächer, Löffler and Hassenzahl (2020): not a person pretending to be a bench, but a person finding out what being a bench is like.</p>
+      <dl><dt>Staged</dt><dd>The bench. The questions it raises are real.</dd><dt>Answers</dt><dd>What a bench can notice, and when it should stay quiet.</dd></dl>
+    </article>
+
+    <article class="study">
+      <div class="head"><span class="id">Field study #004</span><span class="status">Planned</span></div>
+      <h3>The staged tram stop</h3>
+      <p>Actors play the bench and the strangers at a made-up tram stop. The audience watches, then discusses what worked, what fell flat, and what a bench should never say.</p>
+      <dl><dt>Staged</dt><dd>The stop, the bench, the strangers. The audience is real.</dd><dt>Answers</dt><dd>Questions 2 and 3, before any hardware exists.</dd></dl>
+    </article>
+
+    <article class="study">
+      <div class="head"><span class="id">Field study #005</span><span class="status">Planned</span></div>
+      <h3>The ordinary bench</h3>
+      <p>A visit to a “Plauderbank”: an ordinary bench with a sign saying you are happy to chat (for example in Wesel, NRW). If a sign already works, what would a talking bench add, or take away?</p>
+      <dl><dt>Real</dt><dd>Real bench, real people. No technology.</dd><dt>Answers</dt><dd>The baseline every other study is compared with.</dd></dl>
+    </article>
+
+    <article class="study">
+      <div class="head"><span class="id">Field study #006</span><span class="status">Planned</span></div>
+      <h3>A real bench, a hidden voice</h3>
+      <p>A bench at a real stop with a small speaker. The “system” is a person nearby choosing lines from the script, a Wizard-of-Oz study after Cornell Tech’s trash barrel robots. No recordings of faces or voices; everyone is told afterwards what was going on.</p>
+      <dl><dt>Real</dt><dd>The stop and the people.</dd><dt>Staged</dt><dd>The bench’s intelligence.</dd><dt>Answers</dt><dd>Does anyone get past the weather, and was it their idea or the bench’s?</dd></dl>
+    </article>
+  </section>
+
+  <section id="precedents" aria-labelledby="precedents-h">
+    <h2 id="precedents-h"><span class="n">05</span>Precedents</h2>
+    <p class="sub">What came before, grouped by what Wetterbank takes from it.</p>
+
+    <div class="group">
+      <h3>Lineage</h3>
+      <p>Research Wetterbank directly builds on.</p>
+      <ul class="plain prec">
+        <li><p><a href="https://dl.acm.org/doi/full/10.1145/3772318.3791189" target="_blank" rel="noopener">Mediating Urban Social Encounters: Co-Design of Robotic Street Furniture with Adolescents</a></p><p class="who">Dörrenbächer et al., CHI 2026</p><p class="takes"><strong>Takes:</strong> street furniture as a mediator between people, explored through theatre; Wetterbank adds adults, a tram stop, and the weather as the opener.</p></li>
+        <li><p><a href="https://www.volkswagenstiftung.de/en/news/news/when-park-benches-bring-people-together-rethinking-encounters-urban-spaces" target="_blank" rel="noopener">When park benches bring people together</a></p><p class="who">ENACT, Uni Siegen with FFT Düsseldorf, 2026</p><p class="takes"><strong>Takes:</strong> the question of which social roles technology could take on in public space, and speculative role-play as a method.</p></li>
+        <li><p><a href="https://www.semanticscholar.org/paper/91236df6260019e8d354354f83aca6333f68d97c" target="_blank" rel="noopener">Becoming a Robot: Overcoming Anthropomorphism with Techno-Mimesis</a></p><p class="who">Dörrenbächer, Löffler &amp; Hassenzahl, CHI 2020</p><p class="takes"><strong>Takes:</strong> the method for field study #003.</p></li>
+        <li><p><a href="https://sites.google.com/view/otherware/home" target="_blank" rel="noopener">Otherware</a></p><p class="who">Hassenzahl et al., 2020–2021</p><p class="takes"><strong>Takes:</strong> design machines as counterparts with their own strengths, not as fake humans.</p></li>
+      </ul>
+    </div>
+
+    <div class="group">
+      <h3>Talking public objects</h3>
+      <p>Proof that people talk to street furniture, and what can go wrong.</p>
+      <ul class="plain prec">
+        <li><p><a href="https://panstudio.co.uk/project/hello-lamp-post/" target="_blank" rel="noopener">Hello Lamp Post</a></p><p class="who">PAN Studio with Tom Armitage, Bristol, 2013</p><p class="takes"><strong>Takes:</strong> people text lamp posts and post boxes, and the objects pass on earlier answers. Object talk that turns into an exchange between people.</p></li>
+        <li><p><a href="https://london.sciencegallery.com/mouthy-exhibits/talking-statues" target="_blank" rel="noopener">Talking Statues</a></p><p class="who">Sing London, London and Manchester, 2014</p><p class="takes"><strong>Takes:</strong> scripted, funny character voices written and performed by writers and actors. Also what Wetterbank is not: these statues talk at you, not between strangers.</p></li>
+        <li><p><a href="https://www.cnn.com/travel/article/sexy-trash-cans-malmo-sweden-rubbish-intl-scli/index.html" target="_blank" rel="noopener">Malmö’s talking bins</a></p><p class="who">City of Malmö, 2017</p><p class="takes"><strong>Takes:</strong> a warning. When the joke is the whole interaction, it wears off.</p></li>
+        <li><p><a href="https://citylab-berlin.org/projekte/talking-treebot/" target="_blank" rel="noopener">Talking Treebot</a></p><p class="who">CityLAB Berlin</p><p class="takes"><strong>Takes:</strong> a tree whose conversational mood follows real weather data. A close cousin of a weather-aware bench.</p></li>
+      </ul>
+    </div>
+
+    <div class="group">
+      <h3>Low-tech baseline</h3>
+      <p>Getting strangers to talk without any technology.</p>
+      <ul class="plain prec">
+        <li><p><a href="https://www.ucl.ac.uk/astrea/happy-chat-benches/project-bench" target="_blank" rel="noopener">Happy to Chat benches</a></p><p class="who">Allison Owen-Jones, Cardiff, 2019</p><p class="takes"><strong>Takes:</strong> a sign on a bench is enough to invite conversation. The comparison for question 2.</p></li>
+        <li><p><a href="https://www.wesel.de/rathaus-online/aktuelles/plauderbaenke-wesel" target="_blank" rel="noopener">Plauderbänke</a></p><p class="who">Wesel (NRW), Heidelberg and other German towns, 2023–</p><p class="takes"><strong>Takes:</strong> the same idea, close to Düsseldorf. The site for field study #005.</p></li>
+        <li><p><a href="https://www.koeniggalerie.com/blogs/public-projects/jeppe-hein-modified-social-benches-forum" target="_blank" rel="noopener">Modified Social Benches</a></p><p class="who">Jeppe Hein, since 2005</p><p class="takes"><strong>Takes:</strong> the shape of a bench already changes how people sit together, before it says a word.</p></li>
+      </ul>
+    </div>
+
+    <div class="group">
+      <h3>Method</h3>
+      <p>How to test a talking object with real people.</p>
+      <ul class="plain prec">
+        <li><p><a href="https://news.cornell.edu/stories/2023/04/almost-everyone-likes-helpful-trash-robot" target="_blank" rel="noopener">Trash barrel robots</a></p><p class="who">Fanjun Bu, Wendy Ju and colleagues, Cornell Tech, New York, 2022–2023</p><p class="takes"><strong>Takes:</strong> Wizard-of-Oz robots in public space, with interviews afterwards. The template for field study #006.</p></li>
+        <li><p><a href="https://research.tue.nl/en/publications/making-everyday-things-talk-speculative-conversations-into-the-fu/" target="_blank" rel="noopener">Making Everyday Things Talk</a></p><p class="who">Reddy et al., CHI 2021</p><p class="takes"><strong>Takes:</strong> speculative conversations with objects as a research method. The template for field study #002.</p></li>
+        <li><p><a href="https://www.rimini-protokoll.de/website/media/remotex/REMOTE%20X.pdf" target="_blank" rel="noopener">Remote X</a></p><p class="who">Rimini Protokoll, Berlin, 2013</p><p class="takes"><strong>Takes:</strong> an artificial voice that guides a group of strangers through a city. Theatre as a way to test what a machine voice does to people.</p></li>
+      </ul>
+    </div>
+
+    <div class="group">
+      <h3>Tone</h3>
+      <p>Deadpan fiction that is taken seriously.</p>
+      <ul class="plain prec">
+        <li><p><a href="https://bureauoflinguisticalreality.com/" target="_blank" rel="noopener">The Bureau of Linguistical Reality</a></p><p class="who">Alicia Escott &amp; Heidi Quante, since 2014</p><p class="takes"><strong>Takes:</strong> a fictional public office run as participatory research, with numbered field studies.</p></li>
+        <li><p><a href="https://tbdcatalog.com/" target="_blank" rel="noopener">TBD Catalog</a></p><p class="who">Near Future Laboratory, 2014</p><p class="takes"><strong>Takes:</strong> the ordinary, everyday near future, told completely straight.</p></li>
+        <li><p><a href="https://superflux.in/index.php/work/uninvited-guests/" target="_blank" rel="noopener">Uninvited Guests</a></p><p class="who">Superflux, 2015</p><p class="takes"><strong>Takes:</strong> funny, humane criticism of autonomous objects, and keeping the object deliberately simple.</p></li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="log" aria-labelledby="log-h">
+    <h2 id="log-h"><span class="n">06</span>Log</h2>
+    <p class="sub">Newest first.</p>
+    <ol class="plain log" reversed>
+      <li><time datetime="2026-10-29">29.10.2026</time><p>This site becomes the project’s home. The question, the planned field studies and the precedents are written down.</p></li>
+      <li><time datetime="2026-10">10.2026</time><p>Wetterbank begins as a design fiction on my <a href="https://va3runs.github.io/rnd/#wetterbank">portfolio</a>: a fictional company, three modes, and a website where you can complain to the weather.</p></li>
+    </ol>
+  </section>
+
+  <section id="references" aria-labelledby="ref-h">
+    <h2 id="ref-h"><span class="n">07</span>References</h2>
+    <ul class="plain refs">
+      <li>Brignull, H. &amp; Rogers, Y. (2003). Enticing people to interact with large public displays in public spaces. INTERACT 2003.</li>
+      <li>Bu, F., Bremers, A., Colley, M. &amp; Ju, W. (2024). Field notes on deploying research robots in public spaces. <a href="https://arxiv.org/abs/2404.18375" target="_blank" rel="noopener">arXiv:2404.18375</a>.</li>
+      <li>Bu, F., Fischer, K. &amp; Ju, W. (2025). Making sense of robots in public spaces: A study of trash barrel robots. <a href="https://arxiv.org/abs/2504.01121" target="_blank" rel="noopener">arXiv:2504.01121</a>.</li>
+      <li>Dörrenbächer, J., Löffler, D. &amp; Hassenzahl, M. (2020). Becoming a robot: Overcoming anthropomorphism with techno-mimesis. CHI ’20.</li>
+      <li>Dörrenbächer, J. et al. (2026). Mediating urban social encounters: Co-design of robotic street furniture with adolescents. CHI ’26. <a href="https://dl.acm.org/doi/full/10.1145/3772318.3791189" target="_blank" rel="noopener">doi:10.1145/3772318.3791189</a>.</li>
+      <li>Dunne, A. &amp; Raby, F. (2013). Speculative Everything. MIT Press.</li>
+      <li>Epley, N. &amp; Schroeder, J. (2014). Mistakenly seeking solitude. Journal of Experimental Psychology: General, 143(5).</li>
+      <li>Giaccardi, E. &amp; Redström, J. (2020). Technology and more-than-human design. Design Issues, 36(4), 33–44.</li>
+      <li>Goffman, E. (1963). Behavior in Public Places. Free Press.</li>
+      <li>Hassenzahl, M., Borchers, J., Boll, S., Rosenthal-von der Pütten, A. &amp; Wulf, V. (2021). Otherware: How to best interact with autonomous systems. ACM Interactions, 28(1).</li>
+      <li>Reddy, A. et al. (2021). Making everyday things talk: Speculative conversations into the future of voice interfaces at home. CHI EA ’21.</li>
+      <li>Whyte, W. H. (1980). The Social Life of Small Urban Spaces. Conservation Foundation.</li>
+    </ul>
+  </section>
+</main>
+
+<footer>
+  <span>Wetterbank by Varun Sangani, Düsseldorf</span>
+  <span class="links"><a href="https://va3runs.github.io/rnd/">Portfolio</a><a href="mailto:varuns@ik.me?subject=Wetterbank">Email</a><a href="https://www.linkedin.com/in/varunsangani" target="_blank" rel="noopener">LinkedIn</a><a href="https://github.com/va3runs/wetterbank" target="_blank" rel="noopener">GitHub</a><a href="privacy.html">Privacy &amp; imprint</a></span>
+</footer>
+
+</div>
+</body>
+</html>
