@@ -1,425 +1,312 @@
 <!DOCTYPE html>
-<html lang="en" data-title-en="The Bench Code · Public consultation" data-title-de="Der Bank-Kodex · Öffentliche Anhörung">
+<html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>The Bench Code · Public consultation</title>
-<meta name="description" content="Before benches start talking, someone has to set the rules. Vote on the draft Code of Conduct for Talking Street Furniture.">
-<meta name="theme-color" content="#f5f4ed" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#141413" media="(prefers-color-scheme: dark)">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wetterbank — a bench that says the first sentence</title>
+<meta name="description" content="Wetterbank is a bench for tram stops that says the first sentence. It opens with the weather, takes complaints, and ends with your name. A design fiction by Varun Sangani.">
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#111111" media="(prefers-color-scheme: dark)">
 <meta property="og:type" content="website">
-<meta property="og:title" content="The Bench Code · Public consultation now open">
-<meta property="og:description" content="Before benches start talking, someone has to set the rules. 23 paragraphs, three minutes, your vote.">
+<meta property="og:site_name" content="Wetterbank">
+<meta property="og:title" content="Wetterbank — a bench that says the first sentence">
+<meta property="og:description" content="It opens with the weather, takes complaints, and ends with your name. For tram stops where nobody talks.">
 <meta property="og:image" content="https://va3runs.github.io/wetterbank/assets/og.png">
 <meta property="og:url" content="https://va3runs.github.io/wetterbank/">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="canonical" href="https://va3runs.github.io/wetterbank/">
-<script>try{var d=document.documentElement,t=localStorage.getItem("wb-theme"),l=localStorage.getItem("wb-lang");if(t)d.setAttribute("data-theme",t);if(l==="de"){d.setAttribute("data-lang","de");d.lang="de"}}catch(e){}</script>
-<link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" type="image/svg+xml" href="assets/icon.svg">
 <link rel="apple-touch-icon" href="assets/icon-180.png">
-<link rel="stylesheet" href="css/wb.css">
 <style>
-.wrap{width:100%;max-width:1120px;margin:0 auto;padding-inline:max(20px,env(safe-area-inset-left))}
-.nav{position:sticky;top:0;z-index:5;background:var(--bg);border-bottom:1px solid var(--border)}
-.nav .wrap{display:flex;align-items:center;gap:20px;min-height:60px;padding-top:env(safe-area-inset-top)}
-.nav .mark{margin-right:auto}
-.nav ul{display:flex;gap:24px;list-style:none;margin:0;padding:0;font-size:15px}
-.nav ul a{color:var(--fg-2)}
-.nav .btn{min-height:38px;padding:8px 14px;font-size:15px}
-@media (max-width:820px){.nav ul{display:none}}
-@media (max-width:420px){.nav .btn{display:none}}
+:root{
+  --bg:#ffffff; --fg:#111111; --mute:#6e6e6e; --line:#e8e8e8; --panel:#f5f5f4; --soft:#fafafa;
+  --btn:#111111; --btn-fg:#ffffff;
+  --font:-apple-system,BlinkMacSystemFont,"SF Pro Text","Inter","Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  color-scheme:light dark;
+}
+@media (prefers-color-scheme:dark){
+  :root{--bg:#111111;--fg:#ededed;--mute:#9a9a9a;--line:#262626;--panel:#1a1a1a;--soft:#161616;--btn:#ededed;--btn-fg:#111111}
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-padding-top:24px}
+body{margin:0;background:var(--bg);color:var(--fg);font:400 17px/1.55 var(--font);-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:underline;text-decoration-color:var(--line);text-underline-offset:3px;text-decoration-thickness:1px}
+a:hover{text-decoration-color:currentColor}
+:focus-visible{outline:2px solid var(--fg);outline-offset:3px;border-radius:4px}
+strong{font-weight:600}
+p{margin:0 0 1em}
+img,svg{display:block}
 
-section{padding:88px 0;border-top:1px solid var(--border)}
-@media (max-width:767px){section{padding:56px 0}}
-.head{max-width:720px;margin:0 0 40px}
-.head h2{font-size:clamp(28px,3.6vw,40px);line-height:1.15;letter-spacing:-.4px}
-.head .lede{font-size:19px;color:var(--muted);margin:16px 0 0;line-height:1.5}
+.page{max-width:640px;margin:0 auto;padding:0 24px}
 
-/* Seal */
-.seal{color:var(--accent)}
-:root[data-theme="dark"] .seal{color:var(--link)}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .seal{color:var(--link)}}
+/* Header */
+header{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px 24px;padding:28px 0 0;font-size:15px}
+.by{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--fg)}
+.by img{width:28px;height:28px;border-radius:7px}
+.by span{color:var(--mute)}
+nav{display:flex;gap:20px}
+nav a{text-decoration:none;color:var(--mute)}
+nav a:hover{color:var(--fg)}
 
 /* Hero */
-.hero{padding:80px 0 40px;border-top:0}
-.hero-top{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:32px;align-items:start}
-.hero .seal{width:150px;height:150px;transform:rotate(-9deg);margin-top:8px}
-.hero h1{font-size:clamp(42px,7.2vw,88px);line-height:1.04;letter-spacing:-1.2px;max-width:15ch;margin:0}
-.hero .lede{font-size:clamp(19px,2vw,22px);line-height:1.5;color:var(--muted);max-width:44ch;margin:28px 0 0}
-.cta{display:flex;flex-wrap:wrap;align-items:center;gap:12px 20px;margin:36px 0 0}
-.cta .note{color:var(--meta);font-size:15px}
-.hero .status{margin:28px 0 0;color:var(--meta);font-size:15px;font-variant-numeric:tabular-nums}
-.hero .status .dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--success);margin-right:8px;vertical-align:1px}
-.hero-art{margin:56px 0 0}
-.hero-art .collage{width:100%;height:auto;border-radius:16px;box-shadow:var(--whisper)}
-.hero-art figcaption{margin-top:14px;color:var(--meta);font-size:14px}
-@media (max-width:640px){.hero-top{grid-template-columns:1fr}.hero .seal{width:96px;height:96px;order:-1;margin:0 0 8px}.hero{padding-top:40px}}
+.hero{padding:96px 0 24px}
+.hero .icon{width:72px;height:72px;border-radius:17px;margin:0 0 32px}
+h1{font-size:30px;line-height:1.3;font-weight:400;letter-spacing:-.4px;margin:0 0 20px}
+h1 strong{font-weight:600}
+.lede{font-size:19px;line-height:1.5;color:var(--mute);margin:0}
+.lede strong{color:var(--fg);font-weight:500}
+.actions{display:flex;flex-wrap:wrap;align-items:center;gap:12px 20px;margin:32px 0 0}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:10px 18px;border:0;border-radius:10px;background:var(--btn);color:var(--btn-fg);font:500 16px/1 var(--font);text-decoration:none;cursor:pointer}
+.btn:hover{opacity:.88}
+.btn.ghost{background:transparent;color:var(--fg);box-shadow:inset 0 0 0 1px var(--line)}
+.small{font-size:14px;color:var(--mute)}
+.version{margin:16px 0 0}
 
-/* Hearing */
-.hearing{max-width:720px}
-.bill{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:28px 28px 24px;box-shadow:var(--whisper)}
-@media (max-width:560px){.bill{padding:22px 18px 18px}}
-.bill-top{display:flex;justify-content:space-between;gap:16px;color:var(--meta);font-size:14px;font-variant-numeric:tabular-nums;margin-bottom:18px}
-.bill-top .ref{color:var(--accent);letter-spacing:.4px}
-:root[data-theme="dark"] .bill-top .ref{color:var(--link)}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .bill-top .ref{color:var(--link)}}
-.clause{font-size:clamp(24px,3.4vw,32px);line-height:1.25;letter-spacing:-.3px;margin:0 0 28px}
-.votes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
-.votes .btn{width:100%;background:var(--surface);color:var(--fg);box-shadow:var(--ring);min-height:52px;font-size:17px}
-.votes .btn:hover{box-shadow:0 0 0 1px var(--accent),var(--whisper)}
-.votes .btn[aria-pressed="true"]{background:var(--tag-soft);color:var(--accent);box-shadow:0 0 0 1px var(--accent)}
-:root[data-theme="dark"] .votes .btn[aria-pressed="true"]{color:var(--fg)}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .votes .btn[aria-pressed="true"]{color:var(--fg)}}
-.votes .btn[disabled]{opacity:1;cursor:default}
-.votes .btn[disabled]:not([aria-pressed="true"]){opacity:.45}
-.after{margin-top:24px;padding-top:20px;border-top:1px solid var(--border)}
-.split{display:grid;gap:8px;margin:0 0 18px}
-.split .row{display:grid;grid-template-columns:90px 1fr 48px;gap:12px;align-items:center;font-size:15px;font-variant-numeric:tabular-nums}
-.split .track{height:8px;border-radius:2px;background:var(--surface-warm)}
-.split .fill{height:100%;border-radius:2px;background:var(--accent)}
-.split .fill.a{background:var(--muted)}
-.split .fill.x{background:var(--meta);opacity:.5}
-.split .v{text-align:right;color:var(--muted)}
-.split-note{color:var(--meta);font-size:14px;margin:0 0 18px}
-.remark{margin:0 0 20px}
-.remark .by{display:block;font-size:12px;letter-spacing:1.2px;text-transform:uppercase;color:var(--meta);margin-bottom:6px}
-.remark p{margin:0;font-size:18px}
-.bill-foot{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:12px}
-.fine{color:var(--meta);font-size:14px;margin:16px 0 0}
-.done h3{font-size:26px;margin:0 0 10px}
-.done p{color:var(--muted)}
-.done .cta{margin-top:20px}
+section{padding:72px 0 0}
+h2{font-size:17px;font-weight:600;margin:0 0 8px}
+.sub{color:var(--mute);margin:0 0 24px}
 
-/* The draft */
-.doc{position:relative;max-width:820px;background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:56px 56px 48px}
-@media (max-width:640px){.doc{padding:32px 20px 28px}}
-.doc .seal{position:absolute;top:28px;right:28px;width:110px;height:110px;transform:rotate(8deg);opacity:.92}
-@media (max-width:640px){.doc .seal{width:72px;height:72px;top:16px;right:14px}}
-.doc-head{max-width:30ch;margin:0 0 28px}
-.doc-head .eyebrow{margin-bottom:10px}
-.doc-head h3{font-size:clamp(24px,3vw,32px);line-height:1.2}
-.doc-head .meta{margin-top:10px}
-.preamble{color:var(--muted);font-size:16px;line-height:1.55;margin:0 0 36px;max-width:62ch}
-.para{margin:0 0 32px}
-.para h4{font-size:19px;margin:0 0 12px}
-.para h4 .n{color:var(--accent);margin-right:10px;font-variant-numeric:tabular-nums}
-:root[data-theme="dark"] .para h4 .n{color:var(--link)}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .para h4 .n{color:var(--link)}}
-.para ol{list-style:none;margin:0;padding:0}
-.para li{display:grid;grid-template-columns:36px 1fr;gap:4px 8px;padding:10px 0;border-top:1px solid var(--border-soft)}
-.para li:first-child{border-top:0}
-.para .abs{color:var(--meta);font-variant-numeric:tabular-nums}
-.para .txt{margin:0;font-size:16px;line-height:1.5}
-.para li.rejected .txt{color:var(--meta);text-decoration:line-through;text-decoration-thickness:1px}
-.para .st{grid-column:2;display:flex;flex-wrap:wrap;gap:6px 12px;align-items:center;font-size:13px;color:var(--meta);font-variant-numeric:tabular-nums}
-.tag.adopted{background:var(--tag-soft);color:var(--accent)}
-.tag.rejected{background:var(--surface-warm);color:var(--muted)}
-.tag.open{background:transparent;color:var(--meta);box-shadow:inset 0 0 0 1px var(--border)}
-.tag.motion{background:var(--surface-warm);color:var(--fg-2)}
-.doc-foot{margin-top:28px;padding-top:20px;border-top:1px solid var(--border);display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;align-items:center;color:var(--meta);font-size:14px}
-.rule-note{color:var(--meta);font-size:15px;margin:16px 0 0;max-width:62ch}
+/* Demo */
+.demo{background:var(--soft);border:1px solid var(--line);border-radius:14px;padding:20px}
+.demo label{display:block;font-size:15px;color:var(--mute);margin:0 0 8px}
+.row{display:flex;gap:8px}
+.row input{flex:1;min-width:0;font:inherit;font-size:max(16px,1rem);color:var(--fg);background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:10px 12px}
+.row input:focus{outline:none;border-color:var(--fg)}
+.reply{margin:16px 0 0;min-height:3.2em;padding:14px 16px;border-radius:12px;background:var(--bg);border:1px solid var(--line);color:var(--mute)}
+.reply.has{color:var(--fg)}
+.reply .case{display:block;font-size:13px;color:var(--mute);margin-bottom:4px;font-variant-numeric:tabular-nums}
+.demo .small{margin:12px 0 0}
 
-/* Motion */
-.motion{max-width:720px}
-.motion form{display:grid;gap:16px}
-.motion label{display:block;font-size:15px;color:var(--fg-2);margin-bottom:6px}
-.motion select,.motion textarea{width:100%;font:inherit;font-size:max(16px,1rem);color:var(--fg);background:var(--surface);border:0;box-shadow:var(--ring);border-radius:var(--radius);padding:12px 14px}
-.motion select{appearance:none;-webkit-appearance:none;background-image:linear-gradient(45deg,transparent 50%,var(--meta) 50%),linear-gradient(135deg,var(--meta) 50%,transparent 50%);background-position:calc(100% - 20px) 52%,calc(100% - 15px) 52%;background-size:5px 5px;background-repeat:no-repeat;padding-right:40px}
-.motion textarea{min-height:110px;resize:vertical}
-.motion select:focus,.motion textarea:focus{outline:none;box-shadow:0 0 0 1px var(--accent)}
-.count{text-align:right;color:var(--meta);font-size:13px;margin-top:4px;font-variant-numeric:tabular-nums}
-.received{padding:16px 18px;background:var(--tag-faint);border-left:2px solid var(--accent);border-radius:0 var(--radius) var(--radius) 0}
+/* Modes */
+.mode{padding:40px 0 0}
+.mode h3{font-size:17px;font-weight:600;margin:0 0 4px}
+.mode h3 span{font-weight:400;color:var(--mute)}
+.mode p{margin:0 0 20px}
+figure{margin:0}
+figure svg{width:100%;height:auto;border-radius:14px}
+figcaption{font-size:14px;color:var(--mute);margin:10px 0 0}
+.p-bg{fill:var(--panel)}
+.p-bub{fill:var(--bg);stroke:var(--line);stroke-width:2}
+.p-txt{fill:var(--fg);font:500 25px var(--font)}
+.p-ln{fill:none;stroke:var(--fg);stroke-width:3.5;stroke-linecap:round;stroke-linejoin:round}
+.p-fill rect{fill:var(--panel)}
+.p-soft{fill:none;stroke:var(--mute);stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+.p-dot{fill:#e2694f}
 
-/* Council */
-.members{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0 40px}
-.member{padding:20px 0;border-top:1px solid var(--border)}
-.member .role{font-size:12px;letter-spacing:1.2px;text-transform:uppercase;color:var(--meta)}
-.member h3{font-size:20px;margin:6px 0 6px}
-.member p{margin:0;color:var(--muted);font-size:16px}
-.quorum{margin:28px 0 0;color:var(--meta);font-size:15px}
-@media (max-width:820px){.members{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media (max-width:540px){.members{grid-template-columns:1fr}}
+/* Numbers */
+.num{padding:18px 0;border-top:1px solid var(--line)}
+.num:last-of-type{border-bottom:1px solid var(--line)}
+.num p{margin:0 0 10px;font-size:16px}
+.bar{display:grid;grid-template-columns:1fr 64px;gap:12px;align-items:center}
+.track{height:8px;border-radius:4px;background:var(--panel);overflow:hidden}
+.fill{height:100%;border-radius:4px;background:var(--fg)}
+.val{text-align:right;font-variant-numeric:tabular-nums;font-weight:500}
+.sources{margin:16px 0 0}
 
-/* Why */
-.why{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:56px}
-.why p{max-width:58ch}
-.why .big{font-size:clamp(26px,3vw,34px);line-height:1.25;letter-spacing:-.3px;margin:0 0 24px;color:var(--fg)}
-.reading{font-size:14.5px;color:var(--muted);line-height:1.45}
-.reading li{margin:10px 0}
-@media (max-width:820px){.why{grid-template-columns:1fr;gap:24px}}
+/* List */
+ul.plain{list-style:none;margin:0;padding:0}
+ul.plain li{padding:10px 0;border-top:1px solid var(--line)}
+ul.plain li:last-child{border-bottom:1px solid var(--line)}
 
-footer{border-top:1px solid var(--border);padding:32px 0 calc(40px + env(safe-area-inset-bottom));color:var(--meta);font-size:14px}
-footer .wrap{display:flex;flex-wrap:wrap;gap:10px 24px}
-footer .sp{margin-right:auto;max-width:60ch}
-footer a{color:var(--fg-2)}
+/* FAQ */
+.faq h3{font-size:17px;font-weight:600;margin:28px 0 6px}
+.faq p{color:var(--mute);margin:0}
 
-/* Print: only the draft, on A4 */
-@page{size:A4;margin:16mm 18mm}
-@media print{
-  html,body{background:#fff!important;color:#141413!important;-webkit-print-color-adjust:exact;print-color-adjust:exact;font-size:11pt}
-  .nav,.hero,#hearing,#motion,#council,#why,footer,.no-print,#draft .head,.doc-foot .btn{display:none!important}
-  section{padding:0;border:0}
-  .wrap{max-width:none;padding:0}
-  .doc{border:0;box-shadow:none;padding:0;max-width:none;background:#fff}
-  .doc .seal{top:0;right:0;width:32mm;height:32mm;color:#1b365d}
-  .para{margin-bottom:6mm}
-  .para h4{break-after:avoid}
-  .doc-head{max-width:60%}
-  .para li{break-inside:avoid}
-  .tag{border:1px solid #c9c6ba;background:#fff!important;color:#141413!important;box-shadow:none}
+/* Closing */
+.closing{padding:96px 0 0}
+.closing h2{font-size:30px;font-weight:400;letter-spacing:-.4px;line-height:1.3;margin:0 0 4px}
+
+footer{margin:96px 0 0;padding:28px 0 48px;border-top:1px solid var(--line);font-size:14px;color:var(--mute);display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px 24px}
+footer .links{display:flex;flex-wrap:wrap;gap:8px 20px}
+footer a{color:var(--mute)}
+
+@media (max-width:520px){
+  .hero{padding-top:64px}
+  h1,.closing h2{font-size:26px}
+  nav{display:none}
 }
 </style>
 </head>
 <body>
-<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
-  <symbol id="seal" viewBox="0 0 200 200">
-    <path id="seal-arc" d="M100,100 m-73,0 a73,73 0 1,1 146,0 a73,73 0 1,1 -146,0" fill="none"/>
-    <circle cx="100" cy="100" r="96" style="fill:var(--bg)" opacity=".92"/><g fill="none" stroke="currentColor"><circle cx="100" cy="100" r="95" stroke-width="3"/><circle cx="100" cy="100" r="87" stroke-width="1.2"/><circle cx="100" cy="100" r="58" stroke-width="1.2"/></g>
-    <text fill="currentColor" style="font:500 12.6px Charter,Georgia,serif;letter-spacing:2.4px"><textPath href="#seal-arc">RAT FÜR SPRECHENDES STADTMOBILIAR · DÜSSELDORF ·</textPath></text>
-    <g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><rect x="74" y="74" width="52" height="7" rx="2"/><path d="M81 81v8M119 81v8"/><rect x="68" y="89" width="64" height="8" rx="2"/><path d="M75 97v12M125 97v12"/></g>
-    <text x="100" y="128" text-anchor="middle" fill="currentColor" style="font:500 11px Charter,Georgia,serif;letter-spacing:2px">ENTWURF</text>
-    <text x="100" y="143" text-anchor="middle" fill="currentColor" style="font:500 10px Charter,Georgia,serif;letter-spacing:1px">0.3</text>
-  </symbol>
-</svg>
+<div class="page">
 
-<header class="nav">
-  <div class="wrap">
-    <a class="mark" href="./"><img src="assets/icon.svg" alt="" width="26" height="26"><span><span lang="en">The Bench Code</span><span lang="de">Der Bank-Kodex</span></span></a>
-    <ul>
-      <li><a href="#draft"><span lang="en">The draft</span><span lang="de">Der Entwurf</span></a></li>
-      <li><a href="#council"><span lang="en">The council</span><span lang="de">Der Rat</span></a></li>
-      <li><a href="#why"><span lang="en">Why</span><span lang="de">Wozu</span></a></li>
-    </ul>
-    <div class="lang-switch" role="group" aria-label="Language / Sprache"><button type="button" value="en" aria-pressed="true">EN</button><button type="button" value="de" aria-pressed="false">DE</button></div>
-    <a class="btn btn-primary" href="#hearing"><span lang="en">Vote</span><span lang="de">Abstimmen</span></a>
-  </div>
+<header>
+  <a class="by" href="./"><img src="assets/icon.svg" alt="" width="28" height="28">Wetterbank <span>by Varun Sangani</span></a>
+  <nav aria-label="Sections"><a href="#modes">Modes</a><a href="#numbers">Numbers</a><a href="#faq">FAQ</a></nav>
 </header>
 
 <main>
-  <section class="hero">
-    <div class="wrap">
-      <div class="hero-top">
-        <div>
-          <p class="eyebrow"><span lang="en">Public consultation · Draft 0.3</span><span lang="de">Öffentliche Anhörung · Entwurf 0.3</span></p>
-          <h1><span lang="en">Before benches start talking, someone has to set the rules.</span><span lang="de">Bevor Bänke anfangen zu reden, muss jemand die Regeln festlegen.</span></h1>
-        </div>
-        <svg class="seal" viewBox="0 0 200 200" role="img" aria-label="Seal of the Council for Talking Street Furniture, marked draft"><use href="#seal"/></svg>
-      </div>
-      <p class="lede" lang="en">The Council for Talking Street Furniture is drafting a code of conduct for benches that speak. Its members: a bench, a plane tree, a pigeon, the weather (absent) and the public. That’s you, and you have a vote.</p>
-      <p class="lede" lang="de">Der Rat für sprechendes Stadtmobiliar erarbeitet einen Verhaltenskodex für Bänke, die sprechen. Seine Mitglieder: eine Bank, eine Platane, eine Taube, das Wetter (abwesend) und die Öffentlichkeit. Das sind Sie, und Sie haben eine Stimme.</p>
-      <div class="cta">
-        <a class="btn btn-primary" href="#hearing"><span lang="en">Cast your vote</span><span lang="de">Stimme abgeben</span></a>
-        <a class="btn-text" href="#draft"><span lang="en">Read the draft</span><span lang="de">Entwurf lesen</span></a>
-      </div>
-      <p class="status" id="status"><span class="dot" aria-hidden="true"></span><span lang="en">Consultation open. 23 paragraphs, about three minutes, anonymous.</span><span lang="de">Anhörung läuft. 23 Paragraphen, etwa drei Minuten, anonym.</span></p>
-      <figure class="hero-art">
-        <svg class="collage" viewBox="0 0 1040 560" role="img" aria-labelledby="collage-t">
-  <title id="collage-t">The council in session: a plane tree, a cloud for the absent weather, Bench No. 0417 in front of a coral sun, and a pigeon on its backrest, at a tram stop with a concrete shelter.</title>
-  <defs>
-    <filter id="c-brush" x="-25%" y="-25%" width="150%" height="150%">
-      <feTurbulence type="fractalNoise" baseFrequency="0.022" numOctaves="3" seed="11" result="n1"/>
-      <feDisplacementMap in="SourceGraphic" in2="n1" scale="46" xChannelSelector="R" yChannelSelector="G" result="d"/>
-      <feTurbulence type="fractalNoise" baseFrequency="0.9 0.06" numOctaves="2" seed="4" result="n2"/>
-      <feColorMatrix in="n2" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -3.4 2.9" result="dry"/>
-      <feComposite in="d" in2="dry" operator="in"/>
-    </filter>
-    <filter id="c-rough" x="-20%" y="-20%" width="140%" height="140%">
-      <feTurbulence type="fractalNoise" baseFrequency="0.05" numOctaves="3" seed="2"/>
-      <feDisplacementMap in="SourceGraphic" scale="14" xChannelSelector="R" yChannelSelector="G"/>
-    </filter>
-    <filter id="c-cloud" x="-30%" y="-40%" width="160%" height="180%">
-      <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="4" seed="8"/>
-      <feDisplacementMap in="SourceGraphic" scale="22" xChannelSelector="R" yChannelSelector="G" result="d"/>
-      <feGaussianBlur in="d" stdDeviation="2.2"/>
-    </filter>
-    <filter id="c-grain" x="0" y="0" width="100%" height="100%">
-      <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" stitchTiles="stitch"/>
-      <feColorMatrix type="matrix" values="0 0 0 0 0.35  0 0 0 0 0.3  0 0 0 0 0.2  0 0 0 0.10 0"/>
-    </filter>
-    <filter id="c-concrete" x="0" y="0" width="100%" height="100%">
-      <feTurbulence type="fractalNoise" baseFrequency="0.55" numOctaves="3" seed="21"/>
-      <feColorMatrix type="matrix" values="0 0 0 0 0.2  0 0 0 0 0.19  0 0 0 0 0.17  0 0 0 0.35 -0.05"/>
-    </filter>
-    <pattern id="c-dots" width="14" height="14" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1.3" style="fill:var(--art-ink)"/></pattern>
-    <clipPath id="c-frame"><rect width="1040" height="560" rx="16"/></clipPath>
-    <clipPath id="c-torn"><path d="M1040 300 L1010 318 1018 340 992 362 1000 388 972 410 984 436 956 458 966 486 940 508 952 534 930 560 1040 560Z"/></clipPath>
-    <clipPath id="c-shelter"><path d="M770 128H842V96H902V470H770Z"/></clipPath>
-  </defs>
-  <g clip-path="url(#c-frame)">
-    <!-- paper -->
-    <rect width="1040" height="560" style="fill:var(--art-paper)"/>
-    <rect width="1040" height="560" filter="url(#c-grain)"/>
-    <!-- dotted grid -->
-    <rect x="56" y="52" width="140" height="112" fill="url(#c-dots)" opacity=".55"/>
-    <!-- construction lines -->
-    <g fill="none" style="stroke:var(--art-ink)" stroke-width="1" opacity=".38">
-      <circle cx="560" cy="300" r="250"/>
-      <path d="M300 160 A330 330 0 0 1 900 120"/>
-      <path d="M40 470H1000"/>
-      <path d="M180 520 A140 140 0 0 1 330 330"/>
-      <path d="M760 40V540" stroke-dasharray="1 9" stroke-linecap="round" stroke-width="2.2"/>
-    </g>
-    <g style="fill:var(--art-ink)" opacity=".7"><circle cx="330" cy="470" r="3.5"/><circle cx="760" cy="470" r="3.5"/><circle cx="268" cy="368" r="3"/></g>
-    <!-- coral sun, painterly -->
-    <g filter="url(#c-brush)"><circle cx="560" cy="268" r="182" style="fill:var(--art-coral)"/></g>
-    <g filter="url(#c-rough)" style="fill:var(--art-coral)" opacity=".85"><circle cx="370" cy="150" r="6"/><circle cx="392" cy="128" r="3"/><circle cx="745" cy="420" r="5"/><circle cx="716" cy="118" r="4"/></g>
-    <!-- concrete shelter -->
-    <g filter="url(#c-rough)">
-      <rect x="770" y="128" width="132" height="342" style="fill:var(--art-concrete)"/>
-      <rect x="842" y="96" width="60" height="40" style="fill:var(--art-concrete)"/>
-    </g>
-    <g clip-path="url(#c-shelter)"><rect x="770" y="96" width="132" height="374" filter="url(#c-concrete)"/></g>
-    <path d="M846 236v-34a14 14 0 0 1 28 0v34z" style="fill:var(--art-ink)" opacity=".85"/>
-    <!-- stop sign -->
-    <g style="stroke:var(--art-ink)" fill="none" stroke-width="2.5"><path d="M716 470V214"/><circle cx="716" cy="198" r="16" style="fill:var(--art-paper)"/></g>
-    <text x="716" y="204" text-anchor="middle" style="fill:var(--art-ink);font:500 17px Georgia,serif">H</text>
-    <!-- plane tree -->
-    <g filter="url(#c-rough)" style="fill:var(--art-olive)">
-      <circle cx="236" cy="210" r="62"/><circle cx="186" cy="246" r="44"/><circle cx="286" cy="250" r="46"/><circle cx="238" cy="270" r="40"/><circle cx="200" cy="190" r="36"/>
-    </g>
-    <path d="M240 470V300M240 330l-30-30M240 312l26-34" fill="none" style="stroke:var(--art-ink)" stroke-width="5" stroke-linecap="round"/>
-    <!-- clouds -->
-    <g filter="url(#c-cloud)" style="fill:var(--art-cloud)">
-      <ellipse cx="120" cy="330" rx="86" ry="34"/><ellipse cx="170" cy="306" rx="54" ry="40"/><ellipse cx="86" cy="312" rx="36" ry="26"/>
-      <ellipse cx="560" cy="112" rx="74" ry="24"/><ellipse cx="600" cy="98" rx="44" ry="28"/>
-    </g>
-    <!-- square outline -->
-    <rect x="872" y="388" width="118" height="118" fill="none" style="stroke:var(--art-ink)" stroke-width="2"/>
-    <!-- ochre dot -->
-    <circle cx="498" cy="524" r="32" style="fill:var(--art-ochre)"/>
-    <!-- torn concrete -->
-    <path d="M1040 300 L1010 318 1018 340 992 362 1000 388 972 410 984 436 956 458 966 486 940 508 952 534 930 560 1040 560Z" style="fill:var(--art-concrete)"/>
-    <g clip-path="url(#c-torn)"><rect x="920" y="300" width="120" height="260" filter="url(#c-concrete)"/></g>
-    <path d="M1010 318 1018 340 992 362 1000 388 972 410 984 436 956 458 966 486 940 508 952 534 930 560" fill="none" style="stroke:var(--art-paper)" stroke-width="3" opacity=".9"/>
-    <!-- the bench -->
-    <g transform="translate(330 330)">
-      <rect x="20" y="0" width="300" height="20" rx="4" style="fill:var(--art-paper);stroke:var(--art-ink)" stroke-width="4"/>
-      <path d="M48 20v40M292 20v40" fill="none" style="stroke:var(--art-ink)" stroke-width="4" stroke-linecap="round"/>
-      <rect x="0" y="60" width="340" height="22" rx="4" style="fill:var(--art-paper);stroke:var(--art-ink)" stroke-width="4"/>
-      <path d="M26 82v58M314 82v58" fill="none" style="stroke:var(--art-ink)" stroke-width="4" stroke-linecap="round"/>
-      <circle cx="292" cy="10" r="6" style="fill:var(--art-coral)"/>
-      <path d="M306 -4q8 6 0 14M314 -12q14 14 0 30" fill="none" style="stroke:var(--art-ink)" stroke-width="2.4" stroke-linecap="round"/>
-    </g>
-    <!-- the pigeon, council member -->
-    <g transform="translate(96 -70) scale(2.2)"><path d="M168 174q-2-10 8-12q6-1 9 3l5-1-4 4q-2 6-10 6z" style="fill:var(--art-paper);stroke:var(--art-ink)" stroke-width="1.7" stroke-linejoin="round"/><circle cx="183" cy="164.5" r="1.1" style="fill:var(--art-ink)"/><path d="M176 180v3M180 180v3" style="stroke:var(--art-ink)" stroke-width="1.4" stroke-linecap="round"/></g>
-  </g>
-</svg>
+  <div class="hero">
+    <img class="icon" src="assets/icon.svg" alt="Wetterbank icon: a white bench under a sun and a cloud" width="72" height="72">
+    <h1><strong>Wetterbank</strong> is a bench that says the first sentence.</h1>
+    <p class="lede">It opens with <strong>the weather</strong>, takes <strong>complaints</strong>, and ends with <strong>your name</strong>. For tram stops where nobody talks.</p>
+    <div class="actions">
+      <a class="btn" href="#demo">Try it</a>
+      <a href="#numbers">The numbers</a>
+    </div>
+    <p class="small version">Design fiction · Düsseldorf · Not built yet</p>
+  </div>
 
-        <figcaption><span lang="en">The council in session. From left: the plane tree, the weather (represented by a cloud), Bench No. 0417 (chair), the pigeon.</span><span lang="de">Der Rat tagt. Von links: die Platane, das Wetter (vertreten durch eine Wolke), Bank Nr. 0417 (Vorsitz), die Taube.</span></figcaption>
+  <section id="demo" aria-labelledby="demo-h">
+    <h2 id="demo-h">It works, sort of.</h2>
+    <p class="sub">Complain about the weather and press Enter. The bench will forward it.</p>
+    <form class="demo" id="demo-form" autocomplete="off">
+      <label for="complaint">Your complaint</label>
+      <div class="row">
+        <input id="complaint" type="text" maxlength="200" placeholder="It’s raining again." enterkeyhint="send">
+        <button class="btn" type="submit">Send</button>
+      </div>
+      <div class="reply" id="reply" aria-live="polite">The bench’s reply appears here.</div>
+      <p class="small">Nothing you type is sent or stored. The weather has enough to deal with.</p>
+    </form>
+  </section>
+
+  <section id="modes" aria-labelledby="modes-h">
+    <h2 id="modes-h">Three modes, one step at a time.</h2>
+    <p class="sub">Each mode moves a little further away from the safe topic.</p>
+
+    <div class="mode">
+      <h3>Wetter <span>· weather</span></h3>
+      <p>It opens with the safest sentence there is.</p>
+      <figure>
+        <svg viewBox="0 0 600 340" role="img" aria-label="A bench under a rain cloud says: Bit chilly today, isn’t it?">
+          <rect class="p-bg" width="600" height="340"/>
+          <rect class="p-bub" x="60" y="44" width="400" height="72" rx="16"/><path class="p-bub" d="M300 115l22 34 22-34"/><path d="M302 114h40" style="stroke:var(--bg)" stroke-width="4"/>
+          <text class="p-txt" x="84" y="89">Bit chilly today, isn’t it?</text>
+          <g class="p-soft"><path d="M470 118a22 22 0 0 1 4-43 28 28 0 0 1 52 6 18 18 0 0 1-2 37z"/><path d="M486 132v12M502 132v12M518 132v12"/></g>
+          <g class="p-ln"><path d="M60 300H540"/><rect x="190" y="170" width="220" height="16" rx="3"/><path d="M212 186v28M388 186v28"/><rect x="170" y="214" width="260" height="18" rx="3"/><path d="M190 232v68M410 232v68"/></g>
+          <circle class="p-dot" cx="388" cy="178" r="5"/>
+        </svg>
+        <figcaption>7:42. Rain. Silence. Until the bench says something.</figcaption>
+      </figure>
+    </div>
+
+    <div class="mode">
+      <h3>Meckern <span>· complaining</span></h3>
+      <p>It takes complaints about the weather and forwards them. Grumbling together is a small bond.</p>
+      <figure>
+        <svg viewBox="0 0 600 340" role="img" aria-label="A person on the bench hears: Forwarded to the weather.">
+          <rect class="p-bg" width="600" height="340"/>
+          <rect class="p-bub" x="60" y="44" width="400" height="72" rx="16"/><path class="p-bub" d="M300 115l22 34 22-34"/><path d="M302 114h40" style="stroke:var(--bg)" stroke-width="4"/>
+          <text class="p-txt" x="84" y="89">Forwarded to the weather.</text>
+          <g class="p-soft"><path d="M470 196l40-26M484 162h26v16"/><rect x="452" y="186" width="26" height="18" rx="2"/><path d="M452 187l13 9 13-9"/></g>
+          <g class="p-ln"><circle cx="262" cy="140" r="14"/><path d="M262 154v60"/></g><g class="p-ln p-fill"><path d="M60 300H540"/><rect x="190" y="170" width="220" height="16" rx="3"/><path d="M212 186v28M388 186v28"/><rect x="170" y="214" width="260" height="18" rx="3"/><path d="M190 232v68M410 232v68"/></g><g class="p-ln"><path d="M253 232v68M271 232v68"/></g>
+          <circle class="p-dot" cx="388" cy="178" r="5"/>
+        </svg>
+        <figcaption>File a complaint. It will be forwarded. To whom, we won’t say.</figcaption>
+      </figure>
+    </div>
+
+    <div class="mode">
+      <h3>Namen <span>· names</span></h3>
+      <p>It drops the weather and asks for a name.</p>
+      <figure>
+        <svg viewBox="0 0 600 340" role="img" aria-label="Two people on the bench in the sun. The bench says: I’m the bench. And you?">
+          <rect class="p-bg" width="600" height="340"/>
+          <rect class="p-bub" x="60" y="44" width="400" height="72" rx="16"/><path class="p-bub" d="M300 115l22 34 22-34"/><path d="M302 114h40" style="stroke:var(--bg)" stroke-width="4"/>
+          <text class="p-txt" x="84" y="89">I’m the bench. And you?</text>
+          <g class="p-soft"><circle cx="502" cy="190" r="16"/><path d="M502 160v8M502 212v8M472 190h8M524 190h8M481 169l6 6M517 205l6 6M523 169l-6 6M487 205l-6 6"/></g>
+          <g class="p-ln"><circle cx="250" cy="140" r="14"/><path d="M250 154v60"/><circle cx="330" cy="140" r="14"/><path d="M330 154v60"/></g><g class="p-ln p-fill"><path d="M60 300H540"/><rect x="190" y="170" width="220" height="16" rx="3"/><path d="M212 186v28M388 186v28"/><rect x="170" y="214" width="260" height="18" rx="3"/><path d="M190 232v68M410 232v68"/></g><g class="p-ln"><path d="M241 232v68M259 232v68"/><path d="M321 232v68M339 232v68"/></g>
+          <circle class="p-dot" cx="388" cy="178" r="5"/>
+        </svg>
+        <figcaption>From the weather to first names in three steps. The informal “du” is offered after 20 minutes.</figcaption>
       </figure>
     </div>
   </section>
 
-  <section id="hearing">
-    <div class="wrap">
-      <div class="head">
-        <p class="num">01</p>
-        <h2><span lang="en">The hearing.</span><span lang="de">Die Anhörung.</span></h2>
-        <p class="lede"><span lang="en">One paragraph at a time. Vote for, against, or abstain. The council takes note.</span><span lang="de">Ein Paragraph nach dem anderen. Stimmen Sie dafür, dagegen, oder enthalten Sie sich. Der Rat nimmt es zur Kenntnis.</span></p>
-      </div>
-      <div class="hearing" id="bill" aria-live="polite"></div>
-    </div>
+  <section id="numbers" aria-labelledby="numbers-h">
+    <h2 id="numbers-h">The numbers.</h2>
+    <p class="sub">Germans talk about the weather a lot. Talking to strangers is another matter.</p>
+    <div class="num"><p>Talk about the weather several times a week or more</p><div class="bar"><div class="track"><div class="fill" style="width:62%"></div></div><span class="val">62%</span></div></div>
+    <div class="num"><p>See the weather as an acceptable small-talk topic</p><div class="bar"><div class="track"><div class="fill" style="width:70%"></div></div><span class="val">70%</span></div></div>
+    <div class="num"><p>18 to 24-year-olds who find small talk uncomfortable</p><div class="bar"><div class="track"><div class="fill" style="width:48.5%"></div></div><span class="val">48.5%</span></div></div>
+    <div class="num"><p>Benches at tram stops that say anything at all</p><div class="bar"><div class="track"><div class="fill" style="width:0"></div></div><span class="val">0%</span></div></div>
+    <p class="small sources">Sources: <a href="https://yougov.com/de-de/aktuelle-ergebnisse/20260414-e9f72-2" target="_blank" rel="noopener">YouGov, 2026</a> · <a href="https://www.t-online.de/leben/aktuelles/id_100690286/small-talk-mit-diesen-themen-machen-sie-sich-unbeliebt-umfrage.html" target="_blank" rel="noopener">Babbel / YouGov, 2025</a> · the last one, our own count.</p>
   </section>
 
-  <section id="draft">
-    <div class="wrap">
-      <div class="head">
-        <p class="num">02</p>
-        <h2><span lang="en">The draft, as it stands.</span><span lang="de">Der Entwurf, Stand heute.</span></h2>
-        <p class="lede" id="rule-note"></p>
-      </div>
-      <article class="doc" id="doc">
-        <svg class="seal" viewBox="0 0 200 200" aria-hidden="true"><use href="#seal"/></svg>
-        <div class="doc-head">
-          <p class="eyebrow" id="doc-council"></p>
-          <h3 id="doc-title"></h3>
-          <p class="meta" id="doc-meta"></p>
-        </div>
-        <p class="preamble" id="doc-preamble"></p>
-        <div id="doc-body"></div>
-        <div class="doc-foot">
-          <span id="doc-sign"></span>
-          <button class="btn btn-quiet no-print" type="button" id="print"><span lang="en">Print the draft</span><span lang="de">Entwurf drucken</span></button>
-        </div>
-      </article>
-    </div>
+  <section aria-labelledby="list-h">
+    <h2 id="list-h">What it does.</h2>
+    <p class="sub">And what it doesn’t.</p>
+    <ul class="plain">
+      <li><strong>Opens with the weather.</strong> Today’s, not yesterday’s.</li>
+      <li><strong>Takes complaints.</strong> Forwards them. To whom, it won’t say.</li>
+      <li><strong>Asks for names.</strong> Only after you’ve complained together.</li>
+      <li><strong>Offers the “du”</strong> after 20 minutes, not before.</li>
+      <li><strong>Stores nothing.</strong> What’s said at the stop stays at the stop.</li>
+      <li><strong>Goes quiet</strong> when the tram arrives.</li>
+      <li><strong>Doesn’t exist.</strong> Yet.</li>
+    </ul>
   </section>
 
-  <section id="motion">
-    <div class="wrap">
-      <div class="head">
-        <p class="num">03</p>
-        <h2><span lang="en">Something missing? File a motion.</span><span lang="de">Fehlt etwas? Stellen Sie einen Antrag.</span></h2>
-        <p class="lede"><span lang="en">Propose a new paragraph. Admissible motions are put to the vote.</span><span lang="de">Schlagen Sie einen neuen Paragraphen vor. Zulässige Anträge kommen zur Abstimmung.</span></p>
-      </div>
-      <div class="motion" id="motion-box">
-        <form id="motion-form" novalidate>
-          <div>
-            <label for="m-section"><span lang="en">Section</span><span lang="de">Abschnitt</span></label>
-            <select id="m-section"></select>
-          </div>
-          <div>
-            <label for="m-body"><span lang="en">Your paragraph</span><span lang="de">Ihr Paragraph</span></label>
-            <textarea id="m-body" maxlength="240" required data-en="A bench may …" data-de="Eine Bank darf …" data-i18n-attr="placeholder" placeholder="A bench may …"></textarea>
-            <div class="count" id="m-count">0 / 240</div>
-          </div>
-          <p class="fine" style="margin:0"><span lang="en">Motions are anonymous and are checked by the minute-taker before they go to a vote. Please don’t include names or personal details.</span><span lang="de">Anträge sind anonym und werden von der Protokollführung geprüft, bevor sie zur Abstimmung kommen. Bitte keine Namen oder persönlichen Angaben.</span></p>
-          <div><button class="btn btn-primary" type="submit"><span lang="en">File motion</span><span lang="de">Antrag einreichen</span></button></div>
-        </form>
-      </div>
-    </div>
+  <section id="faq" aria-labelledby="faq-h" class="faq">
+    <h2 id="faq-h">Questions.</h2>
+    <h3>What is Wetterbank?</h3>
+    <p>A design fiction: a bench that doesn’t exist, made to ask one question. When a machine says the first sentence between strangers, does it help them get past the weather, or does it do the awkward part for them?</p>
+    <h3>Is it real?</h3>
+    <p>No. There is no bench and no company. There is this page and a question.</p>
+    <h3>Why the weather?</h3>
+    <p>It’s the one topic everybody accepts. The first sentence is easy. The step after it is hard, and that’s the step Wetterbank is for.</p>
+    <h3>Does it record anything?</h3>
+    <p>No. The demo on this page runs in your browser and sends nothing anywhere.</p>
+    <h3>What happens next?</h3>
+    <p>Talk to people about how they start conversations. Stage it with actors at a made-up tram stop. Then try a real bench, and see whether anyone gets past the weather.</p>
+    <h3>Who made it?</h3>
+    <p>Varun Sangani, a designer in Düsseldorf. <a href="mailto:varuns@ik.me?subject=Wetterbank">Write to me</a> about benches, weather, or anything else.</p>
   </section>
 
-  <section id="council">
-    <div class="wrap">
-      <div class="head">
-        <p class="num">04</p>
-        <h2><span lang="en">The council.</span><span lang="de">Der Rat.</span></h2>
-      </div>
-      <div class="members" id="members"></div>
-      <p class="quorum"><span lang="en">Quorum: present (the pigeon is here).</span><span lang="de">Beschlussfähigkeit: gegeben (die Taube ist anwesend).</span></p>
-    </div>
-  </section>
-
-  <section id="why">
-    <div class="wrap why">
-      <div>
-        <p class="num">05</p>
-        <p class="big"><span lang="en">The council is invented. The question is not.</span><span lang="de">Der Rat ist erfunden. Die Frage nicht.</span></p>
-        <p lang="en">Talking, autonomous objects are arriving in public space: benches, bins, displays, robots. Someone will decide what they are allowed to say to us. This consultation asks the public first.</p>
-        <p lang="de">Sprechende, autonome Objekte kommen in den öffentlichen Raum: Bänke, Mülleimer, Displays, Roboter. Irgendwer wird festlegen, was sie zu uns sagen dürfen. Diese Anhörung fragt zuerst die Öffentlichkeit.</p>
-        <p lang="en">The votes show where a public object stops being friendly and starts being nosy, and how people feel about objects that speak for trees, pigeons and the weather. The finished code will then be performed by actors at a staged tram stop.</p>
-        <p lang="de">Die Abstimmungen zeigen, wo ein öffentliches Objekt aufhört, freundlich zu sein, und anfängt, aufdringlich zu werden, und wie Menschen Objekte finden, die für Bäume, Tauben und das Wetter sprechen. Der fertige Kodex wird anschließend von Darstellenden an einer inszenierten Haltestelle aufgeführt.</p>
-        <p lang="en">The Bench Code is a design research project by Varun Sangani, and grew out of an earlier design fiction, Wetterbank. It is not a university study. Votes are anonymous. <a href="privacy.html">How the data is used</a>.</p>
-        <p lang="de">Der Bank-Kodex ist ein Designforschungsprojekt von Varun Sangani und ist aus einer früheren Design Fiction, Wetterbank, entstanden. Es ist keine Universitätsstudie. Abstimmungen sind anonym. <a href="privacy.html">Wie die Daten verwendet werden</a>.</p>
-        <p class="links" style="display:flex;flex-wrap:wrap;gap:8px 24px;margin-top:24px"><a href="mailto:varuns@ik.me?subject=The%20Bench%20Code">varuns@ik.me</a><a href="https://www.linkedin.com/in/varunsangani" target="_blank" rel="noopener">LinkedIn</a><a href="https://github.com/va3runs/wetterbank" target="_blank" rel="noopener">GitHub</a></p>
-      </div>
-      <div>
-        <p class="eyebrow"><span lang="en">Further reading</span><span lang="de">Zum Weiterlesen</span></p>
-        <ul class="dash reading">
-          <li>Goffman, E. (1963). Behavior in Public Places.</li>
-          <li>Whyte, W. H. (1980). The Social Life of Small Urban Spaces.</li>
-          <li>Hassenzahl, M., Borchers, J., Boll, S., Rosenthal-von der Pütten, A. &amp; Wulf, V. (2021). Otherware: How to best interact with autonomous systems. ACM Interactions, 28(1).</li>
-          <li>Giaccardi, E. &amp; Redström, J. (2020). Technology and more-than-human design. Design Issues, 36(4).</li>
-          <li>Dunne, A. &amp; Raby, F. (2013). Speculative Everything. MIT Press.</li>
-        </ul>
-      </div>
-    </div>
+  <section class="closing">
+    <h2>Wetterbank doesn’t exist yet.</h2>
+    <p class="lede">But the tram is late, and you’re already sitting here.</p>
+    <div class="actions"><a class="btn" href="#demo">Try it</a></div>
+    <p class="small version">Design fiction · Düsseldorf · 2026</p>
   </section>
 </main>
 
 <footer>
-  <div class="wrap">
-    <span class="sp"><span lang="en">The Council for Talking Street Furniture is fictional. A project by Varun Sangani, Düsseldorf.</span><span lang="de">Der Rat für sprechendes Stadtmobiliar ist fiktiv. Ein Projekt von Varun Sangani, Düsseldorf.</span></span>
-    <a href="privacy.html"><span lang="en">Privacy &amp; legal notice</span><span lang="de">Datenschutz &amp; Impressum</span></a>
-  </div>
+  <span>Wetterbank by Varun Sangani</span>
+  <span class="links"><a href="mailto:varuns@ik.me?subject=Wetterbank">Email</a><a href="https://www.linkedin.com/in/varunsangani" target="_blank" rel="noopener">LinkedIn</a><a href="https://github.com/va3runs/wetterbank" target="_blank" rel="noopener">GitHub</a><a href="privacy.html">Privacy &amp; imprint</a></span>
 </footer>
 
-<script src="js/config.js"></script>
-<script src="js/lang.js"></script>
-<script src="js/code.js"></script>
-<script src="js/tally.js"></script>
-<script src="js/consult.js"></script>
+</div>
+
+<script>
+(function(){
+  "use strict";
+  var replies = [
+    "Your complaint has been forwarded to the weather. Processing time: undetermined.",
+    "We have registered your concern. The weather is currently unavailable.",
+    "You are not alone: 17 people have already complained today. What is your name?",
+    "The weather has read your complaint and declines to comment.",
+    "Your complaint has been forwarded to the responsible cloud. The cloud is on holiday.",
+    "Thank you for your feedback. Unfortunately we can guarantee neither rain nor sun.",
+    "Your concern has been classified as “feels colder than measured”. A reply is not planned.",
+    "Your complaint is the third on this topic today. The person next to you filed the same one.",
+    "We understand. The weather does not care. Would you like to talk about it?",
+    "Thank you. Your complaint has been filed, folder: “Monday again”.",
+    "Please wait. You are number 212 in the queue. Perhaps you know number 211?",
+    "Complaint rejected: today the weather is, unfortunately, exactly as it is. What is your name?",
+    "Your complaint has been accepted. The person next to you is complaining too. Ask for their name.",
+    "Grumbling is better together. So what is your name?",
+    "We cannot change the weather, but we can change your day. Start with your name.",
+    "Complaint processed. Unfortunately we are still missing your name. What is your name?",
+    "The weather asks us to pass on: talk to someone who answers. What is your name?",
+    "While you wait for an answer, you can introduce yourself to the next person on the bench. It is faster.",
+    "You sound like you have more on your mind than the weather. What is your name?",
+    "Your complaint is important to us. So is your name. What is your name?",
+    "Complaint received. Tip: people who freeze together can also introduce themselves."
+  ];
+  var form = document.getElementById("demo-form"), input = document.getElementById("complaint"), out = document.getElementById("reply");
+  var i = Math.floor(Math.random() * replies.length);
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+    if (!input.value.trim()) { input.focus(); return; }
+    var c = document.createElement("span"); c.className = "case";
+    c.textContent = "Case WB-" + (1000 + Math.floor(Math.random() * 9000));
+    out.textContent = ""; out.appendChild(c); out.appendChild(document.createTextNode(replies[i % replies.length]));
+    out.className = "reply has"; i++;
+    input.value = "";
+  });
+})();
+</script>
 </body>
 </html>

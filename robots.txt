@@ -1,5 +1,2 @@
 User-agent: *
 Allow: /
-Disallow: /supabase/
-Disallow: /docs/
-Sitemap: https://va3runs.github.io/wetterbank/sitemap.xml
