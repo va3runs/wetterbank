@@ -12,7 +12,9 @@ A design fiction from Düsseldorf asking how autonomous systems will shape our e
 |---|---|
 | `index.html` | Home: the fiction, the complaint form, three modes, the question |
 | `documentation.html` | The research: context, the question, planned field studies, precedents, log, references |
+| `de/` | German versions of the home, documentation and privacy pages (English is the default) |
 | `css/site.css` | Shared styles |
+| `js/desk.js` | The complaint form, in English and German (picked by the page language) |
 | `privacy.html` | Privacy and imprint |
 | `404.html` | Not-found page |
 | `assets/` | Icon and sharing image |

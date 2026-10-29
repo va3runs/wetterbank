@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dokumentation — Wetterbank®</title>
+<meta name="description" content="Wetterbank® als Forschung: die Frage, der Kontext, Vorbilder, geplante Feldstudien und ein laufendes Protokoll.">
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#111111" media="(prefers-color-scheme: dark)">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Wetterbank®">
+<meta property="og:title" content="Wetterbank® — Dokumentation">
+<meta property="og:description" content="Die Frage, der Kontext, Vorbilder, geplante Feldstudien und ein laufendes Protokoll.">
+<meta property="og:locale" content="de_DE">
+<meta property="og:image" content="https://va3runs.github.io/wetterbank/assets/og.png">
+<link rel="canonical" href="https://va3runs.github.io/wetterbank/de/documentation.html">
+<link rel="alternate" hreflang="en" href="https://va3runs.github.io/wetterbank/documentation.html">
+<link rel="alternate" hreflang="de" href="https://va3runs.github.io/wetterbank/de/documentation.html">
+<link rel="alternate" hreflang="x-default" href="https://va3runs.github.io/wetterbank/documentation.html">
+<link rel="icon" type="image/svg+xml" href="../assets/icon.svg">
+<link rel="apple-touch-icon" href="../assets/icon-180.png">
+<link rel="stylesheet" href="../css/site.css">
+<style>
+.intro{padding:80px 0 0}
+.updated{margin:16px 0 0}
+.toc{display:flex;flex-wrap:wrap;gap:6px 18px;margin:32px 0 0;padding:16px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);font-size:15px}
+.toc a{text-decoration:none;color:var(--mute)}
+.toc a:hover{color:var(--fg)}
+.toc span{color:var(--mute);font-variant-numeric:tabular-nums;margin-right:4px}
+section h2 .n{color:var(--mute);font-weight:400;margin-right:8px;font-variant-numeric:tabular-nums}
+section p{max-width:62ch}
+.ex li{display:grid;grid-template-columns:96px 1fr;gap:4px 16px}
+.ex .y{color:var(--mute);font-variant-numeric:tabular-nums}
+.ex p{margin:0}
+.ex .src{font-size:14px;color:var(--mute);margin-top:4px}
+@media (max-width:520px){.ex li{grid-template-columns:1fr;gap:2px}}
+.big{font-size:22px;line-height:1.4;letter-spacing:-.2px;margin:0 0 24px}
+.subq{counter-reset:q}
+.subq li{display:grid;grid-template-columns:28px 1fr;gap:8px}
+.subq li::before{counter-increment:q;content:counter(q);color:var(--mute);font-variant-numeric:tabular-nums}
+.subq p{margin:4px 0 0;color:var(--mute);font-size:16px}
+.callout{margin:24px 0 0;padding:14px 16px;border-left:2px solid var(--fg);background:var(--soft);font-size:16px}
+.callout p{margin:0}
+.study{padding:20px 0;border-top:1px solid var(--line)}
+.study:last-child{border-bottom:1px solid var(--line)}
+.study .head{display:flex;flex-wrap:wrap;justify-content:space-between;gap:4px 16px;align-items:baseline;margin:0 0 6px}
+.study .id{font-family:var(--mono);font-size:13px;color:var(--mute)}
+.study h3{margin:0}
+.study p{margin:0 0 8px;font-size:16px}
+.study dl{display:grid;grid-template-columns:120px 1fr;gap:4px 12px;margin:10px 0 0;font-size:14px}
+.study dt{color:var(--mute)}
+.study dd{margin:0}
+.status{font-size:13px;color:var(--mute);border:1px solid var(--line);border-radius:6px;padding:2px 8px}
+@media (max-width:520px){.study dl{grid-template-columns:1fr}.study dt{margin-top:6px}}
+.group{margin:36px 0 0}
+.group h3{font-size:13px;letter-spacing:.6px;text-transform:uppercase;color:var(--mute);font-weight:500;margin:0 0 4px}
+.group>p{font-size:15px;color:var(--mute);margin:0 0 8px}
+.prec li p{margin:0;font-size:16px}
+.prec .who{color:var(--mute);font-size:14px}
+.prec .takes{margin-top:6px;font-size:15px}
+.prec .takes strong{font-weight:500}
+.refs li{font-size:15px;line-height:1.5}
+.log li{display:grid;grid-template-columns:110px 1fr;gap:16px}
+.log time{color:var(--mute);font-variant-numeric:tabular-nums}
+.log p{margin:0}
+@media (max-width:520px){.log li{grid-template-columns:1fr;gap:2px}}
+</style>
+</head>
+<body>
+<div class="page">
+
+<header class="top">
+  <a class="by" href="index.html"><svg class="logo" viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="15"/><rect class="mk" x="10" y="11" width="44" height="24" rx="12"/><path class="mk" d="M19 32 16 43 29 33Z"/><g class="dt"><circle cx="21.5" cy="23" r="4"/><circle cx="32" cy="23" r="4"/><circle cx="42.5" cy="23" r="4"/></g><path class="ln" d="M12 47H52M17 47v7M47 47v7"/></svg><span>Wetterbank®<span class="where">, Düsseldorf</span></span></a>
+  <nav aria-label="Seiten"><a href="index.html">Start</a><a href="documentation.html" aria-current="page">Dokumentation</a><span class="lang" role="group" aria-label="Sprache"><a href="../documentation.html" hreflang="en" lang="en" aria-label="English">EN</a><a href="documentation.html" hreflang="de" lang="de" aria-label="Deutsch" aria-current="true">DE</a></span></nav>
+</header>
+
+<main>
+  <div class="intro">
+    <h1>Dokumentation.</h1>
+    <p class="lede">Wetterbank® als Forschung: was sie fragt, was es vorher gab, wie sie getestet wird und was bisher passiert ist.</p>
+    <p class="small updated">Zuletzt aktualisiert am 29. Oktober 2026</p>
+    <nav class="toc" aria-label="Inhalt">
+      <a href="#context"><span>01</span>Kontext</a>
+      <a href="#fiction"><span>02</span>Die Fiktion</a>
+      <a href="#question"><span>03</span>Die Frage</a>
+      <a href="#studies"><span>04</span>Feldstudien</a>
+      <a href="#precedents"><span>05</span>Vorbilder</a>
+      <a href="#log"><span>06</span>Protokoll</a>
+      <a href="#references"><span>07</span>Literatur</a>
+    </nav>
+  </div>
+
+  <section id="context" aria-labelledby="context-h">
+    <h2 id="context-h"><span class="n">01</span>Kontext</h2>
+    <p>Vor ein paar Jahrzehnten klang ein Auto ohne Fahrer absurd. Heute verlassen autonome und sprechende Systeme unsere Wohnungen und ziehen auf unsere Straßen. Die meisten sollen informieren, liefern oder überwachen. Kaum eines ist für das gemacht, was zwischen den Menschen um sie herum passiert.</p>
+    <p class="sub" style="margin-top:28px">Dinge, die wir uns nie hätten vorstellen können, und die schon da sind:</p>
+    <ul class="plain ex">
+      <li><span class="y">2011, 2014</span><div><p><strong>Mit Maschinen reden, zu Hause.</strong> Siri und Alexa haben es normal gemacht, drinnen mit einem Gegenstand zu sprechen. Wetterbank® fragt, was passiert, wenn das nach draußen zieht, unter Fremde.</p></div></li>
+      <li><span class="y">2014</span><div><p><strong>Bänke sind längst schlau.</strong> Boston stellte solarbetriebene Soofa-Bänke in Parks auf, an denen man das Handy laden kann. Bänke haben gelernt, Handys zu laden, aber nicht, Hallo zu sagen.</p><p class="src"><a href="https://www.boston.gov/departments/new-urban-mechanics/soofa" target="_blank" rel="noopener">Stadt Boston</a></p></div></li>
+      <li><span class="y">2019</span><div><p><strong>Ein sprechendes Objekt am Bahnhof.</strong> Die Deutsche Bahn testete SEMMI, einen Serviceroboter am Berliner Hauptbahnhof, der Fragen beantwortete, Small Talk machte und Witze erzählte, in mehreren Sprachen.</p><p class="src"><a href="https://www.leinetal24.de/wirtschaft/deutsche-bahn-setzt-roboter-semmi-am-kunden-ein-erzaehlt-sogar-witze-zr-12389016.html" target="_blank" rel="noopener">leinetal24, Juni 2019</a></p></div></li>
+      <li><span class="y">2020–2025</span><div><p><strong>Ein selbstfahrender Bus gleich neben Düsseldorf.</strong> Monheim am Rhein ließ fünf autonome Kleinbusse im Linienbetrieb fahren (A01). Im September 2025 wurde der Betrieb eingestellt, weil der Hersteller sie nicht mehr unterstützte. Solche Technik kann kommen, und wieder verschwinden.</p><p class="src"><a href="https://www.urban-transport-magazine.com/en/the-consequences-of-easymiles-withdrawal-suspension-of-autonomous-minibus-operations-in-monheim/" target="_blank" rel="noopener">Urban Transport Magazine</a></p></div></li>
+      <li><span class="y">2025</span><div><p><strong>Eine sprechende Haltestelle.</strong> Der Hamburger Verkehrsverbund stellte den Prototyp einer KI-Haltestelle vor, die Fragen von Fahrgästen in vielen Sprachen beantwortet, mit einer Kamera, die die Polizei alarmieren kann. In der Version der Industrie geht es bei einer sprechenden Haltestelle um Information und Sicherheit, nicht um die Menschen, die warten.</p><p class="src"><a href="https://www.notebookcheck.com/Kuenstliche-Intelligenz-Wie-eine-sprechende-Haltestelle-Reisezentren-ersetzen-soll.1037469.0.html" target="_blank" rel="noopener">Notebookcheck</a></p></div></li>
+      <li><span class="y">2025</span><div><p><strong>Roboter auf dem Gehweg.</strong> Starship-Roboter liefern in Hamburg-Barmbek Einkäufe von REWE aus.</p><p class="src"><a href="https://retailtechinnovationhub.com/category/robots/starship-technologies-delivery-robots-roll-into-germany-as-rewe-goes-live-in-streets-of-hamburg" target="_blank" rel="noopener">Retail Technology Innovation Hub</a></p></div></li>
+      <li><span class="y">2026</span><div><p><strong>Autos ohne Fahrer.</strong> Waymo bietet in 14 US-Städten bezahlte, vollständig fahrerlose Fahrten an.</p><p class="src"><a href="https://driveteslacanada.ca/news/waymo-driverless-rides-denver-san-diego-tampa/" target="_blank" rel="noopener">Drive Tesla Canada, September 2026</a></p></div></li>
+    </ul>
+    <p class="sub" style="margin-top:36px">Und das Wetter, das Eine, was alle an einer deutschen Straßenbahnhaltestelle gemeinsam haben:</p>
+    <ul class="plain">
+      <li><strong>62 %</strong> der Deutschen reden mehrmals pro Woche oder öfter über das Wetter (<a href="https://yougov.com/de-de/aktuelle-ergebnisse/20260414-e9f72-2" target="_blank" rel="noopener">YouGov, 2026</a>).</li>
+      <li><strong>70 %</strong> halten das Wetter für ein akzeptables Small-Talk-Thema, mehr als jedes andere (<a href="https://www.t-online.de/leben/aktuelles/id_100690286/small-talk-mit-diesen-themen-machen-sie-sich-unbeliebt-umfrage.html" target="_blank" rel="noopener">Babbel / YouGov, 2025</a>).</li>
+      <li><strong>48,5 %</strong> der 18- bis 24-Jährigen ist Small Talk unangenehm (dieselbe Umfrage).</li>
+      <li><strong>18- bis 29-Jährige</strong> sind in Deutschland am stärksten von Einsamkeit betroffen (<a href="https://www.bmbfsfj.bund.de/bmbfsfj/aktuelles/alle-meldungen/erstes-einsamkeitsbarometer-fuer-deutschland-veroeffentlicht-240202" target="_blank" rel="noopener">Einsamkeitsbarometer 2024</a>).</li>
+    </ul>
+    <p style="margin-top:24px">Der Einstieg ist leicht. Der Schritt danach ist schwer. Wetterbank® ist für diesen Schritt gebaut.</p>
+  </section>
+
+  <section id="fiction" aria-labelledby="fiction-h">
+    <h2 id="fiction-h"><span class="n">02</span>Die Fiktion</h2>
+    <p>Wetterbank® ist eine Bank an einer Straßenbahnhaltestelle, die Gespräche zwischen Fremden beginnt, indem sie ihnen hilft, Beschwerden über das Wetter einzureichen. Sie hat drei Modi, jeder einen Schritt weiter weg vom sicheren Thema: <strong>Wetter</strong> beginnt mit einer Bemerkung über das Wetter, <strong>Meckern</strong> nimmt Beschwerden entgegen und leitet sie weiter, <strong>Namen</strong> lässt das Wetter beiseite und fragt nach dem Namen.</p>
+    <p>Sie ist eine Design-Fiction: ein Objekt, das eine Frage aufwerfen soll, statt verkauft zu werden. Wie das Near Future Laboratory über die eigene Arbeit sagt, deutet eine Design-Fiction Folgen an, ohne Vorhersagen zu machen („makes implications without making predictions“). Wetterbank® behauptet nicht, dass Bänke sprechen werden. Sie fragt, was es bedeuten würde, wenn sie es täten.</p>
+    <p>Der bürokratische Humor ist Absicht. Eine Maschine, die geduldig Ihre Beschwerde über Nieselregen ablegt, spielt aus, was Maschinen gut können, endlose Geduld für kleine, langweilige Gespräche, statt so zu tun, als wäre sie ein Mensch. Der Witz ist der Einstieg; um die Frage geht es.</p>
+    <p>Wetterbank® begann als Design-Fiction in meinem <a href="https://va3runs.github.io/rnd/#wetterbank">Portfolio</a>, mit einer fiktiven Firma, der Wetterbank® GmbH, „gegründet 2031 nach einer 40-minütigen Straßenbahnverspätung, in der niemand ein Wort sagte“. Auf dieser Seite geht sie als Forschung weiter.</p>
+  </section>
+
+  <section id="question" aria-labelledby="question-h">
+    <h2 id="question-h"><span class="n">03</span>Die Frage</h2>
+    <p class="big">Wie prägen interaktive und autonome Systeme soziale Begegnungen im öffentlichen Raum?</p>
+    <ol class="plain subq">
+      <li><div><strong>Wollen.</strong> Wollen Menschen überhaupt reden, miteinander oder mit einer Bank?<p>Nicht alle an einer Haltestelle wollen Gesellschaft. Schweigen in der Öffentlichkeit ist oft eine Entscheidung, kein Problem.</p></div></li>
+      <li><div><strong>Helfen.</strong> Kann eine Bank einer Begegnung helfen, oder steht sie ihr im Weg?<p>Eine Bank, die als Erste spricht, könnte die Hemmschwelle senken, oder uns den unangenehmen Teil abnehmen, sodass wir ihn nie lernen.</p></div></li>
+      <li><div><strong>Zukunft.</strong> Wie werden wir reagieren, wenn solche Objekte normal werden, und sollten sie das?<p>Fahrerlose Autos und sprechende Haltestellen zeigen, wie schnell das Unvorstellbare zur Infrastruktur wird. Die Busse in Monheim zeigen, dass es auch wieder verschwinden kann.</p></div></li>
+    </ol>
+    <div class="callout"><p><strong>Zwei Ergebnisse, nicht eines.</strong> <em style="font-style:normal;text-decoration:underline;text-decoration-color:var(--line)">Mit der Bank</em> zu reden ist nicht dasselbe, wie <em style="font-style:normal;text-decoration:underline;text-decoration-color:var(--line)">wegen der Bank miteinander</em> zu reden. Jede Studie unten erfasst beides und vergleicht es mit einer gewöhnlichen Bank.</p></div>
+  </section>
+
+  <section id="studies" aria-labelledby="studies-h">
+    <h2 id="studies-h"><span class="n">04</span>Feldstudien</h2>
+    <p class="sub">Von günstig bis echt. Jede Studie wird hier protokolliert, sobald sie stattfindet, mit dem, was echt und was inszeniert war.</p>
+
+    <article class="study">
+      <div class="head"><span class="id">Feldstudie #001</span><span class="status">Geplant</span></div>
+      <h3>Gespräche an Straßenbahnhaltestellen</h3>
+      <p>Kurze Gespräche an Düsseldorfer Haltestellen: Wie fangen Sie ein Gespräch mit Fremden an? Beschweren Sie sich über das Wetter? Würden Sie wollen, dass eine Bank den Anfang macht?</p>
+      <dl><dt>Echt</dt><dd>Echte Menschen, echte Haltestellen. Keine Bank.</dd><dt>Beantwortet</dt><dd>Frage 1, und ob „Meckern“ eine Gewohnheit ist oder ein Klischee.</dd></dl>
+    </article>
+
+    <article class="study">
+      <div class="head"><span class="id">Feldstudie #002</span><span class="status">Geplant</span></div>
+      <h3>Ein Interview mit der Bank</h3>
+      <p>Ein spekulatives Gespräch mit Wetterbank® selbst, geschrieben und als Transkript veröffentlicht, nach Reddy et al., „Making Everyday Things Talk“ (2021).</p>
+      <dl><dt>Inszeniert</dt><dd>Vollständig. Die Bank spiele ich.</dd><dt>Beantwortet</dt><dd>Was die Bank sagen würde, und was sie niemals sagen sollte.</dd></dl>
+    </article>
+
+    <article class="study">
+      <div class="head"><span class="id">Feldstudie #003</span><span class="status">Geplant</span></div>
+      <h3>Die Bank werden</h3>
+      <p>Eine Person aus dem Theater spielt die Bank, mit bewusst eingeschränkten Sinnen und festem Skript, nach der Methode der Techno-Mimesis von Dörrenbächer, Löffler und Hassenzahl (2020): kein Mensch, der so tut, als wäre er eine Bank, sondern ein Mensch, der herausfindet, wie es ist, eine Bank zu sein.</p>
+      <dl><dt>Inszeniert</dt><dd>Die Bank. Die Fragen, die sie aufwirft, sind echt.</dd><dt>Beantwortet</dt><dd>Was eine Bank wahrnehmen kann, und wann sie schweigen sollte.</dd></dl>
+    </article>
+
+    <article class="study">
+      <div class="head"><span class="id">Feldstudie #004</span><span class="status">Geplant</span></div>
+      <h3>Die inszenierte Haltestelle</h3>
+      <p>Schauspielende spielen die Bank und die Fremden an einer erfundenen Haltestelle. Das Publikum schaut zu und diskutiert danach, was funktioniert hat, was ins Leere lief und was eine Bank niemals sagen sollte.</p>
+      <dl><dt>Inszeniert</dt><dd>Die Haltestelle, die Bank, die Fremden. Das Publikum ist echt.</dd><dt>Beantwortet</dt><dd>Fragen 2 und 3, bevor es irgendeine Hardware gibt.</dd></dl>
+    </article>
+
+    <article class="study">
+      <div class="head"><span class="id">Feldstudie #005</span><span class="status">Geplant</span></div>
+      <h3>Die gewöhnliche Bank</h3>
+      <p>Ein Besuch an einer „Plauderbank“: eine gewöhnliche Bank mit einem Schild, dass man sich hier gern unterhält (zum Beispiel in Wesel, NRW). Wenn ein Schild schon funktioniert, was würde eine sprechende Bank hinzufügen, oder wegnehmen?</p>
+      <dl><dt>Echt</dt><dd>Echte Bank, echte Menschen. Keine Technik.</dd><dt>Beantwortet</dt><dd>Die Vergleichsbasis für alle anderen Studien.</dd></dl>
+    </article>
+
+    <article class="study">
+      <div class="head"><span class="id">Feldstudie #006</span><span class="status">Geplant</span></div>
+      <h3>Eine echte Bank, eine versteckte Stimme</h3>
+      <p>Eine Bank an einer echten Haltestelle mit einem kleinen Lautsprecher. Das „System“ ist eine Person in der Nähe, die Sätze aus dem Skript auswählt: eine Wizard-of-Oz-Studie nach den Mülltonnen-Robotern von Cornell Tech. Keine Aufnahmen von Gesichtern oder Stimmen; alle erfahren hinterher, was los war.</p>
+      <dl><dt>Echt</dt><dd>Die Haltestelle und die Menschen.</dd><dt>Inszeniert</dt><dd>Die Intelligenz der Bank.</dd><dt>Beantwortet</dt><dd>Kommt jemand über das Wetter hinaus, und war das die eigene Idee oder die der Bank?</dd></dl>
+    </article>
+  </section>
+
+  <section id="precedents" aria-labelledby="precedents-h">
+    <h2 id="precedents-h"><span class="n">05</span>Vorbilder</h2>
+    <p class="sub">Was es vorher gab, sortiert nach dem, was Wetterbank® davon übernimmt.</p>
+
+    <div class="group">
+      <h3>Herkunft</h3>
+      <p>Forschung, auf der Wetterbank® direkt aufbaut.</p>
+      <ul class="plain prec">
+        <li><p><a href="https://dl.acm.org/doi/full/10.1145/3772318.3791189" target="_blank" rel="noopener">Mediating Urban Social Encounters: Co-Design of Robotic Street Furniture with Adolescents</a></p><p class="who">Dörrenbächer et al., CHI 2026</p><p class="takes"><strong>Übernimmt:</strong> Stadtmobiliar als Vermittler zwischen Menschen, erforscht mit Mitteln des Theaters; Wetterbank® ergänzt Erwachsene, eine Straßenbahnhaltestelle und das Wetter als Einstieg.</p></li>
+        <li><p><a href="https://www.volkswagenstiftung.de/en/news/news/when-park-benches-bring-people-together-rethinking-encounters-urban-spaces" target="_blank" rel="noopener">When park benches bring people together</a></p><p class="who">ENACT, Uni Siegen mit dem FFT Düsseldorf, 2026</p><p class="takes"><strong>Übernimmt:</strong> die Frage, welche sozialen Rollen Technik im öffentlichen Raum übernehmen könnte, und spekulatives Rollenspiel als Methode.</p></li>
+        <li><p><a href="https://www.semanticscholar.org/paper/91236df6260019e8d354354f83aca6333f68d97c" target="_blank" rel="noopener">Becoming a Robot: Overcoming Anthropomorphism with Techno-Mimesis</a></p><p class="who">Dörrenbächer, Löffler &amp; Hassenzahl, CHI 2020</p><p class="takes"><strong>Übernimmt:</strong> die Methode für Feldstudie #003.</p></li>
+        <li><p><a href="https://sites.google.com/view/otherware/home" target="_blank" rel="noopener">Otherware</a></p><p class="who">Hassenzahl et al., 2020–2021</p><p class="takes"><strong>Übernimmt:</strong> Maschinen als Gegenüber mit eigenen Stärken gestalten, nicht als falsche Menschen.</p></li>
+      </ul>
+    </div>
+
+    <div class="group">
+      <h3>Sprechende Objekte im öffentlichen Raum</h3>
+      <p>Der Beweis, dass Menschen mit Stadtmobiliar reden, und was dabei schiefgehen kann.</p>
+      <ul class="plain prec">
+        <li><p><a href="https://panstudio.co.uk/project/hello-lamp-post/" target="_blank" rel="noopener">Hello Lamp Post</a></p><p class="who">PAN Studio mit Tom Armitage, Bristol, 2013</p><p class="takes"><strong>Übernimmt:</strong> Menschen schreiben Laternen und Briefkästen Nachrichten, und die Objekte geben frühere Antworten weiter. Gespräche mit Objekten, aus denen ein Austausch zwischen Menschen wird.</p></li>
+        <li><p><a href="https://london.sciencegallery.com/mouthy-exhibits/talking-statues" target="_blank" rel="noopener">Talking Statues</a></p><p class="who">Sing London, London und Manchester, 2014</p><p class="takes"><strong>Übernimmt:</strong> lustige Figurenstimmen nach Skript, geschrieben und gesprochen von Profis aus Literatur und Theater. Und was Wetterbank® nicht ist: Diese Statuen reden auf einen ein, nicht zwischen Fremden.</p></li>
+        <li><p><a href="https://www.cnn.com/travel/article/sexy-trash-cans-malmo-sweden-rubbish-intl-scli/index.html" target="_blank" rel="noopener">Malmös sprechende Mülleimer</a></p><p class="who">Stadt Malmö, 2017</p><p class="takes"><strong>Übernimmt:</strong> eine Warnung. Wenn der Witz die ganze Interaktion ist, nutzt er sich ab.</p></li>
+        <li><p><a href="https://citylab-berlin.org/projekte/talking-treebot/" target="_blank" rel="noopener">Talking Treebot</a></p><p class="who">CityLAB Berlin</p><p class="takes"><strong>Übernimmt:</strong> einen Baum, dessen Gesprächslaune echten Wetterdaten folgt. Ein naher Verwandter einer Bank, die das Wetter kennt.</p></li>
+      </ul>
+    </div>
+
+    <div class="group">
+      <h3>Ohne Technik</h3>
+      <p>Fremde zum Reden bringen, ganz ohne Technik.</p>
+      <ul class="plain prec">
+        <li><p><a href="https://www.ucl.ac.uk/astrea/happy-chat-benches/project-bench" target="_blank" rel="noopener">Happy to Chat benches</a></p><p class="who">Allison Owen-Jones, Cardiff, 2019</p><p class="takes"><strong>Übernimmt:</strong> ein Schild an einer Bank reicht, um zum Gespräch einzuladen. Der Vergleich für Frage 2.</p></li>
+        <li><p><a href="https://www.wesel.de/rathaus-online/aktuelles/plauderbaenke-wesel" target="_blank" rel="noopener">Plauderbänke</a></p><p class="who">Wesel (NRW), Heidelberg und andere deutsche Städte, seit 2023</p><p class="takes"><strong>Übernimmt:</strong> dieselbe Idee, nah an Düsseldorf. Der Ort für Feldstudie #005.</p></li>
+        <li><p><a href="https://www.koeniggalerie.com/blogs/public-projects/jeppe-hein-modified-social-benches-forum" target="_blank" rel="noopener">Modified Social Benches</a></p><p class="who">Jeppe Hein, seit 2005</p><p class="takes"><strong>Übernimmt:</strong> schon die Form einer Bank verändert, wie Menschen zusammensitzen, bevor sie ein Wort sagt.</p></li>
+      </ul>
+    </div>
+
+    <div class="group">
+      <h3>Methode</h3>
+      <p>Wie man ein sprechendes Objekt mit echten Menschen testet.</p>
+      <ul class="plain prec">
+        <li><p><a href="https://news.cornell.edu/stories/2023/04/almost-everyone-likes-helpful-trash-robot" target="_blank" rel="noopener">Mülltonnen-Roboter</a></p><p class="who">Fanjun Bu, Wendy Ju und Team, Cornell Tech, New York, 2022–2023</p><p class="takes"><strong>Übernimmt:</strong> Wizard-of-Oz-Roboter im öffentlichen Raum, mit Interviews im Anschluss. Die Vorlage für Feldstudie #006.</p></li>
+        <li><p><a href="https://research.tue.nl/en/publications/making-everyday-things-talk-speculative-conversations-into-the-fu/" target="_blank" rel="noopener">Making Everyday Things Talk</a></p><p class="who">Reddy et al., CHI 2021</p><p class="takes"><strong>Übernimmt:</strong> spekulative Gespräche mit Objekten als Forschungsmethode. Die Vorlage für Feldstudie #002.</p></li>
+        <li><p><a href="https://www.rimini-protokoll.de/website/media/remotex/REMOTE%20X.pdf" target="_blank" rel="noopener">Remote X</a></p><p class="who">Rimini Protokoll, Berlin, 2013</p><p class="takes"><strong>Übernimmt:</strong> eine künstliche Stimme, die eine Gruppe Fremder durch eine Stadt führt. Theater als Weg, zu testen, was eine Maschinenstimme mit Menschen macht.</p></li>
+      </ul>
+    </div>
+
+    <div class="group">
+      <h3>Tonfall</h3>
+      <p>Trockene Fiktion, die ernst genommen wird.</p>
+      <ul class="plain prec">
+        <li><p><a href="https://bureauoflinguisticalreality.com/" target="_blank" rel="noopener">The Bureau of Linguistical Reality</a></p><p class="who">Alicia Escott &amp; Heidi Quante, seit 2014</p><p class="takes"><strong>Übernimmt:</strong> ein fiktives öffentliches Amt, betrieben als partizipative Forschung, mit nummerierten Feldstudien.</p></li>
+        <li><p><a href="https://tbdcatalog.com/" target="_blank" rel="noopener">TBD Catalog</a></p><p class="who">Near Future Laboratory, 2014</p><p class="takes"><strong>Übernimmt:</strong> die gewöhnliche, alltägliche nahe Zukunft, völlig ernst erzählt.</p></li>
+        <li><p><a href="https://superflux.in/index.php/work/uninvited-guests/" target="_blank" rel="noopener">Uninvited Guests</a></p><p class="who">Superflux, 2015</p><p class="takes"><strong>Übernimmt:</strong> lustige, menschliche Kritik an autonomen Objekten, und das Objekt bewusst einfach halten.</p></li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="log" aria-labelledby="log-h">
+    <h2 id="log-h"><span class="n">06</span>Protokoll</h2>
+    <p class="sub">Neueste Einträge zuerst.</p>
+    <ol class="plain log" reversed>
+      <li><time datetime="2026-10-29">29.10.2026</time><p>Diese Seite wird zum Zuhause des Projekts. Die Frage, die geplanten Feldstudien und die Vorbilder werden aufgeschrieben.</p></li>
+      <li><time datetime="2026-10">10.2026</time><p>Wetterbank® beginnt als Design-Fiction in meinem <a href="https://va3runs.github.io/rnd/#wetterbank">Portfolio</a>: eine fiktive Firma, drei Modi und eine Website, auf der man sich beim Wetter beschweren kann.</p></li>
+    </ol>
+  </section>
+
+  <section id="references" aria-labelledby="ref-h">
+    <h2 id="ref-h"><span class="n">07</span>Literatur</h2>
+    <ul class="plain refs">
+      <li>Brignull, H. &amp; Rogers, Y. (2003). Enticing people to interact with large public displays in public spaces. INTERACT 2003.</li>
+      <li>Bu, F., Bremers, A., Colley, M. &amp; Ju, W. (2024). Field notes on deploying research robots in public spaces. <a href="https://arxiv.org/abs/2404.18375" target="_blank" rel="noopener">arXiv:2404.18375</a>.</li>
+      <li>Bu, F., Fischer, K. &amp; Ju, W. (2025). Making sense of robots in public spaces: A study of trash barrel robots. <a href="https://arxiv.org/abs/2504.01121" target="_blank" rel="noopener">arXiv:2504.01121</a>.</li>
+      <li>Dörrenbächer, J., Löffler, D. &amp; Hassenzahl, M. (2020). Becoming a robot: Overcoming anthropomorphism with techno-mimesis. CHI ’20.</li>
+      <li>Dörrenbächer, J. et al. (2026). Mediating urban social encounters: Co-design of robotic street furniture with adolescents. CHI ’26. <a href="https://dl.acm.org/doi/full/10.1145/3772318.3791189" target="_blank" rel="noopener">doi:10.1145/3772318.3791189</a>.</li>
+      <li>Dunne, A. &amp; Raby, F. (2013). Speculative Everything. MIT Press.</li>
+      <li>Epley, N. &amp; Schroeder, J. (2014). Mistakenly seeking solitude. Journal of Experimental Psychology: General, 143(5).</li>
+      <li>Giaccardi, E. &amp; Redström, J. (2020). Technology and more-than-human design. Design Issues, 36(4), 33–44.</li>
+      <li>Goffman, E. (1963). Behavior in Public Places. Free Press.</li>
+      <li>Hassenzahl, M., Borchers, J., Boll, S., Rosenthal-von der Pütten, A. &amp; Wulf, V. (2021). Otherware: How to best interact with autonomous systems. ACM Interactions, 28(1).</li>
+      <li>Reddy, A. et al. (2021). Making everyday things talk: Speculative conversations into the future of voice interfaces at home. CHI EA ’21.</li>
+      <li>Whyte, W. H. (1980). The Social Life of Small Urban Spaces. Conservation Foundation.</li>
+    </ul>
+  </section>
+</main>
+
+<footer>
+  <span>Wetterbank®, Düsseldorf</span>
+  <span class="links"><a href="https://va3runs.github.io/rnd/">Portfolio</a><a href="mailto:varuns@ik.me?subject=Wetterbank">E-Mail</a><a href="https://www.linkedin.com/in/varunsangani" target="_blank" rel="noopener">LinkedIn</a><a href="https://github.com/va3runs/wetterbank" target="_blank" rel="noopener">GitHub</a><a href="privacy.html">Datenschutz &amp; Impressum</a></span>
+</footer>
+
+</div>
+</body>
+</html>

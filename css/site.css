@@ -25,9 +25,14 @@ img,svg{display:block}
 .by{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--fg)}
 .by .logo{width:28px;height:28px}
 .by .where{color:var(--mute)}
-.top nav{display:flex;gap:20px}
+.top nav{display:flex;align-items:center;gap:20px}
 .top nav a{text-decoration:none;color:var(--mute)}
 .top nav a:hover,.top nav a[aria-current="page"]{color:var(--fg)}
+/* Language switch: a small two-way pill, same family as the Live badge */
+.lang{display:inline-flex;padding:2px;border-radius:999px;background:var(--panel);font-size:13px;font-weight:500;line-height:1}
+.lang a,.top nav .lang a{padding:5px 9px;border-radius:999px;color:var(--mute);text-decoration:none;letter-spacing:.3px}
+.lang a:hover,.top nav .lang a:hover{color:var(--fg)}
+.lang a[aria-current="true"],.top nav .lang a[aria-current="true"]{background:var(--bg);color:var(--fg);box-shadow:0 0 0 1px var(--line)}
 .logo rect{fill:var(--fg)}
 .logo .mk{fill:var(--bg)}
 .logo .dt{fill:var(--fg)}

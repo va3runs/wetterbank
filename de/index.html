@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wetterbank® — eine Bank, die Gespräche zwischen Fremden beginnt</title>
+<meta name="description" content="Wetterbank® ist eine Bank, die Gespräche zwischen Fremden beginnt, indem sie ihnen hilft, Beschwerden über das Wetter einzureichen. Eine Design-Fiction über die Frage, wie autonome Systeme unsere Begegnungen im öffentlichen Raum prägen werden.">
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#111111" media="(prefers-color-scheme: dark)">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Wetterbank®">
+<meta property="og:title" content="Wetterbank® — eine Bank, die Gespräche zwischen Fremden beginnt">
+<meta property="og:description" content="Indem sie ihnen hilft, Beschwerden über das Wetter einzureichen. Eine Design-Fiction über autonome Systeme im öffentlichen Raum.">
+<meta property="og:locale" content="de_DE">
+<meta property="og:image" content="https://va3runs.github.io/wetterbank/assets/og.png">
+<meta property="og:url" content="https://va3runs.github.io/wetterbank/de/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://va3runs.github.io/wetterbank/de/">
+<link rel="alternate" hreflang="en" href="https://va3runs.github.io/wetterbank/">
+<link rel="alternate" hreflang="de" href="https://va3runs.github.io/wetterbank/de/">
+<link rel="alternate" hreflang="x-default" href="https://va3runs.github.io/wetterbank/">
+<link rel="icon" type="image/svg+xml" href="../assets/icon.svg">
+<link rel="apple-touch-icon" href="../assets/icon-180.png">
+<link rel="stylesheet" href="../css/site.css">
+<style>
+.hero{padding:96px 0 0}
+.hero .mark{width:72px;height:72px;margin:0 0 32px}
+.notice{margin:28px 0 0;padding:14px 16px;border-left:2px solid var(--fg);background:var(--soft);font-size:15px;line-height:1.5}
+
+/* The formula */
+.formula{list-style:none;margin:0;padding:0}
+.formula li{display:grid;grid-template-columns:28px 1fr;gap:8px;padding:12px 0;border-top:1px solid var(--line)}
+.formula li:last-child{border-bottom:1px solid var(--line)}
+.formula .op{color:var(--mute);font-variant-numeric:tabular-nums}
+.formula li.eq strong{font-weight:600}
+.spark{margin:20px 0 0}
+
+/* Complaint form */
+.desk{background:var(--soft);border:1px solid var(--line);border-radius:14px;padding:20px}
+.live{display:inline-flex;align-items:center;gap:8px;margin-left:10px;padding:3px 10px 3px 9px;border-radius:999px;background:var(--panel);color:var(--fg);font-size:13px;font-weight:500;vertical-align:2px;text-decoration:none}
+.live i{position:relative;width:8px;height:8px;border-radius:50%;background:#30d158;flex:none}
+.live i::after{content:"";position:absolute;inset:0;border-radius:50%;background:#30d158}
+@media (prefers-reduced-motion:no-preference){.live i::after{animation:pulse 1.6s ease-out infinite}}
+@keyframes pulse{0%{transform:scale(1);opacity:.7}100%{transform:scale(3);opacity:0}}
+.live:hover{background:var(--line)}
+.desk{scroll-margin-top:24px;transition:box-shadow .3s}
+.desk.called{box-shadow:0 0 0 3px #30d158}
+.desk-head{display:flex;justify-content:space-between;gap:12px;font-size:13px;color:var(--mute);letter-spacing:.3px;text-transform:uppercase;margin:0 0 16px}
+.field{margin:0 0 14px}
+.field label{display:block;font-size:15px;color:var(--mute);margin:0 0 6px}
+.pair{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media (max-width:480px){.pair{grid-template-columns:1fr}}
+.desk select,.desk input{width:100%;font:inherit;font-size:max(16px,1rem);color:var(--fg);background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:10px 12px;appearance:none;-webkit-appearance:none}
+.desk select{background-image:linear-gradient(45deg,transparent 50%,var(--mute) 50%),linear-gradient(135deg,var(--mute) 50%,transparent 50%);background-position:calc(100% - 18px) 52%,calc(100% - 13px) 52%;background-size:5px 5px;background-repeat:no-repeat;padding-right:36px}
+.desk select:focus,.desk input:focus{outline:none;border-color:var(--fg)}
+.receipt{margin:16px 0 0;padding:14px 16px;border-radius:12px;background:var(--bg);border:1px solid var(--line)}
+.receipt dl{display:grid;grid-template-columns:auto 1fr;gap:2px 14px;margin:0 0 10px;font-size:14px;color:var(--mute);font-variant-numeric:tabular-nums}
+.receipt dt{margin:0}.receipt dd{margin:0;color:var(--fg)}
+.receipt p{margin:0}
+.desk .small{margin:12px 0 0}
+/* The writing field glows while it waits for someone */
+.desk #what{transition:border-color .2s,box-shadow .2s}
+.desk.idle #what{border-color:rgba(48,209,88,.75)}
+@media (prefers-reduced-motion:no-preference){.desk.idle #what{animation:glow 2.6s ease-in-out infinite}}
+@media (prefers-reduced-motion:reduce){.desk.idle #what{box-shadow:0 0 0 3px rgba(48,209,88,.22)}}
+@keyframes glow{0%,100%{box-shadow:0 0 0 0 rgba(48,209,88,0)}50%{box-shadow:0 0 0 6px rgba(48,209,88,.2)}}
+.send{display:flex;flex-wrap:wrap;align-items:center;gap:8px 14px}
+.hint{font-size:14px;margin:0}
+.count{margin-left:auto;font-size:13px;color:var(--mute);font-variant-numeric:tabular-nums}
+.desk .btn[disabled]{opacity:.6;cursor:progress}
+.clear{display:flex;align-items:center;gap:12px;margin:12px 0 0;font-size:13px;color:var(--mute)}
+.clear .bar{flex:1;min-width:40px;height:2px;background:var(--line);border-radius:2px;overflow:hidden}
+.clear .bar span{display:block;height:100%;background:var(--mute);transform-origin:left center}
+.clear button{white-space:nowrap;font:inherit;font-size:13px;color:var(--fg);background:none;border:0;padding:6px 0;cursor:pointer;text-decoration:underline;text-decoration-color:var(--line);text-underline-offset:3px}
+@media (prefers-reduced-motion:reduce){.clear .bar{display:none}}
+
+/* Modes */
+.mode{padding:40px 0 0}
+.mode h3 span{font-weight:400;color:var(--mute)}
+.mode p{margin:0 0 20px}
+
+/* Question */
+.rq{font-size:22px;line-height:1.4;letter-spacing:-.2px;margin:0 0 24px}
+.subq{counter-reset:q}
+.subq li{display:grid;grid-template-columns:28px 1fr;gap:8px}
+.subq li::before{counter-increment:q;content:counter(q);color:var(--mute);font-variant-numeric:tabular-nums}
+.two{margin:32px 0 0}
+
+/* Closing */
+.closing{padding:96px 0 0}
+.closing h2{font-size:30px;font-weight:400;letter-spacing:-.4px;line-height:1.3;margin:0 0 4px}
+.stats{margin:20px 0 0;font-size:14px;color:var(--mute);font-variant-numeric:tabular-nums}
+@media (max-width:520px){.hero{padding-top:64px}.closing h2{font-size:26px}.rq{font-size:20px}}
+</style>
+</head>
+<body>
+<div class="page">
+
+<header class="top">
+  <a class="by" href="index.html"><svg class="logo" viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="15"/><rect class="mk" x="10" y="11" width="44" height="24" rx="12"/><path class="mk" d="M19 32 16 43 29 33Z"/><g class="dt"><circle cx="21.5" cy="23" r="4"/><circle cx="32" cy="23" r="4"/><circle cx="42.5" cy="23" r="4"/></g><path class="ln" d="M12 47H52M17 47v7M47 47v7"/></svg><span>Wetterbank®<span class="where">, Düsseldorf</span></span></a>
+  <nav aria-label="Seiten"><a href="index.html" aria-current="page">Start</a><a href="documentation.html">Dokumentation</a><span class="lang" role="group" aria-label="Sprache"><a href="../" hreflang="en" lang="en" aria-label="English">EN</a><a href="index.html" hreflang="de" lang="de" aria-label="Deutsch" aria-current="true">DE</a></span></nav>
+</header>
+
+<main>
+  <div class="hero">
+    <svg class="logo mark" viewBox="0 0 64 64" role="img" aria-label="Wetterbank®-Logo: eine Sprechblase mit Tipp-Punkten über einer Bank"><rect width="64" height="64" rx="15"/><rect class="mk" x="10" y="11" width="44" height="24" rx="12"/><path class="mk" d="M19 32 16 43 29 33Z"/><g class="dt typing"><circle cx="21.5" cy="23" r="4"/><circle cx="32" cy="23" r="4"/><circle cx="42.5" cy="23" r="4"/></g><path class="ln" d="M12 47H52M17 47v7M47 47v7"/></svg>
+    <h1><strong>Wetterbank®</strong> ist eine Bank, die Gespräche zwischen Fremden beginnt, indem sie ihnen hilft, Beschwerden über das Wetter einzureichen.</h1>
+    <p class="lede">Eine Design-Fiction über die Frage, wie autonome Systeme unsere Begegnungen im öffentlichen Raum prägen werden, wenn sie aus unseren Wohnungen auf unsere Straßen ziehen.</p>
+    <div class="actions">
+      <a class="btn" href="#desk" data-to-desk>Beschwerde einreichen</a>
+      <a href="documentation.html">Zur Dokumentation</a>
+    </div>
+    <p class="notice">Wetterbank® ist eine Design-Fiction und ein laufendes Forschungsprojekt. Die Bank gibt es nicht. Noch nicht.</p>
+  </div>
+
+  <section id="idea" aria-labelledby="idea-h">
+    <h2 id="idea-h">So geht die Rechnung auf.</h2>
+    <p class="sub">Drei Dinge, die an jeder deutschen Straßenbahnhaltestelle ohnehin alle wissen.</p>
+    <ol class="formula">
+      <li><span class="op"></span><span>Das Wetter ist der sicherste Einstieg in ein Gespräch.</span></li>
+      <li><span class="op">+</span><span>Die Bahn hat Verspätung. Schon wieder.</span></li>
+      <li><span class="op">+</span><span>An der Haltestelle sagt niemand ein Wort.</span></li>
+      <li class="eq"><span class="op">=</span><span><strong>Eine Bank, die als Erste spricht.</strong></span></li>
+    </ol>
+    <p class="spark small">Wetterbank® begann als Design-Fiction in meinem <a href="https://va3runs.github.io/rnd/#wetterbank">Portfolio</a>. Auf dieser Seite geht es weiter.</p>
+  </section>
+
+  <section id="file" aria-labelledby="file-h">
+    <h2 id="file-h">Wetterbeschwerde einreichen. <a class="live" href="#desk" data-to-desk aria-label="Live und interaktiv: zum Beschwerdeformular"><i aria-hidden="true"></i>Live · ausprobieren</a></h2>
+    <p class="sub">Beschwerden werden in der Reihenfolge ihres Eingangs bearbeitet. Bahnen nicht.</p>
+    <form class="desk idle" id="desk" autocomplete="off" novalidate>
+      <div class="desk-head"><span>Wetterbeschwerde, Formular 38b</span><span>Wetterbank®</span></div>
+      <div class="pair">
+        <div class="field">
+          <label for="cat">Kategorie</label>
+          <select id="cat">
+            <option>Regen</option><option>Wind</option><option>Kälte</option><option>Gefühlt kälter als gemessen</option><option>Zu heiß</option><option>Grau, allgemein</option><option>Sonstiges</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="line">Warten auf</label>
+          <select id="line">
+            <option>Keine Angabe</option><option>U79</option><option>701</option><option>704</option><option>706</option><option>707</option><option>708</option><option>709</option><option>Eine Bahn, die nie kam</option>
+          </select>
+        </div>
+      </div>
+      <div class="field">
+        <label for="what">Schildern Sie den Vorfall</label>
+        <input id="what" type="text" maxlength="200" placeholder="Kaum war ich aus dem Haus, fing es an zu regnen." enterkeyhint="send">
+      </div>
+      <div class="send">
+        <button class="btn" type="submit" id="send">Beschwerde einreichen</button>
+        <p class="hint" id="hint" role="status" aria-live="polite"></p>
+        <span class="count" id="count" aria-hidden="true"></span>
+      </div>
+      <div class="receipt" id="receipt" hidden aria-live="polite"></div>
+      <p class="small">Ihre Eingaben werden weder gesendet noch gespeichert. Das Wetter hat genug um die Ohren.</p>
+    </form>
+  </section>
+
+  <section id="modes" aria-labelledby="modes-h">
+    <h2 id="modes-h">Drei Modi, Schritt für Schritt.</h2>
+    <p class="sub">Jeder Modus entfernt sich ein Stück vom sicheren Thema und kommt der Person neben Ihnen ein Stück näher.</p>
+
+    <div class="mode">
+      <h3>Wetter <span>· Modus 1</span></h3>
+      <p>Sie beginnt mit dem sichersten Satz, den es gibt.</p>
+      <figure>
+        <svg viewBox="0 0 600 340" role="img" aria-label="Eine Bank unter einer Regenwolke sagt: Frisch heute, oder?">
+          <rect class="p-bg" width="600" height="340"/>
+          <rect class="p-bub" x="60" y="44" width="400" height="72" rx="16"/><path class="p-bub" d="M300 115l22 34 22-34"/><path d="M302 114h40" style="stroke:var(--bg)" stroke-width="4"/>
+          <text class="p-txt" x="84" y="89">Frisch heute, oder?</text>
+          <g class="p-soft"><path d="M470 118a22 22 0 0 1 4-43 28 28 0 0 1 52 6 18 18 0 0 1-2 37z"/><path d="M486 132v12M502 132v12M518 132v12"/></g>
+          <g class="p-ln p-fill"><path d="M60 300H540"/><rect x="190" y="170" width="220" height="16" rx="3"/><path d="M212 186v28M388 186v28"/><rect x="170" y="214" width="260" height="18" rx="3"/><path d="M190 232v68M410 232v68"/></g>
+          <circle class="p-dot" cx="388" cy="178" r="5"/>
+        </svg>
+      </figure>
+    </div>
+
+    <div class="mode">
+      <h3>Meckern <span>· Modus 2</span></h3>
+      <p>Sie nimmt Ihre Beschwerde entgegen und leitet sie weiter. Gemeinsam meckern verbindet.</p>
+      <figure>
+        <svg viewBox="0 0 600 340" role="img" aria-label="Eine Person auf der Bank hört: Ans Wetter weitergeleitet.">
+          <rect class="p-bg" width="600" height="340"/>
+          <rect class="p-bub" x="60" y="44" width="400" height="72" rx="16"/><path class="p-bub" d="M300 115l22 34 22-34"/><path d="M302 114h40" style="stroke:var(--bg)" stroke-width="4"/>
+          <text class="p-txt" x="84" y="89">Ans Wetter weitergeleitet.</text>
+          <g class="p-soft"><path d="M470 196l40-26M484 162h26v16"/><rect x="452" y="186" width="26" height="18" rx="2"/><path d="M452 187l13 9 13-9"/></g>
+          <g class="p-ln"><circle cx="262" cy="140" r="14"/><path d="M262 154v60"/></g>
+          <g class="p-ln p-fill"><path d="M60 300H540"/><rect x="190" y="170" width="220" height="16" rx="3"/><path d="M212 186v28M388 186v28"/><rect x="170" y="214" width="260" height="18" rx="3"/><path d="M190 232v68M410 232v68"/></g>
+          <g class="p-ln"><path d="M253 232v68M271 232v68"/></g>
+          <circle class="p-dot" cx="388" cy="178" r="5"/>
+        </svg>
+      </figure>
+    </div>
+
+    <div class="mode">
+      <h3>Namen <span>· Modus 3</span></h3>
+      <p>Sie lässt das Wetter beiseite und fragt nach dem Namen.</p>
+      <figure>
+        <svg viewBox="0 0 600 340" role="img" aria-label="Zwei Menschen auf der Bank in der Sonne. Die Bank sagt: Ich bin die Bank. Und Sie?">
+          <rect class="p-bg" width="600" height="340"/>
+          <rect class="p-bub" x="60" y="44" width="400" height="72" rx="16"/><path class="p-bub" d="M300 115l22 34 22-34"/><path d="M302 114h40" style="stroke:var(--bg)" stroke-width="4"/>
+          <text class="p-txt" x="84" y="89">Ich bin die Bank. Und Sie?</text>
+          <g class="p-soft"><circle cx="502" cy="190" r="16"/><path d="M502 160v8M502 212v8M472 190h8M524 190h8M481 169l6 6M517 205l6 6M523 169l-6 6M487 205l-6 6"/></g>
+          <g class="p-ln"><circle cx="250" cy="140" r="14"/><path d="M250 154v60"/><circle cx="330" cy="140" r="14"/><path d="M330 154v60"/></g>
+          <g class="p-ln p-fill"><path d="M60 300H540"/><rect x="190" y="170" width="220" height="16" rx="3"/><path d="M212 186v28M388 186v28"/><rect x="170" y="214" width="260" height="18" rx="3"/><path d="M190 232v68M410 232v68"/></g>
+          <g class="p-ln"><path d="M241 232v68M259 232v68M321 232v68M339 232v68"/></g>
+          <circle class="p-dot" cx="388" cy="178" r="5"/>
+        </svg>
+        <figcaption>Das „Du“ wird nach 20 Minuten angeboten, nicht vorher.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section id="question" aria-labelledby="q-h">
+    <h2 id="q-h">Die Frage.</h2>
+    <p class="rq">Wie prägen interaktive und autonome Systeme soziale Begegnungen im öffentlichen Raum?</p>
+    <ol class="plain subq">
+      <li><span><strong>Wollen.</strong> Wollen Menschen überhaupt reden, miteinander oder mit einer Bank?</span></li>
+      <li><span><strong>Helfen.</strong> Kann eine Bank einer Begegnung helfen, oder steht sie ihr im Weg?</span></li>
+      <li><span><strong>Zukunft.</strong> Wie werden wir reagieren, wenn solche Objekte normal werden, und sollten sie das?</span></li>
+    </ol>
+    <figure class="two">
+      <svg viewBox="0 0 600 260" role="img" aria-label="Zwei mögliche Ergebnisse. A: Eine Person redet mit der Bank. B: Zwei Menschen reden miteinander, wegen der Bank.">
+        <rect class="p-bg" width="600" height="260"/>
+        <path d="M300 30V230" style="stroke:var(--line)" stroke-width="2"/>
+        <text class="p-lab" x="40" y="52">A · mit der Bank</text>
+        <g class="p-ln"><circle cx="90" cy="120" r="14"/><path d="M90 134v54M78 210l12-22 12 22"/></g>
+        <path class="p-ln" d="M124 150h62M178 142l8 8-8 8M132 142l-8 8 8 8"/>
+        <g class="p-ln p-fill"><rect x="200" y="150" width="70" height="10" rx="2"/><path d="M208 160v28M262 160v28"/></g>
+        <circle class="p-dot" cx="256" cy="155" r="4"/>
+        <text class="p-lab" x="340" y="52">B · miteinander</text>
+        <g class="p-ln"><circle cx="380" cy="110" r="14"/><path d="M380 124v54M368 200l12-22 12 22"/><circle cx="540" cy="110" r="14"/><path d="M540 124v54M528 200l12-22 12 22"/></g>
+        <path class="p-ln" d="M412 130h96M500 122l8 8-8 8M420 122l-8 8 8 8"/>
+        <g class="p-ln p-fill"><rect x="425" y="186" width="70" height="10" rx="2"/><path d="M433 196v24M487 196v24"/></g>
+        <path class="p-dash" d="M460 180V146"/>
+        <circle class="p-dot" cx="481" cy="191" r="4"/>
+      </svg>
+      <figcaption>Zwei verschiedene Ergebnisse. Mit der Bank zu reden ist nicht dasselbe, wie wegen der Bank miteinander zu reden. Deshalb wird beides gemessen.</figcaption>
+    </figure>
+  </section>
+
+  <section class="closing">
+    <h2>Wetterbank® gibt es noch nicht. Sollte es sie geben?</h2>
+    <p class="lede">Die Dokumentation folgt der Frage: was es schon gab, wie getestet wird und was als Nächstes passiert.</p>
+    <div class="actions"><a class="btn" href="documentation.html">Zur Dokumentation</a></div>
+    <p class="stats">1 Bank (fiktiv) · 3 Modi · 21 Antworten · 0 pünktliche Bahnen</p>
+  </section>
+</main>
+
+<footer>
+  <span>Wetterbank®, Düsseldorf</span>
+  <span class="links"><a href="https://va3runs.github.io/rnd/">Portfolio</a><a href="mailto:varuns@ik.me?subject=Wetterbank">E-Mail</a><a href="https://www.linkedin.com/in/varunsangani" target="_blank" rel="noopener">LinkedIn</a><a href="https://github.com/va3runs/wetterbank" target="_blank" rel="noopener">GitHub</a><a href="privacy.html">Datenschutz &amp; Impressum</a></span>
+</footer>
+
+</div>
+
+<script src="../js/desk.js" defer></script>
+</body>
+</html>
