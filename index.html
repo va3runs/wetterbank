@@ -39,6 +39,8 @@
 @media (prefers-reduced-motion:no-preference){.live i::after{animation:pulse 1.6s ease-out infinite}}
 @keyframes pulse{0%{transform:scale(1);opacity:.7}100%{transform:scale(3);opacity:0}}
 .live:hover{background:var(--line)}
+.desk{scroll-margin-top:24px;transition:box-shadow .3s}
+.desk.called{box-shadow:0 0 0 3px #30d158}
 .desk-head{display:flex;justify-content:space-between;gap:12px;font-size:13px;color:var(--mute);letter-spacing:.3px;text-transform:uppercase;margin:0 0 16px}
 .field{margin:0 0 14px}
 .field label{display:block;font-size:15px;color:var(--mute);margin:0 0 6px}
@@ -86,7 +88,7 @@
     <h1><strong>Wetterbank®</strong> is a bench that starts conversations between strangers, by helping them file complaints about the weather.</h1>
     <p class="lede">A design fiction asking how autonomous systems will shape our encounters in public space, as they move from our homes onto our streets.</p>
     <div class="actions">
-      <a class="btn" href="#file">File a complaint</a>
+      <a class="btn" href="#desk" data-to-desk>File a complaint</a>
       <a href="documentation.html">Read the documentation</a>
     </div>
     <p class="notice">Wetterbank® is a design fiction and an ongoing research project. The bench does not exist. Yet.</p>
@@ -105,7 +107,7 @@
   </section>
 
   <section id="file" aria-labelledby="file-h">
-    <h2 id="file-h">File a weather complaint. <a class="live" href="#what" aria-label="Live and interactive: try the form below"><i aria-hidden="true"></i>Live · try it</a></h2>
+    <h2 id="file-h">File a weather complaint. <a class="live" href="#desk" data-to-desk aria-label="Live and interactive: go to the complaint box"><i aria-hidden="true"></i>Live · try it</a></h2>
     <p class="sub">Complaints are processed in the order they are received. Trams are not.</p>
     <form class="desk" id="desk" autocomplete="off">
       <div class="desk-head"><span>Weather complaint form 38b</span><span>Wetterbank®</span></div>
@@ -258,6 +260,17 @@
     "Complaint received. Tip: people who freeze together can also introduce themselves."
   ];
   var form = document.getElementById("desk"), out = document.getElementById("receipt");
+  /* Badge and hero button: bring the complaint box into view and put the cursor in it. */
+  var smooth = !matchMedia("(prefers-reduced-motion: reduce)").matches;
+  document.querySelectorAll("[data-to-desk]").forEach(function (a) {
+    a.addEventListener("click", function (e) {
+      e.preventDefault();
+      form.scrollIntoView({ behavior: smooth ? "smooth" : "auto", block: "center" });
+      setTimeout(function () { document.getElementById("what").focus({ preventScroll: true }); }, smooth ? 450 : 0);
+      form.classList.add("called");
+      setTimeout(function () { form.classList.remove("called"); }, 1400);
+    });
+  });
   var what = document.getElementById("what"), i = Math.floor(Math.random() * replies.length);
   function row(dl, k, v){ var dt = document.createElement("dt"), dd = document.createElement("dd"); dt.textContent = k; dd.textContent = v; dl.appendChild(dt); dl.appendChild(dd); }
   form.addEventListener("submit", function (e) {
