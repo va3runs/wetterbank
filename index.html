@@ -295,7 +295,7 @@
   var cat = document.getElementById("cat"), line = document.getElementById("line");
   var i = Math.floor(Math.random() * replies.length);
   var touch = matchMedia("(pointer: coarse)").matches;
-  var CLEAR_AFTER = 10000, timer = null, hovering = false, filing = false;
+  var CLEAR_AFTER = 30000, timer = null, hovering = false, filing = false;
 
   /* The writing field glows only while nobody is using the form. */
   function updateIdle() {
@@ -305,7 +305,7 @@
 
   function row(dl, k, v){ var dt = document.createElement("dt"), dd = document.createElement("dd"); dt.textContent = k; dd.textContent = v; dl.appendChild(dt); dl.appendChild(dd); }
 
-  /* After a receipt, the form clears itself after 10 seconds without any activity. */
+  /* After a receipt, the form clears itself after 30 seconds without any activity. */
   function startTimer() {
     clearTimeout(timer);
     if (out.hidden || hovering || document.hidden) return;
@@ -352,7 +352,7 @@
       row(dl, "Status", "Forwarded to the weather");
       var p = document.createElement("p"); p.textContent = replies[i % replies.length]; i++;
       var clr = document.createElement("div"); clr.className = "clear";
-      var note = document.createElement("span"); note.textContent = "Clears in 10 seconds";
+      var note = document.createElement("span"); note.textContent = "Clears in 30 seconds";
       var bar = document.createElement("span"); bar.className = "bar"; bar.setAttribute("aria-hidden", "true"); bar.appendChild(document.createElement("span"));
       var now = document.createElement("button"); now.type = "button"; now.textContent = "Clear now";
       now.addEventListener("click", function () { reset(); what.focus(); });
@@ -366,7 +366,7 @@
     }, smooth ? 600 : 0);
   });
 
-  /* Any activity in the form restarts the 10 seconds. Reading the receipt with the mouse over it pauses them. */
+  /* Any activity in the form restarts the 30 seconds. Reading the receipt with the mouse over it pauses them. */
   ["input", "keydown", "change", "pointerdown", "focusin"].forEach(function (ev) {
     form.addEventListener(ev, function () { if (!out.hidden) startTimer(); });
   });
