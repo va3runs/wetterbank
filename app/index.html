@@ -1,33 +1,35 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en" data-title-en="Wetterbank app" data-title-de="Wetterbank App">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Wetterbank App</title>
-<meta name="description" content="Die Bank, die immer etwas zu sagen hat. Today's weather as a first sentence, and a place to complain about it.">
+<title>Wetterbank app</title>
+<meta name="description" content="The bench that always has something to say. Today's weather as a first sentence, and a place to complain about it.">
 <meta name="theme-color" content="#fbfbfd" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Wetterbank">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
+<script>try{var d=document.documentElement,t=localStorage.getItem("wb-theme"),l=localStorage.getItem("wb-lang");if(t)d.setAttribute("data-theme",t);if(l==="de"){d.setAttribute("data-lang","de");d.lang="de"}}catch(e){}</script>
 <link rel="manifest" href="../manifest.webmanifest">
 <link rel="icon" type="image/svg+xml" href="../assets/icon.svg">
 <link rel="apple-touch-icon" href="../assets/icon-180.png">
 <link rel="stylesheet" href="../css/wb.css">
-<script>try{var t=localStorage.getItem("wb-theme");if(t)document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
 <style>
 body{min-height:100dvh;display:flex;flex-direction:column}
-.top{position:sticky;top:0;z-index:5;display:flex;align-items:center;justify-content:space-between;gap:.75rem;padding:calc(env(safe-area-inset-top) + .6rem) max(16px,env(safe-area-inset-right)) .6rem max(16px,env(safe-area-inset-left));background:color-mix(in srgb,var(--bg) 82%,transparent);backdrop-filter:saturate(1.8) blur(18px);-webkit-backdrop-filter:saturate(1.8) blur(18px);border-bottom:1px solid color-mix(in srgb,var(--line) 60%,transparent)}
-.city{position:relative;display:flex;align-items:center}
-.city select{appearance:none;-webkit-appearance:none;font:inherit;font-size:.95rem;color:var(--ink);background:var(--sunk);border:0;border-radius:999px;padding:.45em 2em .45em .95em;min-height:36px;cursor:pointer;max-width:52vw;text-overflow:ellipsis}
+.top{position:sticky;top:0;z-index:5;display:flex;align-items:center;gap:.6rem;padding:calc(env(safe-area-inset-top) + .6rem) max(16px,env(safe-area-inset-right)) .6rem max(16px,env(safe-area-inset-left));background:color-mix(in srgb,var(--bg) 82%,transparent);backdrop-filter:saturate(1.8) blur(18px);-webkit-backdrop-filter:saturate(1.8) blur(18px);border-bottom:1px solid color-mix(in srgb,var(--line) 60%,transparent)}
+.top .mark{margin-right:auto}
+@media (max-width:400px){.top .mark span{display:none}}
+.city{position:relative;display:flex;align-items:center;min-width:0}
+.city select{appearance:none;-webkit-appearance:none;font:inherit;font-size:.95rem;color:var(--ink);background:var(--sunk);border:0;border-radius:999px;padding:.45em 2em .45em .95em;min-height:34px;cursor:pointer;max-width:44vw;text-overflow:ellipsis}
 .city::after{content:"";position:absolute;right:.9em;top:50%;width:.45em;height:.45em;border-right:2px solid var(--mute);border-bottom:2px solid var(--mute);transform:translateY(-70%) rotate(45deg);pointer-events:none}
 main{flex:1;width:100%;max-width:520px;margin:0 auto;padding:1.25rem max(16px,env(safe-area-inset-left)) calc(96px + env(safe-area-inset-bottom))}
 .view{display:none}
 .view.on{display:block;animation:fade .2s ease-out}
 @keyframes fade{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
 
-/* Heute */
+/* Today */
 .now{display:grid;grid-template-columns:auto 1fr;align-items:end;column-gap:1rem;margin:.25rem 0 1.5rem}
 .temp{font-size:4.6rem;font-weight:300;letter-spacing:-.05em;line-height:.85}
 .now-meta{padding-bottom:.35rem}
@@ -47,7 +49,7 @@ main{flex:1;width:100%;max-width:520px;margin:0 auto;padding:1.25rem max(16px,en
 .steps a{font-weight:500}
 .source{margin:1.5rem 0 0;color:var(--mute);font-size:.78rem}
 
-/* Meckern */
+/* Complain */
 .hero{font-size:2.2rem;font-weight:700;letter-spacing:-.035em;margin:.25rem 0 .2rem}
 .complaint{margin:1.4rem 0 0}
 .complaint label{display:block;font-weight:600;margin-bottom:.45rem}
@@ -74,74 +76,71 @@ main{flex:1;width:100%;max-width:520px;margin:0 auto;padding:1.25rem max(16px,en
 <body>
 <header class="top">
   <a class="mark" href="../"><img src="../assets/icon.svg" alt="" width="30" height="30"><span>Wetterbank®</span></a>
-  <label class="city"><span class="vh">Ort (place)</span>
+  <label class="city"><span class="vh" data-en="Place" data-de="Ort">Place</span>
     <select id="city">
       <option value="duesseldorf">Düsseldorf</option>
-      <option value="koeln">Köln</option>
+      <option value="koeln" data-en="Cologne" data-de="Köln">Cologne</option>
       <option value="essen">Essen</option>
-      <option value="hannover">Hannover</option>
+      <option value="hannover" data-en="Hanover" data-de="Hannover">Hanover</option>
       <option value="berlin">Berlin</option>
       <option value="hamburg">Hamburg</option>
-      <option value="muenchen">München</option>
+      <option value="muenchen" data-en="Munich" data-de="München">Munich</option>
       <option value="frankfurt">Frankfurt</option>
-      <option value="here">Mein Standort</option>
+      <option value="here" data-en="My location" data-de="Mein Standort">My location</option>
     </select>
   </label>
+  <div class="lang-switch" role="group" aria-label="Language / Sprache"><button type="button" value="en" aria-pressed="true">EN</button><button type="button" value="de" aria-pressed="false">DE</button></div>
 </header>
 
 <main>
-  <p class="off" role="status">Offline. Die Bank redet trotzdem, nur ohne aktuelles Wetter. <span class="gloss">(Offline. The bench still talks, just without today’s weather.)</span></p>
+  <p class="off" role="status"><span lang="en">Offline. The bench still talks, just without today’s weather.</span><span lang="de">Offline. Die Bank redet trotzdem, nur ohne aktuelles Wetter.</span></p>
 
   <section class="view" id="heute" aria-labelledby="h-heute">
-    <h1 class="vh" id="h-heute">Heute</h1>
+    <h1 class="vh" id="h-heute"><span lang="en">Today</span><span lang="de">Heute</span></h1>
     <div class="now loading" id="now" aria-live="polite">
       <div class="temp" id="temp">–°</div>
-      <div class="now-meta"><b id="place">Düsseldorf</b><span id="cond">Wetter wird geholt …</span><span id="feels"></span></div>
+      <div class="now-meta"><b id="place">Düsseldorf</b><span id="cond"></span><span id="feels"></span></div>
     </div>
 
-    <p class="label"><i aria-hidden="true"></i>Modus 1 · Wetter</p>
-    <div class="bubble" id="opener" aria-live="polite">
-      <p class="say" id="op-de">Einen Moment. Die Bank schaut aus dem Fenster.</p>
-      <p class="gloss" id="op-en">One moment. The bench is looking out of the window.</p>
-    </div>
+    <p class="label"><i aria-hidden="true"></i><span lang="en">Mode 1 · Weather</span><span lang="de">Modus 1 · Wetter</span></p>
+    <div class="bubble" id="opener" aria-live="polite"><p class="say" id="op"></p></div>
     <svg class="bench" viewBox="170 100 260 128" aria-hidden="true"><path class="bench-gr" d="M170 222H430"/><rect class="bench-ln" x="210" y="112" width="180" height="14" rx="3"/><path class="bench-ln" d="M228 126v24M372 126v24"/><rect class="bench-ln" x="190" y="150" width="220" height="16" rx="3"/><path class="bench-ln" d="M206 166v56M394 166v56"/><circle class="bench-dot" cx="372" cy="119" r="4.5"/></svg>
 
     <div class="actions">
-      <button class="btn btn-primary" id="again" type="button">Anderer Satz</button>
+      <button class="btn btn-primary" id="again" type="button"><span lang="en">Another line</span><span lang="de">Anderer Satz</span></button>
       <button class="btn btn-quiet" id="speak" type="button" hidden>
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9z"/><path d="M16.5 8.5a5 5 0 0 1 0 7M19 6a8.5 8.5 0 0 1 0 12"/></svg>Vorlesen</button>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9z"/><path d="M16.5 8.5a5 5 0 0 1 0 7M19 6a8.5 8.5 0 0 1 0 12"/></svg><span lang="en">Read aloud</span><span lang="de">Vorlesen</span></button>
     </div>
 
-    <h2 class="eyebrow">So geht’s weiter <span style="text-transform:none;letter-spacing:0">(what comes next)</span></h2>
+    <h2 class="eyebrow"><span lang="en">What comes next</span><span lang="de">So geht’s weiter</span></h2>
     <ol class="steps">
-      <li class="done"><span class="n">1</span><div><b>Wetter</b><p>Die Bank hat den ersten Satz gesagt. Sagen Sie ihn laut, zu jemandem neben Ihnen.<br><span class="gloss">The bench said the first sentence. Say it out loud, to someone next to you.</span></p></div></li>
-      <li><span class="n">2</span><div><b>Meckern</b><p><a href="#meckern">Beschwerde einreichen</a>. Gemeinsam meckert es sich besser.<br><span class="gloss">File a complaint. Grumbling is better together.</span></p></div></li>
-      <li><span class="n">3</span><div><b>Namen</b><p>Fragen Sie nach dem Namen. Das kann die Bank Ihnen nicht abnehmen.<br><span class="gloss">Ask for their name. The bench cannot do that part for you.</span></p></div></li>
+      <li class="done"><span class="n">1</span><div><b><span lang="en">Weather</span><span lang="de">Wetter</span></b><p lang="en">The bench said the first sentence. Now say it out loud, to someone next to you.</p><p lang="de">Die Bank hat den ersten Satz gesagt. Sagen Sie ihn laut, zu jemandem neben Ihnen.</p></div></li>
+      <li><span class="n">2</span><div><b><span lang="en">Complain</span><span lang="de">Meckern</span></b><p lang="en"><a href="#meckern">File a complaint</a>. Grumbling is better together.</p><p lang="de"><a href="#meckern">Beschwerde einreichen</a>. Gemeinsam meckert es sich besser.</p></div></li>
+      <li><span class="n">3</span><div><b><span lang="en">Names</span><span lang="de">Namen</span></b><p lang="en">Ask for their name. The bench cannot do that part for you.</p><p lang="de">Fragen Sie nach dem Namen. Das kann die Bank Ihnen nicht abnehmen.</p></div></li>
     </ol>
-    <p class="source">Wetterdaten: <a href="https://open-meteo.com/" target="_blank" rel="noopener">Open-Meteo.com</a> (CC BY 4.0) · <a href="../impressum.html">Impressum &amp; Datenschutz</a></p>
+    <p class="source"><span lang="en">Weather data</span><span lang="de">Wetterdaten</span>: <a href="https://open-meteo.com/" target="_blank" rel="noopener">Open-Meteo.com</a> (CC BY 4.0) · <a href="../impressum.html"><span lang="en">Legal notice &amp; privacy</span><span lang="de">Impressum &amp; Datenschutz</span></a></p>
   </section>
 
   <section class="view" id="meckern" aria-labelledby="h-meckern">
-    <p class="label"><i aria-hidden="true"></i>Modus 2 · Meckern</p>
-    <h1 class="hero" id="h-meckern">Sag’s dem Wetter.</h1>
-    <p class="gloss" style="margin:0">Tell it to the weather.</p>
+    <p class="label"><i aria-hidden="true"></i><span lang="en">Mode 2 · Complaining</span><span lang="de">Modus 2 · Meckern</span></p>
+    <h1 class="hero" id="h-meckern"><span lang="en">Tell it to the weather.</span><span lang="de">Sag’s dem Wetter.</span></h1>
     <form class="complaint" id="complaint" autocomplete="off">
-      <label for="cmp">Beschwerde einreichen <span class="gloss">(file a complaint)</span></label>
-      <textarea id="cmp" placeholder="Das Wetter ist …" enterkeyhint="send" spellcheck="false"></textarea>
+      <label for="cmp"><span lang="en">File a complaint</span><span lang="de">Beschwerde einreichen</span></label>
+      <textarea id="cmp" placeholder="The weather is …" data-en="The weather is …" data-de="Das Wetter ist …" data-i18n-attr="placeholder" enterkeyhint="send" spellcheck="false"></textarea>
       <div class="row">
-        <p class="fine">Wird weder gesendet noch gespeichert. Das Wetter hat genug um die Ohren.<br>Neither sent nor stored.</p>
-        <button class="btn btn-primary" type="submit">Einreichen</button>
+        <p class="fine"><span lang="en">Neither sent nor stored. The weather has enough to deal with already.</span><span lang="de">Wird weder gesendet noch gespeichert. Das Wetter hat genug um die Ohren.</span></p>
+        <button class="btn btn-primary" type="submit"><span lang="en">Submit</span><span lang="de">Einreichen</span></button>
       </div>
     </form>
     <div class="answer" id="answer" aria-live="polite">
-      <div class="empty"><p>Die Antwort der Bank erscheint hier.</p><p class="gloss">The bench’s reply appears here.</p></div>
+      <div class="empty"><p><span lang="en">The bench’s reply appears here.</span><span lang="de">Die Antwort der Bank erscheint hier.</span></p></div>
     </div>
   </section>
 </main>
 
-<nav class="tabs" aria-label="Bereiche">
-  <a href="#heute" data-view="heute"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="9" r="3.5"/><path d="M9 2.5v1.5M9 14v1.5M2.5 9H4M3.9 3.9 5 5M13 5l1.1-1.1"/><path d="M10.5 20.5h8a3.5 3.5 0 0 0 .3-7 5 5 0 0 0-9.4 1.2 3 3 0 0 0 1.1 5.8z"/></svg>Heute</a>
-  <a href="#meckern" data-view="meckern"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v11H9l-5 4z"/><path d="M8 9.5h8M8 12.5h5"/></svg>Meckern</a>
+<nav class="tabs" aria-label="Sections">
+  <a href="#heute" data-view="heute"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="9" r="3.5"/><path d="M9 2.5v1.5M9 14v1.5M2.5 9H4M3.9 3.9 5 5M13 5l1.1-1.1"/><path d="M10.5 20.5h8a3.5 3.5 0 0 0 .3-7 5 5 0 0 0-9.4 1.2 3 3 0 0 0 1.1 5.8z"/></svg><span lang="en">Today</span><span lang="de">Heute</span></a>
+  <a href="#meckern" data-view="meckern"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v11H9l-5 4z"/><path d="M8 9.5h8M8 12.5h5"/></svg><span lang="en">Complain</span><span lang="de">Meckern</span></a>
 </nav>
 
 <script src="../js/wetterbank.js"></script>
@@ -150,7 +149,30 @@ main{flex:1;width:100%;max-width:520px;margin:0 auto;padding:1.25rem max(16px,en
   "use strict";
   var WB = window.Wetterbank;
   var $ = function(id){ return document.getElementById(id); };
-  var state = { w: null, city: "Düsseldorf", key: "duesseldorf", coords: null, fetchedAt: 0, ctrl: null };
+  var CITY_EN = { koeln: "Cologne", hannover: "Hanover", muenchen: "Munich" };
+  var S = {
+    fetching: { en: "Fetching the weather …", de: "Wetter wird geholt …" },
+    unavailable: { en: "Weather unavailable", de: "Wetter nicht erreichbar" },
+    feels: { en: "feels like ", de: "gefühlt " },
+    asof: { en: " · as of ", de: " · Stand " },
+    locating: { en: "Finding your location …", de: "Standort wird abgefragt …" },
+    noloc: { en: "No location. Staying in ", de: "Kein Standort. Wir bleiben in " },
+    here: { en: "Your location", de: "Ihr Standort" },
+    area: { en: "your area", de: "Ihrer Gegend" },
+    waiting: { en: "One moment. The bench is looking out of the window.", de: "Einen Moment. Die Bank schaut aus dem Fenster." },
+    case: { en: "Case ", de: "Vorgang " },
+    more: { en: "Another complaint", de: "Noch eine Beschwerde" },
+    read: { en: "Read aloud", de: "Vorlesen" }
+  };
+  var state = { w: null, key: "duesseldorf", coords: null, fetchedAt: 0, ctrl: null, loading: true, line: null, reply: null };
+
+  function L(){ return WB.lang(); }
+  function cityFor(){
+    if (state.key === "here") return S.area;
+    var c = WB.cities[state.key];
+    return { de: c.name, en: CITY_EN[state.key] || c.name };
+  }
+  function cap(s){ return s.charAt(0).toUpperCase() + s.slice(1); }
 
   /* Views */
   function route(){
@@ -166,73 +188,68 @@ main{flex:1;width:100%;max-width:520px;margin:0 auto;padding:1.25rem max(16px,en
   route();
 
   /* Weather */
-  function fmtTime(iso){ return iso ? iso.slice(11,16) : ""; }
   function render(){
-    var w = state.w;
-    $("place").textContent = state.key === "here" ? "Ihr Standort" : state.city;
-    $("now").classList.remove("loading");
-    if (w){
+    var l = L(), w = state.w;
+    $("place").textContent = state.key === "here" ? S.here[l] : cityFor()[l];
+    $("now").classList.toggle("loading", state.loading);
+    if (state.loading){
+      $("cond").textContent = S.fetching[l]; $("feels").textContent = "";
+    } else if (w){
       $("temp").textContent = w.t + "°";
-      $("cond").textContent = w.label[0] + " · " + w.label[1];
-      $("feels").textContent = "gefühlt " + w.f + "° · Stand " + fmtTime(w.time);
+      $("cond").textContent = l === "de" ? w.label[0] : cap(w.label[1]);
+      $("feels").textContent = S.feels[l] + w.f + "°" + S.asof[l] + w.time.slice(11,16);
     } else {
       $("temp").textContent = "–°";
-      $("cond").textContent = "Wetter nicht erreichbar";
-      $("feels").textContent = "weather unavailable";
+      $("cond").textContent = S.unavailable[l]; $("feels").textContent = "";
     }
-    newLine();
+    $("op").textContent = state.line ? state.line[l] : S.waiting[l];
+    renderReply();
+    $("speak").hidden = !WB.localVoice(l);
   }
-  function newLine(){
-    var o = WB.opener(state.w, state.city);
-    $("op-de").textContent = o.de;
-    $("op-en").textContent = o.en;
-  }
+  function newLine(){ state.line = WB.opener(state.w, cityFor()); render(); }
   function load(){
     if (state.ctrl) state.ctrl.abort();
     var c = state.coords || WB.cities[state.key];
     if (!c) return;
-    $("now").classList.add("loading");
-    $("cond").textContent = "Wetter wird geholt …"; $("feels").textContent = "";
-    state.ctrl = ("AbortController" in window) ? new AbortController() : null;
-    var t = setTimeout(function(){ if (state.ctrl) state.ctrl.abort(); }, 8000);
-    WB.fetchWeather(c.lat, c.lon, state.ctrl && state.ctrl.signal).then(function(w){
-      clearTimeout(t); state.w = w; state.fetchedAt = Date.now();
-      document.body.classList.remove("offline"); render();
-    }).catch(function(e){
-      clearTimeout(t); if (e && e.name === "AbortError" && state.w) return;
-      state.w = null; if (!navigator.onLine) document.body.classList.add("offline"); render();
+    state.loading = true; render();
+    var ctrl = ("AbortController" in window) ? new AbortController() : null;
+    state.ctrl = ctrl;
+    var t = setTimeout(function(){ if (ctrl) ctrl.abort(); }, 8000);
+    WB.fetchWeather(c.lat, c.lon, ctrl && ctrl.signal).then(function(w){
+      clearTimeout(t); if (state.ctrl !== ctrl) return;
+      state.w = w; state.fetchedAt = Date.now(); state.loading = false;
+      document.body.classList.remove("offline"); newLine();
+    }).catch(function(){
+      clearTimeout(t); if (state.ctrl !== ctrl) return;
+      state.w = null; state.loading = false;
+      if (!navigator.onLine) document.body.classList.add("offline");
+      newLine();
     });
   }
 
   var sel = $("city");
   sel.addEventListener("change", function(){
     if (sel.value === "here"){
-      if (!("geolocation" in navigator)) { sel.value = state.key; return; }
-      $("cond").textContent = "Standort wird abgefragt …";
+      var prev = state.key;
+      if (!("geolocation" in navigator)) { sel.value = prev; return; }
+      $("cond").textContent = S.locating[L()];
       navigator.geolocation.getCurrentPosition(function(p){
         state.coords = { lat: p.coords.latitude, lon: p.coords.longitude };
-        state.city = "Ihrer Gegend"; state.key = "here";
-        load();
-        $("place").textContent = "Ihr Standort";
+        state.key = "here"; load();
       }, function(){
-        sel.value = state.key === "here" ? "duesseldorf" : state.key;
-        $("cond").textContent = "Kein Standort. Wir bleiben in " + state.city + ".";
+        sel.value = prev;
+        $("cond").textContent = S.noloc[L()] + cityFor()[L()] + ".";
       }, { maximumAge: 600000, timeout: 10000 });
       return;
     }
-    state.coords = null; state.key = sel.value; state.city = WB.cities[sel.value].name;
-    load();
+    state.coords = null; state.key = sel.value; load();
   });
 
   $("again").addEventListener("click", newLine);
+  $("speak").addEventListener("click", function(){ if (state.line) WB.speak(state.line[L()], L()); });
+  if ("speechSynthesis" in window && speechSynthesis.addEventListener) speechSynthesis.addEventListener("voiceschanged", render);
 
-  /* Speaking: only with an on-device German voice, so nothing leaves the phone. */
-  var sp = $("speak");
-  function checkVoice(){ sp.hidden = !WB.localGermanVoice(); }
-  if ("speechSynthesis" in window){ checkVoice(); speechSynthesis.addEventListener && speechSynthesis.addEventListener("voiceschanged", checkVoice); }
-  sp.addEventListener("click", function(){ WB.speak($("op-de").textContent); });
-
-  /* Complaints */
+  /* Complaints: the text is cleared on submit and never sent. */
   var form = $("complaint"), ta = $("cmp"), ans = $("answer");
   ta.addEventListener("keydown", function(e){
     if (e.key === "Enter" && !e.shiftKey && !e.isComposing){ e.preventDefault(); form.requestSubmit ? form.requestSubmit() : form.dispatchEvent(new Event("submit",{cancelable:true})); }
@@ -240,34 +257,39 @@ main{flex:1;width:100%;max-width:520px;margin:0 auto;padding:1.25rem max(16px,en
   form.addEventListener("submit", function(e){
     e.preventDefault();
     if (!ta.value.trim()){ ta.focus(); return; }
-    var r = WB.complaintReply(state.w, state.w ? state.city : null);
-    ta.value = ""; /* nothing is kept */
-    ans.textContent = "";
-    var b = document.createElement("div"); b.className = "bubble";
-    var ref = document.createElement("span"); ref.className = "ref"; ref.textContent = "Vorgang " + r.ref;
-    var de = document.createElement("p"); de.className = "say"; de.textContent = r.de;
-    var en = document.createElement("p"); en.className = "gloss"; en.textContent = r.en;
-    b.appendChild(ref); b.appendChild(de); b.appendChild(en); ans.appendChild(b);
-    var bench = document.querySelector(".bench").cloneNode(true); ans.appendChild(bench);
-    var acts = document.createElement("div"); acts.className = "actions";
-    var more = document.createElement("button"); more.type = "button"; more.className = "btn btn-quiet"; more.textContent = "Noch eine Beschwerde";
-    more.addEventListener("click", function(){ ta.focus(); });
-    acts.appendChild(more);
-    if (WB.localGermanVoice()){
-      var s = document.createElement("button"); s.type = "button"; s.className = "btn btn-quiet"; s.textContent = "Vorlesen";
-      s.addEventListener("click", function(){ WB.speak(r.de); }); acts.appendChild(s);
-    }
-    ans.appendChild(acts);
+    state.reply = WB.complaintReply(state.w, state.w ? cityFor() : null);
+    ta.value = "";
+    renderReply();
     ta.blur();
   });
+  function renderReply(){
+    var r = state.reply; if (!r) return;
+    var l = L();
+    ans.textContent = "";
+    var b = document.createElement("div"); b.className = "bubble";
+    var ref = document.createElement("span"); ref.className = "ref"; ref.textContent = S.case[l] + r.ref;
+    var p = document.createElement("p"); p.className = "say"; p.textContent = r[l];
+    b.appendChild(ref); b.appendChild(p); ans.appendChild(b);
+    ans.appendChild(document.querySelector(".bench").cloneNode(true));
+    var acts = document.createElement("div"); acts.className = "actions";
+    var more = document.createElement("button"); more.type = "button"; more.className = "btn btn-quiet"; more.textContent = S.more[l];
+    more.addEventListener("click", function(){ ta.focus(); });
+    acts.appendChild(more);
+    if (WB.localVoice(l)){
+      var s = document.createElement("button"); s.type = "button"; s.className = "btn btn-quiet"; s.textContent = S.read[l];
+      s.addEventListener("click", function(){ WB.speak(r[L()], L()); }); acts.appendChild(s);
+    }
+    ans.appendChild(acts);
+  }
 
-  /* Refresh when coming back after 15 minutes. */
   document.addEventListener("visibilitychange", function(){
     if (document.visibilityState === "visible" && Date.now() - state.fetchedAt > 15*60*1000) load();
   });
   window.addEventListener("online", load);
   window.addEventListener("offline", function(){ document.body.classList.add("offline"); });
 
+  WB.initLang();
+  WB.onLang(render);
   load();
 
   if ("serviceWorker" in navigator) navigator.serviceWorker.register("../sw.js", { scope: "../" }).catch(function(){});

@@ -122,7 +122,12 @@
     return "unknown";
   }
 
-  function fill(s, w, city) {
+  function cityName(city, lang) {
+    if (city && typeof city === "object") return city[lang] || city.en;
+    return city || (lang === "de" ? "der Stadt" : "the city");
+  }
+
+  function fill(s, w, city, lang) {
     var key = w ? w.key : "unknown";
     return s
       .replace(/\{t\}/g, w ? w.t : "?")
@@ -130,7 +135,7 @@
       .replace(/\{w\}/g, w ? w.wind : "?")
       .replace(/\{c_en\}/g, CONDITIONS[key][1])
       .replace(/\{c\}/g, CONDITIONS_INLINE[key])
-      .replace(/\{city\}/g, city || "der Stadt");
+      .replace(/\{city\}/g, cityName(city, lang));
   }
 
   function pick(list, avoid) {
@@ -168,10 +173,10 @@
     var key = w ? w.key : "unknown";
     var base = pick(OPENERS[key], lastOpener);
     lastOpener = base;
-    var de = fill(base[0], w, city), en = fill(base[1], w, city);
+    var de = fill(base[0], w, city, "de"), en = fill(base[1], w, city, "en");
     if (w && Math.random() < 0.6) {
       for (var i = 0; i < EXTRAS.length; i++) {
-        if (EXTRAS[i].when(w)) { de += " " + fill(EXTRAS[i].line[0], w, city); en += " " + fill(EXTRAS[i].line[1], w, city); break; }
+        if (EXTRAS[i].when(w)) { de += " " + fill(EXTRAS[i].line[0], w, city, "de"); en += " " + fill(EXTRAS[i].line[1], w, city, "en"); break; }
       }
     }
     return { de: de, en: en };
@@ -182,17 +187,18 @@
     if (w && w.key !== "unknown" && Math.random() < 0.3) r = pick(WEATHER_REPLIES, lastReply);
     else { r = REPLIES[replyIndex % REPLIES.length]; replyIndex++; }
     lastReply = r;
-    return { de: fill(r[0], w, city), en: fill(r[1], w, city), ref: "WB-" + (1000 + Math.floor(Math.random() * 9000)) };
+    return { de: fill(r[0], w, city, "de"), en: fill(r[1], w, city, "en"), ref: "WB-" + (1000 + Math.floor(Math.random() * 9000)) };
   }
 
-  /* The bench speaks, using an on-device German voice only. */
-  function localGermanVoice() {
+  /* The bench speaks, using an on-device voice only, so nothing leaves the device. */
+  function localVoice(lang) {
     if (!("speechSynthesis" in global)) return null;
-    var vs = global.speechSynthesis.getVoices().filter(function (v) { return /^de(-|_|$)/i.test(v.lang) && v.localService; });
+    var re = new RegExp("^" + (lang || "de") + "(-|_|$)", "i");
+    var vs = global.speechSynthesis.getVoices().filter(function (v) { return re.test(v.lang) && v.localService; });
     return vs[0] || null;
   }
-  function speak(text) {
-    var v = localGermanVoice();
+  function speak(text, lang) {
+    var v = localVoice(lang);
     if (!v) return false;
     global.speechSynthesis.cancel();
     var u = new SpeechSynthesisUtterance(text);
@@ -201,14 +207,54 @@
     return true;
   }
 
+  /* Language: English by default, German on request. Remembered on this device only. */
+  var listeners = [];
+  function getLang() {
+    return document.documentElement.getAttribute("data-lang") === "de" ? "de" : "en";
+  }
+  function applyLang(l) {
+    var root = document.documentElement;
+    root.setAttribute("data-lang", l);
+    root.setAttribute("lang", l);
+    var t = root.getAttribute("data-title-" + l);
+    if (t) document.title = t;
+    document.querySelectorAll("[data-en]").forEach(function (el) {
+      var v = el.getAttribute("data-" + l);
+      var attr = el.getAttribute("data-i18n-attr");
+      if (attr) el.setAttribute(attr, v); else el.textContent = v;
+    });
+    document.querySelectorAll(".lang-switch button").forEach(function (b) {
+      b.setAttribute("aria-pressed", b.value === l ? "true" : "false");
+    });
+  }
+  function setLang(l) {
+    l = l === "de" ? "de" : "en";
+    try { localStorage.setItem("wb-lang", l); } catch (e) {}
+    applyLang(l);
+    listeners.forEach(function (fn) { fn(l); });
+  }
+  function initLang() {
+    applyLang(getLang());
+    document.querySelectorAll(".lang-switch button").forEach(function (b) {
+      b.addEventListener("click", function () { setLang(b.value); });
+    });
+  }
+  /* Pick the right half of a {de, en} pair. */
+  function t(pair) { return pair[getLang()]; }
+
   global.Wetterbank = {
     cities: CITIES,
     fetchWeather: fetchWeather,
     opener: opener,
     complaintReply: complaintReply,
     conditions: CONDITIONS,
-    localGermanVoice: localGermanVoice,
+    localVoice: localVoice,
     speak: speak,
+    lang: getLang,
+    setLang: setLang,
+    initLang: initLang,
+    onLang: function (fn) { listeners.push(fn); },
+    t: t,
     replyCount: REPLIES.length
   };
 })(window);

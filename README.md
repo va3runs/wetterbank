@@ -24,7 +24,7 @@ Wetterbank is a design fiction by Varun Sangani: a fictional smart bench from DÃ
 - Nothing typed is sent or stored. The only outside request is the weather from [Open-Meteo](https://open-meteo.com/) (free, no key, CC BY 4.0).
 - System fonts only, so no Google Fonts request.
 - "Vorlesen" (read aloud) appears only when the device has an on-device German voice.
-- German first, English gloss underneath.
+- English by default, with an EN / DE switch on every page. The choice is remembered on the device (`wb-lang`). Page text uses `lang="en"` / `lang="de"` pairs; the bench lines in `js/wetterbank.js` are `[German, English]` pairs.
 
 ## Editing the bench's lines
 

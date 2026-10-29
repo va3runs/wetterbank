@@ -25,7 +25,7 @@ h1,h2,h3{margin:0;font-weight:600;letter-spacing:-.02em;line-height:1.1}
 .vh{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 
 /* Buttons */
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:.45em;min-height:44px;padding:.55em 1.25em;border-radius:999px;border:0;font:inherit;font-weight:500;cursor:pointer;text-decoration:none;transition:background-color .15s,transform .1s}
+.btn{white-space:nowrap;display:inline-flex;align-items:center;justify-content:center;gap:.45em;min-height:44px;padding:.55em 1.25em;border-radius:999px;border:0;font:inherit;font-weight:500;cursor:pointer;text-decoration:none;transition:background-color .15s,transform .1s}
 .btn:hover{text-decoration:none}
 .btn:active{transform:scale(.98)}
 .btn-primary{background:var(--link);color:#fff}
@@ -54,5 +54,12 @@ h1,h2,h3{margin:0;font-weight:600;letter-spacing:-.02em;line-height:1.1}
 
 /* Stamp */
 .stamp{display:inline-block;border:2px solid var(--stamp);color:var(--stamp);border-radius:6px;padding:.15em .55em;font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;transform:rotate(-4deg)}
+
+/* Language: one language at a time. English unless html[data-lang="de"]. */
+html:not([data-lang="de"]) body [lang="de"]{display:none!important}
+html[data-lang="de"] body [lang="en"]{display:none!important}
+.lang-switch{display:inline-flex;padding:2px;border-radius:999px;background:var(--sunk);flex:none}
+.lang-switch button{font:inherit;font-size:.78rem;font-weight:600;letter-spacing:.04em;min-width:2.5rem;min-height:30px;padding:0 .7em;border:0;border-radius:999px;background:none;color:var(--mute);cursor:pointer}
+.lang-switch button[aria-pressed="true"]{background:var(--surface);color:var(--ink);box-shadow:0 1px 3px rgba(0,0,0,.12)}
 
 @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}

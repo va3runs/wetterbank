@@ -1,6 +1,6 @@
 /* Wetterbank service worker: keeps the app working offline.
    Weather requests always go to the network and are never cached. */
-const VERSION = "wb-v1";
+const VERSION = "wb-v2";
 const FILES = [
   "./", "./index.html", "./impressum.html", "./app/", "./app/index.html",
   "./css/wb.css", "./js/wetterbank.js", "./manifest.webmanifest",
