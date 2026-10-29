@@ -54,6 +54,21 @@
 .receipt dt{margin:0}.receipt dd{margin:0;color:var(--fg)}
 .receipt p{margin:0}
 .desk .small{margin:12px 0 0}
+/* The writing field glows while it waits for someone */
+.desk #what{transition:border-color .2s,box-shadow .2s}
+.desk.idle #what{border-color:rgba(48,209,88,.75)}
+@media (prefers-reduced-motion:no-preference){.desk.idle #what{animation:glow 2.6s ease-in-out infinite}}
+@media (prefers-reduced-motion:reduce){.desk.idle #what{box-shadow:0 0 0 3px rgba(48,209,88,.22)}}
+@keyframes glow{0%,100%{box-shadow:0 0 0 0 rgba(48,209,88,0)}50%{box-shadow:0 0 0 6px rgba(48,209,88,.2)}}
+.send{display:flex;flex-wrap:wrap;align-items:center;gap:8px 14px}
+.hint{font-size:14px;margin:0}
+.count{margin-left:auto;font-size:13px;color:var(--mute);font-variant-numeric:tabular-nums}
+.desk .btn[disabled]{opacity:.6;cursor:progress}
+.clear{display:flex;align-items:center;gap:12px;margin:12px 0 0;font-size:13px;color:var(--mute)}
+.clear .bar{flex:1;min-width:40px;height:2px;background:var(--line);border-radius:2px;overflow:hidden}
+.clear .bar span{display:block;height:100%;background:var(--mute);transform-origin:left center}
+.clear button{white-space:nowrap;font:inherit;font-size:13px;color:var(--fg);background:none;border:0;padding:6px 0;cursor:pointer;text-decoration:underline;text-decoration-color:var(--line);text-underline-offset:3px}
+@media (prefers-reduced-motion:reduce){.clear .bar{display:none}}
 
 /* Modes */
 .mode{padding:40px 0 0}
@@ -109,7 +124,7 @@
   <section id="file" aria-labelledby="file-h">
     <h2 id="file-h">File a weather complaint. <a class="live" href="#desk" data-to-desk aria-label="Live and interactive: go to the complaint box"><i aria-hidden="true"></i>Live · try it</a></h2>
     <p class="sub">Complaints are processed in the order they are received. Trams are not.</p>
-    <form class="desk" id="desk" autocomplete="off">
+    <form class="desk idle" id="desk" autocomplete="off" novalidate>
       <div class="desk-head"><span>Weather complaint form 38b</span><span>Wetterbank®</span></div>
       <div class="pair">
         <div class="field">
@@ -129,7 +144,11 @@
         <label for="what">Describe the incident</label>
         <input id="what" type="text" maxlength="200" placeholder="It started raining the moment I left the house." enterkeyhint="send">
       </div>
-      <button class="btn" type="submit">File complaint</button>
+      <div class="send">
+        <button class="btn" type="submit" id="send">File complaint</button>
+        <p class="hint" id="hint" role="status" aria-live="polite"></p>
+        <span class="count" id="count" aria-hidden="true"></span>
+      </div>
       <div class="receipt" id="receipt" hidden aria-live="polite"></div>
       <p class="small">Nothing you enter is sent or stored. The weather has enough to deal with.</p>
     </form>
@@ -271,19 +290,96 @@
       setTimeout(function () { form.classList.remove("called"); }, 1400);
     });
   });
-  var what = document.getElementById("what"), i = Math.floor(Math.random() * replies.length);
+  var what = document.getElementById("what"), send = document.getElementById("send");
+  var hint = document.getElementById("hint"), count = document.getElementById("count");
+  var cat = document.getElementById("cat"), line = document.getElementById("line");
+  var i = Math.floor(Math.random() * replies.length);
+  var touch = matchMedia("(pointer: coarse)").matches;
+  var CLEAR_AFTER = 10000, timer = null, hovering = false, filing = false;
+
+  /* The writing field glows only while nobody is using the form. */
+  function updateIdle() {
+    var idle = out.hidden && !what.value && document.activeElement !== what && !filing;
+    form.classList.toggle("idle", idle);
+  }
+
   function row(dl, k, v){ var dt = document.createElement("dt"), dd = document.createElement("dd"); dt.textContent = k; dd.textContent = v; dl.appendChild(dt); dl.appendChild(dd); }
+
+  /* After a receipt, the form clears itself after 10 seconds without any activity. */
+  function startTimer() {
+    clearTimeout(timer);
+    if (out.hidden || hovering || document.hidden) return;
+    timer = setTimeout(reset, CLEAR_AFTER);
+    var bar = out.querySelector(".bar span");
+    if (bar && smooth) {
+      bar.style.transition = "none"; bar.style.transform = "scaleX(1)";
+      void bar.offsetWidth;
+      bar.style.transition = "transform " + CLEAR_AFTER + "ms linear"; bar.style.transform = "scaleX(0)";
+    }
+  }
+  function pauseTimer() {
+    clearTimeout(timer);
+    var bar = out.querySelector(".bar span");
+    if (bar) { bar.style.transition = "none"; bar.style.transform = "scaleX(1)"; }
+  }
+  function reset() {
+    clearTimeout(timer);
+    out.hidden = true; out.textContent = "";
+    hint.textContent = "";
+    /* Keep a half-written complaint: only reset what nobody is working on. */
+    if (!what.value.trim()) { what.value = ""; cat.selectedIndex = 0; line.selectedIndex = 0; }
+    updateCount(); updateIdle();
+  }
+  function updateCount() {
+    var n = what.value.length;
+    count.textContent = n > 150 ? n + " / 200" : "";
+  }
+
   form.addEventListener("submit", function (e) {
     e.preventDefault();
-    if (!what.value.trim()) { what.focus(); return; }
-    var dl = document.createElement("dl");
-    row(dl, "Case", "WB-" + (1000 + Math.floor(Math.random() * 9000)));
-    row(dl, "Category", document.getElementById("cat").value);
-    row(dl, "Status", "Forwarded to the weather");
-    var p = document.createElement("p"); p.textContent = replies[i % replies.length]; i++;
-    out.textContent = ""; out.appendChild(dl); out.appendChild(p); out.hidden = false;
-    what.value = "";
+    if (filing) return;
+    if (!what.value.trim()) {
+      hint.textContent = "Please describe the incident first. Even “wet” counts.";
+      what.value = ""; what.focus(); return;
+    }
+    hint.textContent = "";
+    filing = true; send.disabled = true; send.textContent = "Filing…"; pauseTimer();
+    setTimeout(function () {
+      var dl = document.createElement("dl");
+      row(dl, "Case", "WB-" + (1000 + Math.floor(Math.random() * 9000)));
+      row(dl, "Category", cat.value);
+      if (line.selectedIndex > 0) row(dl, "Waiting for", line.value);
+      row(dl, "Status", "Forwarded to the weather");
+      var p = document.createElement("p"); p.textContent = replies[i % replies.length]; i++;
+      var clr = document.createElement("div"); clr.className = "clear";
+      var note = document.createElement("span"); note.textContent = "Clears in 10 seconds";
+      var bar = document.createElement("span"); bar.className = "bar"; bar.setAttribute("aria-hidden", "true"); bar.appendChild(document.createElement("span"));
+      var now = document.createElement("button"); now.type = "button"; now.textContent = "Clear now";
+      now.addEventListener("click", function () { reset(); what.focus(); });
+      clr.appendChild(note); clr.appendChild(bar); clr.appendChild(now);
+      out.textContent = ""; out.appendChild(dl); out.appendChild(p); out.appendChild(clr); out.hidden = false;
+      what.value = ""; updateCount();
+      filing = false; send.disabled = false; send.textContent = "File complaint";
+      /* On phones, close the keyboard so the reply is visible. */
+      if (touch) { what.blur(); out.scrollIntoView({ behavior: smooth ? "smooth" : "auto", block: "nearest" }); }
+      updateIdle(); startTimer();
+    }, smooth ? 600 : 0);
   });
+
+  /* Any activity in the form restarts the 10 seconds. Reading the receipt with the mouse over it pauses them. */
+  ["input", "keydown", "change", "pointerdown", "focusin"].forEach(function (ev) {
+    form.addEventListener(ev, function () { if (!out.hidden) startTimer(); });
+  });
+  out.addEventListener("pointerenter", function (e) { if (e.pointerType === "mouse") { hovering = true; pauseTimer(); } });
+  out.addEventListener("pointerleave", function (e) { if (e.pointerType === "mouse") { hovering = false; startTimer(); } });
+  /* Don't clear while the visitor is in another tab. */
+  document.addEventListener("visibilitychange", function () { if (document.hidden) pauseTimer(); else startTimer(); });
+
+  what.addEventListener("input", function () { if (what.value.trim()) hint.textContent = ""; updateCount(); updateIdle(); });
+  what.addEventListener("keydown", function (e) { if (e.key === "Escape") { what.value = ""; hint.textContent = ""; updateCount(); } });
+  what.addEventListener("focus", updateIdle);
+  what.addEventListener("blur", updateIdle);
+  updateIdle();
 })();
 </script>
 </body>
