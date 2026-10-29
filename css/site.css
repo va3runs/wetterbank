@@ -24,12 +24,16 @@ img,svg{display:block}
 .top{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px 24px;padding:28px 0 0;font-size:15px}
 .by{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--fg)}
 .by .logo{width:28px;height:28px}
-.by span{color:var(--mute)}
+.by .where{color:var(--mute)}
 .top nav{display:flex;gap:20px}
 .top nav a{text-decoration:none;color:var(--mute)}
 .top nav a:hover,.top nav a[aria-current="page"]{color:var(--fg)}
 .logo rect{fill:var(--fg)}
 .logo .mk{fill:var(--bg)}
+.logo .dt{fill:var(--fg)}
+/* Still frame of the typing dots: the first is speaking, the others follow */
+.logo .dt circle:nth-child(2){opacity:.6}
+.logo .dt circle:nth-child(3){opacity:.3}
 .logo .ln{fill:none;stroke:var(--bg);stroke-width:4;stroke-linecap:round}
 
 /* Type */
