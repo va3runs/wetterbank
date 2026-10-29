@@ -100,3 +100,50 @@ footer a{color:var(--mute)}
   .say.dots i:nth-child(3){animation-delay:.3s}
 }
 @keyframes say{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+
+/* Mode illustrations */
+.il-bg{fill:var(--panel)}
+.il-ground{stroke:var(--fg);stroke-opacity:.18;stroke-width:2}
+.il-fg{fill:var(--fg)}
+.il-h{fill:var(--bg);font:700 24px var(--font)}
+.il-paper{fill:var(--bg)}
+.il-rule{stroke:var(--mute);stroke-width:2;stroke-linecap:round;opacity:.6}
+.il-bench rect{fill:var(--mute)}
+.il-dot circle{fill:var(--panel)}
+.il-dot.on circle{fill:var(--bg)}
+.il-a{fill:var(--fg)}
+.il-b{fill:var(--accent)}
+.il-hat{fill:var(--mute)}
+.il-scarf{fill:var(--fg);opacity:.85}
+.il-handle{fill:none;stroke:var(--fg);stroke-width:3;stroke-linecap:round}
+.il-umbrella{fill:var(--fg)}
+.il-arm{fill:none;stroke-width:11;stroke-linecap:round;stroke-linejoin:round}
+.il-a .il-arm{stroke:var(--fg)}
+.il-b .il-arm{stroke:var(--accent)}
+.il-phone{fill:var(--bg)}
+.il-bub{fill:var(--bg)}
+.il-bubble.faded{opacity:.6}
+.il-say{fill:var(--fg);font:500 22px var(--font)}
+.il-rain{fill:none;stroke:var(--mute);stroke-width:2.5;stroke-linecap:round;opacity:.45}
+.il-cloud path{fill:var(--mute);opacity:.55}
+.il-cloud.far path{opacity:.3}
+.il-sun circle{fill:var(--accent)}
+.il-rays{stroke:var(--accent);stroke-width:4;stroke-linecap:round}
+.il-trail{fill:none;stroke:var(--mute);stroke-width:2.5;stroke-dasharray:2 7;stroke-linecap:round}
+.il-plane path{fill:var(--fg)}
+.il-plane .il-plane-fold{fill:var(--mute)}
+.il-talk{fill:var(--bg)}
+.il-talkdots circle{fill:var(--fg)}
+@media (prefers-reduced-motion:no-preference){
+  .il-rain{animation:il-rain 1.8s linear infinite}
+  .il-dot.on circle,.il-talkdots circle{animation:typing 1.4s ease-in-out infinite;transform-box:fill-box}
+  .il-dot.on circle:nth-child(2),.il-talkdots circle:nth-child(2){animation-delay:.18s}
+  .il-dot.on circle:nth-child(3),.il-talkdots circle:nth-child(3){animation-delay:.36s}
+  .il-cloud{animation:il-drift 9s ease-in-out infinite alternate}
+  .il-rays{animation:il-spin 30s linear infinite;transform-box:fill-box;transform-origin:center}
+  .il-plane{animation:il-bob 2.4s ease-in-out infinite}
+}
+@keyframes il-rain{from{transform:translate(0,0)}to{transform:translate(-20px,80px)}}
+@keyframes il-drift{from{translate:0 0}to{translate:14px 0}}
+@keyframes il-spin{to{transform:rotate(360deg)}}
+@keyframes il-bob{0%,100%{translate:0 0}50%{translate:0 -4px}}
