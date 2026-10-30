@@ -77,11 +77,11 @@ figcaption{font-size:14px;color:var(--mute);margin:10px 0 0}
 .p-dot{fill:var(--accent)}
 .p-lab{fill:var(--mute);font:500 20px var(--font)}
 
-footer{margin:96px 0 0;padding:28px 0 48px;border-top:1px solid var(--line);font-size:14px;line-height:1.5;color:var(--mute)}
-.foot{list-style:none;margin:0;padding:0;display:grid;gap:6px}
+footer{margin:96px 0 0;padding:24px 0 48px;border-top:1px solid var(--line);font-size:14px;line-height:1.5;color:var(--mute);display:grid;grid-template-columns:1fr auto;grid-template-areas:"name links" "src copy";gap:8px 24px}
+.f-name{grid-area:name}.f-links{grid-area:links;display:flex;gap:20px;justify-content:flex-end}.f-src{grid-area:src;justify-self:start}.f-copy{grid-area:copy;text-align:right;font-variant-numeric:tabular-nums}
 footer a{color:inherit;text-decoration:none}
-footer a:hover{color:var(--fg);text-decoration:underline;text-underline-offset:3px}
-.foot-copy{margin-top:18px;font-variant-numeric:tabular-nums}
+footer a:hover{color:var(--fg)}
+@media (max-width:560px){footer{grid-template-columns:1fr;grid-template-areas:"name" "src" "links" "copy"}.f-links{justify-content:flex-start}.f-copy{text-align:left;margin-top:12px}}
 
 @media (prefers-reduced-motion:no-preference){
   .typing circle{animation:typing 1.4s ease-in-out infinite}
