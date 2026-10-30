@@ -265,8 +265,15 @@ section p{max-width:62ch}
 </main>
 
 <footer>
-  <span>Wetterbank®, Düsseldorf</span>
-  <span class="links"><a href="https://va3runs.github.io/rnd/">Portfolio</a><a href="mailto:varuns@ik.me?subject=Wetterbank">E-Mail</a><a href="https://www.linkedin.com/in/varunsangani" target="_blank" rel="noopener">LinkedIn</a><a href="https://github.com/va3runs/wetterbank" target="_blank" rel="noopener">GitHub</a><a href="privacy.html">Datenschutz &amp; Impressum</a></span>
+  <div class="foot-main">
+    <div class="foot-id">
+      <p class="foot-name">Wetterbank®, Düsseldorf</p>
+      <p>Open Source – <a href="https://github.com/va3runs/wetterbank" target="_blank" rel="noopener">Code auf GitHub ansehen</a></p>
+    </div>
+    <nav class="foot-links" aria-label="Fußzeile"><a href="privacy.html">Datenschutz &amp; Impressum</a><a href="mailto:varuns@ik.me?subject=Wetterbank">Kontakt</a></nav>
+  </div>
+  <p class="foot-copy">Copyright © <span data-year>2026</span> Varun Sangani</p>
+  <script>document.querySelectorAll("[data-year]").forEach(function (e) { e.textContent = new Date().getFullYear(); });</script>
 </footer>
 
 </div>

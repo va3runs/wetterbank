@@ -77,9 +77,15 @@ figcaption{font-size:14px;color:var(--mute);margin:10px 0 0}
 .p-dot{fill:var(--accent)}
 .p-lab{fill:var(--mute);font:500 20px var(--font)}
 
-footer{margin:96px 0 0;padding:28px 0 48px;border-top:1px solid var(--line);font-size:14px;color:var(--mute);display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px 24px}
-footer .links{display:flex;flex-wrap:wrap;gap:8px 20px}
+footer{margin:96px 0 0;padding:28px 0 40px;border-top:1px solid var(--line);font-size:14px;color:var(--mute)}
+footer p{margin:0}
 footer a{color:var(--mute)}
+footer a:hover{color:var(--fg)}
+.foot-main{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-start;gap:16px 24px}
+.foot-id{display:grid;gap:4px}
+.foot-name{color:var(--fg);font-weight:500}
+.foot-links{display:flex;flex-wrap:wrap;gap:8px 20px}
+.foot-copy{margin:32px 0 0;padding:16px 0 0;border-top:1px solid var(--line);font-size:13px;font-variant-numeric:tabular-nums}
 
 @media (prefers-reduced-motion:no-preference){
   .typing circle{animation:typing 1.4s ease-in-out infinite}
