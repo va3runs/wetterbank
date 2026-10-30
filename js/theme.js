@@ -32,3 +32,29 @@
     });
   });
 })();
+
+/* Back to top: a small round arrow that appears once you have scrolled down. */
+(function () {
+  "use strict";
+  var de = (document.documentElement.lang || "").slice(0, 2) === "de";
+  var b = document.createElement("button");
+  b.type = "button"; b.className = "to-top";
+  b.setAttribute("aria-label", de ? "Nach oben" : "Back to top");
+  b.title = de ? "Nach oben" : "Back to top";
+  b.innerHTML = '<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 13V3M3.5 7.5 8 3l4.5 4.5"/></svg>';
+  document.body.appendChild(b);
+  var smooth = !matchMedia("(prefers-reduced-motion: reduce)").matches;
+  b.addEventListener("click", function () {
+    window.scrollTo({ top: 0, behavior: smooth ? "smooth" : "auto" });
+    if (window.top !== window) { try { document.body.scrollIntoView({ behavior: smooth ? "smooth" : "auto", block: "start" }); } catch (e) {} }
+    var first = document.querySelector(".by"); if (first) first.focus({ preventScroll: true });
+  });
+  var shown = false;
+  function check() {
+    var y = window.scrollY || document.documentElement.scrollTop;
+    var show = y > window.innerHeight * 0.8;
+    if (show !== shown) { shown = show; b.classList.toggle("on", show); }
+  }
+  window.addEventListener("scroll", check, { passive: true });
+  check();
+})();
