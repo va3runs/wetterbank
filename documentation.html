@@ -59,6 +59,18 @@ section p{max-width:62ch}
 .prec .takes{margin-top:6px;font-size:15px}
 .prec .takes strong{font-weight:500}
 .refs li{font-size:15px;line-height:1.5}
+.fold summary{display:flex;justify-content:space-between;align-items:baseline;gap:16px;cursor:pointer;list-style:none}
+.fold summary::-webkit-details-marker{display:none}
+.fold summary h2{margin:0}
+.fold summary{padding:0 0 12px;border-bottom:1px solid var(--line)}
+.fold[open] summary{border-bottom-color:transparent}
+.fold-hint{font-size:14px;color:var(--mute);white-space:nowrap}
+.fold-hint::after{content:"+";display:inline-block;width:1em;margin-left:6px;text-align:center}
+.fold[open] .fold-hint::after{content:"\2212"}
+.fold summary:hover .fold-hint{color:var(--fg)}
+.fold .when-open,.fold[open] .when-closed{display:none}
+.fold[open] .when-open{display:inline}
+.fold .refs{margin-top:0}
 .log li{display:grid;grid-template-columns:110px 1fr;gap:16px}
 .log time{color:var(--mute);font-variant-numeric:tabular-nums}
 .log p{margin:0}
@@ -236,21 +248,23 @@ section p{max-width:62ch}
 
 
   <section id="references" aria-labelledby="ref-h">
-    <h2 id="ref-h"><span class="n">06</span>References</h2>
-    <ul class="plain refs">
-      <li>Brignull, H. &amp; Rogers, Y. (2003). Enticing people to interact with large public displays in public spaces. INTERACT 2003.</li>
-      <li>Bu, F., Bremers, A., Colley, M. &amp; Ju, W. (2024). Field notes on deploying research robots in public spaces. <a href="https://arxiv.org/abs/2404.18375" target="_blank" rel="noopener">arXiv:2404.18375</a>.</li>
-      <li>Bu, F., Fischer, K. &amp; Ju, W. (2025). Making sense of robots in public spaces: A study of trash barrel robots. <a href="https://arxiv.org/abs/2504.01121" target="_blank" rel="noopener">arXiv:2504.01121</a>.</li>
-      <li>Dörrenbächer, J., Löffler, D. &amp; Hassenzahl, M. (2020). Becoming a robot: Overcoming anthropomorphism with techno-mimesis. CHI ’20.</li>
-      <li>Dörrenbächer, J. et al. (2026). Mediating urban social encounters: Co-design of robotic street furniture with adolescents. CHI ’26. <a href="https://dl.acm.org/doi/full/10.1145/3772318.3791189" target="_blank" rel="noopener">doi:10.1145/3772318.3791189</a>.</li>
-      <li>Dunne, A. &amp; Raby, F. (2013). Speculative Everything. MIT Press.</li>
-      <li>Epley, N. &amp; Schroeder, J. (2014). Mistakenly seeking solitude. Journal of Experimental Psychology: General, 143(5).</li>
-      <li>Giaccardi, E. &amp; Redström, J. (2020). Technology and more-than-human design. Design Issues, 36(4), 33–44.</li>
-      <li>Goffman, E. (1963). Behavior in Public Places. Free Press.</li>
-      <li>Hassenzahl, M., Borchers, J., Boll, S., Rosenthal-von der Pütten, A. &amp; Wulf, V. (2021). Otherware: How to best interact with autonomous systems. ACM Interactions, 28(1).</li>
-      <li>Reddy, A. et al. (2021). Making everyday things talk: Speculative conversations into the future of voice interfaces at home. CHI EA ’21.</li>
-      <li>Whyte, W. H. (1980). The Social Life of Small Urban Spaces. Conservation Foundation.</li>
-    </ul>
+    <details class="fold" id="refs">
+      <summary><h2 id="ref-h"><span class="n">06</span>References</h2><span class="fold-hint"><span class="when-closed">Show all 12</span><span class="when-open">Hide</span></span></summary>
+      <ul class="plain refs">
+        <li>Brignull, H. &amp; Rogers, Y. (2003). Enticing people to interact with large public displays in public spaces. INTERACT 2003.</li>
+        <li>Bu, F., Bremers, A., Colley, M. &amp; Ju, W. (2024). Field notes on deploying research robots in public spaces. <a href="https://arxiv.org/abs/2404.18375" target="_blank" rel="noopener">arXiv:2404.18375</a>.</li>
+        <li>Bu, F., Fischer, K. &amp; Ju, W. (2025). Making sense of robots in public spaces: A study of trash barrel robots. <a href="https://arxiv.org/abs/2504.01121" target="_blank" rel="noopener">arXiv:2504.01121</a>.</li>
+        <li>Dörrenbächer, J., Löffler, D. &amp; Hassenzahl, M. (2020). Becoming a robot: Overcoming anthropomorphism with techno-mimesis. CHI ’20.</li>
+        <li>Dörrenbächer, J. et al. (2026). Mediating urban social encounters: Co-design of robotic street furniture with adolescents. CHI ’26. <a href="https://dl.acm.org/doi/full/10.1145/3772318.3791189" target="_blank" rel="noopener">doi:10.1145/3772318.3791189</a>.</li>
+        <li>Dunne, A. &amp; Raby, F. (2013). Speculative Everything. MIT Press.</li>
+        <li>Epley, N. &amp; Schroeder, J. (2014). Mistakenly seeking solitude. Journal of Experimental Psychology: General, 143(5).</li>
+        <li>Giaccardi, E. &amp; Redström, J. (2020). Technology and more-than-human design. Design Issues, 36(4), 33–44.</li>
+        <li>Goffman, E. (1963). Behavior in Public Places. Free Press.</li>
+        <li>Hassenzahl, M., Borchers, J., Boll, S., Rosenthal-von der Pütten, A. &amp; Wulf, V. (2021). Otherware: How to best interact with autonomous systems. ACM Interactions, 28(1).</li>
+        <li>Reddy, A. et al. (2021). Making everyday things talk: Speculative conversations into the future of voice interfaces at home. CHI EA ’21.</li>
+        <li>Whyte, W. H. (1980). The Social Life of Small Urban Spaces. Conservation Foundation.</li>
+      </ul>
+    </details>
   </section>
 </main>
 
@@ -273,6 +287,13 @@ section p{max-width:62ch}
   }
   top();
   window.addEventListener("load", function () { top(); setTimeout(top, 60); });
+})();
+</script>
+<script>
+(function () {
+  var d = document.getElementById("refs");
+  function check() { if (location.hash === "#references" && d) d.open = true; }
+  check(); window.addEventListener("hashchange", check);
 })();
 </script>
 </body>
