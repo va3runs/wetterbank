@@ -147,3 +147,10 @@ footer a{color:var(--mute)}
 @keyframes il-drift{from{translate:0 0}to{translate:14px 0}}
 @keyframes il-spin{to{transform:rotate(360deg)}}
 @keyframes il-bob{0%,100%{translate:0 0}50%{translate:0 -4px}}
+
+/* A/B comparison under "The question" */
+.ab{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:32px 0 0}
+.ab figcaption{font-size:14px;line-height:1.45;color:var(--mute)}
+.ab figcaption strong{display:block;color:var(--fg);font-weight:600;margin:0 0 2px}
+.ab-note{margin:20px 0 0;padding:14px 16px;border-left:2px solid var(--fg);background:var(--soft);font-size:15px;line-height:1.5}
+@media (max-width:520px){.ab{grid-template-columns:1fr;gap:20px}}
