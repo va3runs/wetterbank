@@ -263,5 +263,17 @@ section p{max-width:62ch}
 </footer>
 
 </div>
+<script>
+/* Open every page at the top. Inside an embedding frame the outer page can keep the old scroll position, so ask it to show this page from the start. */
+(function () {
+  if (location.hash) return;
+  function top() {
+    window.scrollTo(0, 0);
+    if (window.top !== window) { try { document.body.scrollIntoView({ block: "start" }); } catch (e) {} }
+  }
+  top();
+  window.addEventListener("load", function () { top(); setTimeout(top, 60); });
+})();
+</script>
 </body>
 </html>
