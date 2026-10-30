@@ -265,14 +265,13 @@ section p{max-width:62ch}
 </main>
 
 <footer>
-  <div class="foot-main">
-    <div class="foot-id">
-      <p class="foot-name">Wetterbank®, Düsseldorf</p>
-      <p>Open Source – <a href="https://github.com/va3runs/wetterbank" target="_blank" rel="noopener">Code auf GitHub ansehen</a></p>
-    </div>
-    <nav class="foot-links" aria-label="Fußzeile"><a href="privacy.html">Datenschutz &amp; Impressum</a><a href="mailto:varuns@ik.me?subject=Wetterbank">Kontakt</a></nav>
-  </div>
-  <p class="foot-copy">Copyright © <span data-year>2026</span> Varun Sangani</p>
+  <ul class="foot">
+    <li>Wetterbank®, Düsseldorf</li>
+    <li><a href="https://github.com/va3runs/wetterbank" target="_blank" rel="noopener">Open Source – Code auf GitHub ansehen</a></li>
+    <li><a href="privacy.html">Datenschutz &amp; Impressum</a></li>
+    <li><a href="mailto:varuns@ik.me?subject=Wetterbank">Kontakt</a></li>
+    <li class="foot-copy">Copyright © <span data-year>2026</span> Varun Sangani</li>
+  </ul>
   <script>document.querySelectorAll("[data-year]").forEach(function (e) { e.textContent = new Date().getFullYear(); });</script>
 </footer>
 
