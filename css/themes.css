@@ -1,0 +1,24 @@
+/* Wetterbank® seasons. "System" (no data-theme) follows the device's light/dark setting.
+   Each season only swaps colour tokens, so it costs nothing to load. */
+:root[data-theme="spring"]{color-scheme:light;--bg:#f7f9f2;--fg:#1c2a1e;--mute:#5d6e5f;--line:#dfe7d6;--panel:#ebf1e2;--soft:#fafcf6;--btn:#1c2a1e;--btn-fg:#f7f9f2;--accent:#d8738b}
+:root[data-theme="summer"]{color-scheme:light;--bg:#fffaf0;--fg:#22190c;--mute:#7a6a4c;--line:#f1e5cb;--panel:#fbefd6;--soft:#fffcf6;--btn:#22190c;--btn-fg:#fffaf0;--accent:#ef9a2c}
+:root[data-theme="autumn"]{color-scheme:light;--bg:#f6efe7;--fg:#2b1d13;--mute:#7b6452;--line:#e7d9ca;--panel:#eee2d3;--soft:#faf5ef;--btn:#2b1d13;--btn-fg:#f6efe7;--accent:#c2522c}
+:root[data-theme="winter"]{color-scheme:dark;--bg:#0f151d;--fg:#e6edf5;--mute:#8e9cae;--line:#223041;--panel:#17212d;--soft:#131b25;--btn:#e6edf5;--btn-fg:#0f151d;--accent:#7fb3e6}
+/* Header icon on the pages that use an image */
+:root[data-theme] .by img{filter:none}
+:root[data-theme="winter"] .by img{filter:invert(1)}
+body{transition:background-color .35s ease,color .35s ease}
+@media (prefers-reduced-motion:reduce){body{transition:none}}
+
+/* Theme picker: a native select, so phones show their own picker */
+.theme{position:relative;display:inline-flex;align-items:center}
+.theme select{appearance:none;-webkit-appearance:none;font:500 13px/1 var(--font);color:var(--fg);background:var(--panel);border:0;border-radius:999px;padding:7px 26px 7px 28px;cursor:pointer;max-width:9.5em}
+.theme select:focus-visible{outline:2px solid var(--fg);outline-offset:2px}
+.theme svg{position:absolute;left:9px;width:13px;height:13px;pointer-events:none;fill:none;stroke:var(--fg);stroke-width:2;stroke-linecap:round}
+.theme::after{content:"";position:absolute;right:11px;top:50%;width:5px;height:5px;margin-top:-4px;border-right:1.5px solid var(--mute);border-bottom:1.5px solid var(--mute);transform:rotate(45deg);pointer-events:none}
+/* The picker shows only its season icon; opening it lists the names (the phone's own menu on mobile) */
+.theme select{width:34px;padding:7px 0;color:transparent;text-indent:-999px}
+.theme select option{color:initial;text-indent:0}
+.theme::after{display:none}
+.theme svg{left:10px}
+.theme:hover select{background:var(--line)}

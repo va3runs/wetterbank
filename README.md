@@ -14,6 +14,7 @@ A design fiction from Düsseldorf asking how autonomous systems will shape our e
 | `documentation.html` | The research: context, the question, planned field studies, precedents, log, references |
 | `de/` | German versions of the home, documentation and privacy pages (English is the default) |
 | `css/site.css` | Shared styles |
+| `css/themes.css`, `js/theme.js` | Season themes (System, Spring, Summer, Autumn, Winter), remembered per device |
 | `js/desk.js` | The complaint form, in English and German (picked by the page language) |
 | `privacy.html` | Privacy and imprint |
 | `404.html` | Not-found page |

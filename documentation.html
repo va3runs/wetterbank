@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
+<script>try{var t=localStorage.getItem("wb-theme");if(/^(spring|summer|autumn|winter)$/.test(t))document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Documentation — Wetterbank®</title>
 <meta name="description" content="Wetterbank® as research: the question, the context, the precedents and the planned field studies.">
@@ -76,13 +77,14 @@ section p{max-width:62ch}
 .log p{margin:0}
 @media (max-width:520px){.log li{grid-template-columns:1fr;gap:2px}}
 </style>
+<link rel="stylesheet" href="css/themes.css">
 </head>
 <body>
 <div class="page">
 
 <header class="top">
   <a class="by" href="./"><svg class="logo" viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="15"/><rect class="mk" x="10" y="11" width="44" height="24" rx="12"/><path class="mk" d="M19 32 16 43 29 33Z"/><g class="dt"><circle cx="21.5" cy="23" r="4"/><circle cx="32" cy="23" r="4"/><circle cx="42.5" cy="23" r="4"/></g><path class="ln" d="M12 47H52M17 47v7M47 47v7"/></svg><span>Wetterbank®<span class="where">, Düsseldorf</span></span></a>
-  <nav aria-label="Pages"><a href="./">Home</a><a href="documentation.html" aria-current="page">Documentation</a><span class="lang" role="group" aria-label="Language"><a href="documentation.html" hreflang="en" lang="en" aria-label="English" aria-current="true">EN</a><a href="de/documentation.html" hreflang="de" lang="de" aria-label="Deutsch">DE</a></span></nav>
+  <nav aria-label="Pages"><a href="./">Home</a><a href="documentation.html" aria-current="page">Documentation</a><span class="lang" role="group" aria-label="Language"><a href="documentation.html" hreflang="en" lang="en" aria-label="English" aria-current="true">EN</a><a href="de/documentation.html" hreflang="de" lang="de" aria-label="Deutsch">DE</a></span><label class="theme"><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="3"/><path d="M8 1.5v1.5M8 13v1.5M1.5 8H3M13 8h1.5M3.4 3.4l1 1M11.6 11.6l1 1M3.4 12.6l1-1M11.6 4.4l1-1"/></svg><span class="vh">Theme</span><select data-theme-picker aria-label="Theme" title="Theme"><option value="system">System</option><option value="spring">Spring</option><option value="summer">Summer</option><option value="autumn">Autumn</option><option value="winter">Winter</option></select></label></nav>
 </header>
 
 <main>
@@ -289,5 +291,6 @@ section p{max-width:62ch}
   window.addEventListener("load", function () { top(); setTimeout(top, 60); });
 })();
 </script>
+<script src="js/theme.js" defer></script>
 </body>
 </html>
