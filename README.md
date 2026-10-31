@@ -4,7 +4,7 @@
 
 A design fiction from Düsseldorf asking how autonomous systems will shape our encounters in public space. The bench doesn't exist. Yet.
 
-**Live:** https://va3runs.github.io/wetterbank/
+**Live:** https://va3uns.github.io/wetterbank/
 
 ## Files
 
