@@ -125,20 +125,10 @@ footer a:hover{color:var(--fg)}
 @keyframes pn-pulse{0%,100%{opacity:1}50%{opacity:.35}}
 @keyframes pn-bob{0%,100%{translate:0 0}50%{translate:0 -4px}}
 
-/* The bench's dot-matrix display */
-.cb .led-bg{fill:var(--led-bg)}
-.cb .led-off{fill:none;stroke:var(--led-off);stroke-width:1.5;stroke-linecap:round}
-.cb .led-on{fill:none;stroke:var(--led);stroke-width:2;stroke-linecap:round}
-.cb .still{display:none}
-.cb .marquee{transform:translateX(var(--from))}
-@media (prefers-reduced-motion:no-preference){.cb .marquee{animation:cb-scroll linear infinite}}
-@media (prefers-reduced-motion:reduce){.cb .marquee{display:none}.cb .still{display:inline}}
-@keyframes cb-scroll{from{transform:translateX(var(--from))}to{transform:translateX(var(--w))}}
-:root{--led-bg:#1c1c1c;--led-off:rgba(255,255,255,.08);--led:var(--accent)}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--led-bg:#050505}}
-:root[data-theme="dark"],:root[data-theme="winter"]{--led-bg:#050505}
+.tk .ppl{fill:none;stroke:var(--bg);stroke-linecap:round}
+.tk .say text{fill:var(--fg);font:500 19px var(--font)}
+.tk .bub.faded,.tk .say.faded{opacity:.6}
 .card{border:1px solid var(--line);border-radius:12px;padding:10px 8px 4px;background:var(--bg)}
-.hand{font-family:"Bradley Hand","Segoe Print","Ink Free","Chalkboard SE","Comic Neue",cursive;font-size:15px;line-height:1.35;color:var(--mute);margin:10px 0 0;transform:rotate(-1.2deg);transform-origin:left}
 .ab .card{padding:6px 4px 2px}
 
 /* A/B comparison under "The question" */
