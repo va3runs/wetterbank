@@ -2,20 +2,21 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
+<link rel="preload" href="/wetterbank/fonts/GeistMono-Variable.woff2" as="font" type="font/woff2" crossorigin>
 <script>try{var t=localStorage.getItem("wb-theme");if(/^(spring|summer|autumn|winter)$/.test(t))document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Not here · Wetterbank®</title>
 <meta name="robots" content="noindex">
 <link rel="icon" type="image/svg+xml" href="/wetterbank/assets/icon.svg">
 <style>
-:root{--bg:#fff;--fg:#111;--mute:#6e6e6e;--line:#e8e8e8;--panel:#f5f5f4;--font:-apple-system,BlinkMacSystemFont,"SF Pro Text","Inter","Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;color-scheme:light dark}
+:root{--bg:#fff;--fg:#111;--mute:#6e6e6e;--line:#e8e8e8;--panel:#f5f5f4;--font:"Geist Mono",ui-monospace,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace;color-scheme:light dark}
 @media (prefers-color-scheme:dark){:root{--bg:#111;--fg:#ededed;--mute:#9a9a9a;--line:#262626}.by img{filter:invert(1)}}
-*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font:400 17px/1.55 var(--font);-webkit-font-smoothing:antialiased}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font:400 15px/1.55 var(--font);-webkit-font-smoothing:antialiased}
 .page{max-width:640px;margin:0 auto;padding:28px 24px 64px}
 a{color:inherit;text-decoration:underline;text-decoration-color:var(--line);text-underline-offset:3px}a:hover{text-decoration-color:currentColor}
-.by{display:inline-flex;align-items:center;gap:10px;text-decoration:none;font-size:15px}.by img{width:28px;height:28px;border-radius:7px}.by .where{color:var(--mute)}
-h1{font-size:30px;font-weight:400;letter-spacing:-.4px;line-height:1.3;margin:80px 0 24px}
-h2{font-size:17px;font-weight:600;margin:36px 0 6px}p{margin:0 0 1em}.mute{color:var(--mute)}
+.by{display:inline-flex;align-items:center;gap:10px;text-decoration:none;font-size:14px}.by img{width:28px;height:28px;border-radius:7px}.by .where{color:var(--mute)}
+h1{font-size:26px;font-weight:400;letter-spacing:0;line-height:1.3;margin:80px 0 24px}
+h2{font-size:15px;font-weight:600;margin:36px 0 6px}p{margin:0 0 1em}.mute{color:var(--mute)}
 </style>
 <link rel="stylesheet" href="/wetterbank/css/themes.css">
 </head>

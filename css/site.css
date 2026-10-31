@@ -2,7 +2,7 @@
 :root{
   --bg:#ffffff; --fg:#111111; --mute:#6e6e6e; --line:#e8e8e8; --panel:#f5f5f4; --soft:#fafafa;
   --btn:#111111; --btn-fg:#ffffff; --accent:#e2694f;
-  --font:-apple-system,BlinkMacSystemFont,"SF Pro Text","Inter","Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  --font:"Geist Mono",ui-monospace,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace;
   --mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
   color-scheme:light dark;
 }
@@ -11,7 +11,7 @@
 }
 *,*::before,*::after{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%;scroll-padding-top:24px}
-body{margin:0;background:var(--bg);color:var(--fg);font:400 17px/1.55 var(--font);-webkit-font-smoothing:antialiased}
+body{margin:0;background:var(--bg);color:var(--fg);font:400 15px/1.55 var(--font);-webkit-font-smoothing:antialiased}
 a{color:inherit;text-decoration:underline;text-decoration-color:var(--line);text-underline-offset:3px;text-decoration-thickness:1px}
 a:hover{text-decoration-color:currentColor}
 :focus-visible{outline:2px solid var(--fg);outline-offset:3px;border-radius:4px}
@@ -21,7 +21,7 @@ img,svg{display:block}
 .page{max-width:640px;margin:0 auto;padding:0 24px}
 
 /* Header */
-.top{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px 24px;padding:28px 0 0;font-size:15px}
+.top{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px 24px;padding:28px 0 0;font-size:14px}
 .by{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--fg)}
 .by .logo{width:28px;height:28px}
 .by .where{color:var(--mute)}
@@ -42,20 +42,20 @@ img,svg{display:block}
 .logo .ln{fill:none;stroke:var(--bg);stroke-width:4;stroke-linecap:round}
 
 /* Type */
-h1{font-size:30px;line-height:1.3;font-weight:400;letter-spacing:-.4px;margin:0 0 20px}
+h1{font-size:26px;line-height:1.3;font-weight:400;letter-spacing:0;margin:0 0 20px}
 h1 strong{font-weight:600}
-h2{font-size:17px;font-weight:600;margin:0 0 8px}
-h3{font-size:17px;font-weight:600;margin:0 0 4px}
-.lede{font-size:19px;line-height:1.5;color:var(--mute);margin:0}
+h2{font-size:15px;font-weight:600;margin:0 0 8px}
+h3{font-size:15px;font-weight:600;margin:0 0 4px}
+.lede{font-size:16.5px;line-height:1.5;color:var(--mute);margin:0}
 .sub{color:var(--mute);margin:0 0 24px}
-.small{font-size:14px;color:var(--mute)}
+.small{font-size:13px;color:var(--mute)}
 .mute{color:var(--mute)}
 section{padding:72px 0 0}
-@media (max-width:520px){h1{font-size:26px}.top nav{gap:16px}}
+@media (max-width:520px){h1{font-size:22px}.top nav{gap:16px}}
 
 /* Buttons */
 .actions{display:flex;flex-wrap:wrap;align-items:center;gap:12px 20px;margin:32px 0 0}
-.btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:10px 18px;border:0;border-radius:10px;background:var(--btn);color:var(--btn-fg);font:500 16px/1 var(--font);text-decoration:none;cursor:pointer}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:10px 18px;border:0;border-radius:10px;background:var(--btn);color:var(--btn-fg);font:500 14.5px/1 var(--font);text-decoration:none;cursor:pointer}
 .btn:hover{opacity:.88}
 
 /* Lists with hairlines */
@@ -66,18 +66,18 @@ ul.plain>li:last-child,ol.plain>li:last-child{border-bottom:1px solid var(--line
 /* Figures */
 figure{margin:0}
 figure svg{width:100%;height:auto;border-radius:14px}
-figcaption{font-size:14px;color:var(--mute);margin:10px 0 0}
+figcaption{font-size:13px;color:var(--mute);margin:10px 0 0}
 .p-bg{fill:var(--panel)}
 .p-bub{fill:var(--bg);stroke:var(--line);stroke-width:2}
-.p-txt{fill:var(--fg);font:500 25px var(--font)}
+.p-txt{fill:var(--fg);font:500 22px var(--font)}
 .p-ln{fill:none;stroke:var(--fg);stroke-width:3.5;stroke-linecap:round;stroke-linejoin:round}
 .p-fill rect{fill:var(--panel)}
 .p-soft{fill:none;stroke:var(--mute);stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
 .p-dash{fill:none;stroke:var(--mute);stroke-width:2.5;stroke-dasharray:2 8;stroke-linecap:round}
 .p-dot{fill:var(--accent)}
-.p-lab{fill:var(--mute);font:500 20px var(--font)}
+.p-lab{fill:var(--mute);font:500 18px var(--font)}
 
-footer{margin:96px 0 0;padding:24px 0 48px;border-top:1px solid var(--line);font-size:14px;line-height:1.5;color:var(--mute);display:grid;grid-template-columns:1fr auto;grid-template-areas:"name links" "src copy";gap:8px 24px}
+footer{margin:96px 0 0;padding:24px 0 48px;border-top:1px solid var(--line);font-size:13px;line-height:1.5;color:var(--mute);display:grid;grid-template-columns:1fr auto;grid-template-areas:"name links" "src copy";gap:8px 24px}
 .f-name{grid-area:name}.f-links{grid-area:links;display:flex;gap:20px;justify-content:flex-end}.f-src{grid-area:src;justify-self:start}.f-copy{grid-area:copy;text-align:right;font-variant-numeric:tabular-nums}
 footer a{color:inherit;text-decoration:none}
 footer a:hover{color:var(--fg)}
@@ -126,16 +126,16 @@ footer a:hover{color:var(--fg)}
 @keyframes pn-bob{0%,100%{translate:0 0}50%{translate:0 -4px}}
 
 .tk .ppl{fill:none;stroke:var(--bg);stroke-linecap:round}
-.tk .say text{fill:var(--fg);font:500 19px var(--font)}
+.tk .say text{fill:var(--fg);font:500 16.5px var(--font)}
 .tk .bub.faded,.tk .say.faded{opacity:.6}
 .card{border:1px solid var(--line);border-radius:12px;padding:10px 8px 4px;background:var(--bg)}
 .ab .card{padding:6px 4px 2px}
 
 /* A/B comparison under "The question" */
 .ab{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:32px 0 0}
-.ab figcaption{font-size:14px;line-height:1.45;color:var(--mute)}
+.ab figcaption{font-size:13px;line-height:1.45;color:var(--mute)}
 .ab figcaption strong{display:block;color:var(--fg);font-weight:600;margin:0 0 2px}
-.ab-note{margin:20px 0 0;padding:14px 16px;border-left:2px solid var(--fg);background:var(--soft);font-size:15px;line-height:1.5}
+.ab-note{margin:20px 0 0;padding:14px 16px;border-left:2px solid var(--fg);background:var(--soft);font-size:14px;line-height:1.5}
 @media (max-width:520px){.ab{grid-template-columns:1fr;gap:20px}}
 
 .vh{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}

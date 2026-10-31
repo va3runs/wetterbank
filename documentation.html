@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
+<link rel="preload" href="fonts/GeistMono-Variable.woff2" as="font" type="font/woff2" crossorigin>
 <script>try{var t=localStorage.getItem("wb-theme");if(/^(spring|summer|autumn|winter)$/.test(t))document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Documentation — Wetterbank®</title>
@@ -23,7 +24,7 @@
 <style>
 .intro{padding:80px 0 0}
 .updated{margin:16px 0 0}
-.toc{display:flex;flex-wrap:wrap;gap:6px 18px;margin:32px 0 0;padding:16px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);font-size:15px}
+.toc{display:flex;flex-wrap:wrap;gap:6px 18px;margin:32px 0 0;padding:16px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);font-size:14px}
 .toc a{text-decoration:none;color:var(--mute)}
 .toc a:hover{color:var(--fg)}
 .toc span{color:var(--mute);font-variant-numeric:tabular-nums;margin-right:4px}
@@ -32,40 +33,40 @@ section p{max-width:62ch}
 .ex li{display:grid;grid-template-columns:96px 1fr;gap:4px 16px}
 .ex .y{color:var(--mute);font-variant-numeric:tabular-nums}
 .ex p{margin:0}
-.ex .src{font-size:14px;color:var(--mute);margin-top:4px}
+.ex .src{font-size:13px;color:var(--mute);margin-top:4px}
 @media (max-width:520px){.ex li{grid-template-columns:1fr;gap:2px}}
-.big{font-size:22px;line-height:1.4;letter-spacing:-.2px;margin:0 0 24px}
+.big{font-size:19px;line-height:1.4;letter-spacing:0;margin:0 0 24px}
 .subq{counter-reset:q}
 .subq li{display:grid;grid-template-columns:28px 1fr;gap:8px}
 .subq li::before{counter-increment:q;content:counter(q);color:var(--mute);font-variant-numeric:tabular-nums}
-.subq p{margin:4px 0 0;color:var(--mute);font-size:16px}
-.callout{margin:24px 0 0;padding:14px 16px;border-left:2px solid var(--fg);background:var(--soft);font-size:16px}
+.subq p{margin:4px 0 0;color:var(--mute);font-size:14.5px}
+.callout{margin:24px 0 0;padding:14px 16px;border-left:2px solid var(--fg);background:var(--soft);font-size:14.5px}
 .callout p{margin:0}
 .study{padding:20px 0;border-top:1px solid var(--line)}
 .study:last-child{border-bottom:1px solid var(--line)}
 .study .head{display:flex;flex-wrap:wrap;justify-content:space-between;gap:4px 16px;align-items:baseline;margin:0 0 6px}
 .study .id{font-family:var(--mono);font-size:13px;color:var(--mute)}
 .study h3{margin:0}
-.study p{margin:0 0 8px;font-size:16px}
-.study dl{display:grid;grid-template-columns:120px 1fr;gap:4px 12px;margin:10px 0 0;font-size:14px}
+.study p{margin:0 0 8px;font-size:14.5px}
+.study dl{display:grid;grid-template-columns:120px 1fr;gap:4px 12px;margin:10px 0 0;font-size:13px}
 .study dt{color:var(--mute)}
 .study dd{margin:0}
 .status{font-size:13px;color:var(--mute);border:1px solid var(--line);border-radius:6px;padding:2px 8px}
 @media (max-width:520px){.study dl{grid-template-columns:1fr}.study dt{margin-top:6px}}
 .group{margin:36px 0 0}
 .group h3{font-size:13px;letter-spacing:.6px;text-transform:uppercase;color:var(--mute);font-weight:500;margin:0 0 4px}
-.group>p{font-size:15px;color:var(--mute);margin:0 0 8px}
-.prec li p{margin:0;font-size:16px}
-.prec .who{color:var(--mute);font-size:14px}
-.prec .takes{margin-top:6px;font-size:15px}
+.group>p{font-size:14px;color:var(--mute);margin:0 0 8px}
+.prec li p{margin:0;font-size:14.5px}
+.prec .who{color:var(--mute);font-size:13px}
+.prec .takes{margin-top:6px;font-size:14px}
 .prec .takes strong{font-weight:500}
-.refs li{font-size:15px;line-height:1.5}
+.refs li{font-size:14px;line-height:1.5}
 .fold summary{display:flex;justify-content:space-between;align-items:baseline;gap:16px;cursor:pointer;list-style:none}
 .fold summary::-webkit-details-marker{display:none}
 .fold summary h2{margin:0}
 .fold summary{padding:0 0 12px;border-bottom:1px solid var(--line)}
 .fold[open] summary{border-bottom-color:transparent}
-.fold-hint{font-size:14px;color:var(--mute);white-space:nowrap}
+.fold-hint{font-size:13px;color:var(--mute);white-space:nowrap}
 .fold-hint::after{content:"+";display:inline-block;width:1em;margin-left:6px;text-align:center}
 .fold[open] .fold-hint::after{content:"\2212"}
 .fold summary:hover .fold-hint{color:var(--fg)}

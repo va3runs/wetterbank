@@ -18,6 +18,7 @@ A design fiction from Düsseldorf asking how autonomous systems will shape our e
 | `js/desk.js` | The complaint form, in English and German (picked by the page language) |
 | `privacy.html` | Privacy and imprint |
 | `404.html` | Not-found page |
+| `fonts/` | Geist Mono (variable, OFL licence) |
 | `assets/` | Icon and sharing image |
 | `sw.js` | Retires the service worker from earlier versions, so returning visitors get this page |
 | `app/` | Redirect from an old link |
